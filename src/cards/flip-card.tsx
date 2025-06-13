@@ -18,16 +18,21 @@ const FlipCard = ({ card, handleClick, isFlipped }: FlipCardProps) => {
     <div
       onClick={() => handleClick(false)}
       className="h-full"
-      style={{ perspective: "1000px" }}>
+      style={{ perspective: "1000px", WebkitPerspective: "1000px" }}>
       <motion.div
         className="relative md:w-[340px] md:h-[580px] w-[300px] h:[400px]"
-        style={{ transformStyle: "preserve-3d" }}
+        style={{
+          transformStyle: "preserve-3d",
+          WebkitTransformStyle: "preserve-3d",
+        }}
         initial={false}
         animate={{
           rotateY: isFlipped ? 180 : 0,
         }}
         transition={{ duration: 0.8, ease: "easeInOut" }}>
-        <motion.div className="absolute bg-stone-100 p-4 rounded-xl backface-hidden overflow-hidden shadow-md">
+        <motion.div
+          className="absolute bg-stone-100 p-4 rounded-xl backface-hidden overflow-hidden shadow-md"
+          style={{ WebkitBackfaceVisibility: "hidden" }}>
           <div className="bg-slate-950 p-1 rounded-md">
             <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
               <img
@@ -44,7 +49,10 @@ const FlipCard = ({ card, handleClick, isFlipped }: FlipCardProps) => {
         </motion.div>
         <motion.div
           className="absolute backface-hidden bg-stone-200 p-4 justify-center items-center rounded-xl overflow-hidden shadow-md"
-          style={{ transform: "rotateY(180deg)" }}>
+          style={{
+            transform: "rotateY(180deg)",
+            WebkitBackfaceVisibility: "hidden",
+          }}>
           <div className="bg-stone-800 p-1 rounded-xl">
             <div className="relative overflow-hidden  flex justify-center items-center rounded-xl bg-stone-800">
               <div className="absolute bg-amber-400 h-full w-1" />
