@@ -8,8 +8,11 @@ const rgbToHex = (rgb: number[]): string =>
 const fetchPalette = async (): Promise<string[]> => {
   const body = { model: "default" };
 
-  const res = await fetch("http://colormind.io/api/", {
+  const res = await fetch("/.netlify/functions/colormind", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(body),
   });
 
