@@ -32,7 +32,7 @@ const FlipCard = ({ card, handleClick, isFlipped }: FlipCardProps) => {
         transition={{ duration: 0.8, ease: "easeInOut" }}>
         <motion.div
           className="absolute bg-stone-100 p-4 rounded-xl backface-hidden overflow-hidden shadow-md"
-          style={{ WebkitBackfaceVisibility: "hidden" }}>
+          style={{ WebkitBackfaceVisibility: "hidden", WebkitPerspective: 0 }}>
           <div className="bg-slate-950 p-1 rounded-md">
             <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
               <img
@@ -52,6 +52,7 @@ const FlipCard = ({ card, handleClick, isFlipped }: FlipCardProps) => {
           style={{
             transform: "rotateY(180deg)",
             WebkitBackfaceVisibility: "hidden",
+            WebkitPerspective: 0,
           }}>
           <div className="bg-stone-800 p-1 rounded-xl">
             <div className="relative overflow-hidden  flex justify-center items-center rounded-xl bg-stone-800">
