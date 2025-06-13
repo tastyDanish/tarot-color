@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import type { TarotCard } from "./tarot-cards";
+import { useState } from "react";
 
 type FlipCardProps = {
   card: TarotCard;
@@ -14,11 +15,17 @@ const textureStyle = {
 };
 
 const FlipCard = ({ card, handleClick, isFlipped }: FlipCardProps) => {
+  const [frontLoaded, setFrontLoaded] = useState(false);
+  const [backLoaded, setBackLoaded] = useState(false);
   return (
     <div
       onClick={() => handleClick(false)}
       className="h-full"
-      style={{ perspective: "1000px", WebkitPerspective: "1000px" }}>
+      style={{
+        perspective: "1000px",
+        WebkitPerspective: "1000px",
+        opacity: frontLoaded && backLoaded ? 1 : 0,
+      }}>
       <motion.div
         className="relative md:w-[340px] md:h-[580px] w-[300px] h:[400px]"
         style={{
@@ -39,6 +46,7 @@ const FlipCard = ({ card, handleClick, isFlipped }: FlipCardProps) => {
                 src={card.image}
                 className="[clip-path:inset(2px)] z-10"
                 alt={card.name}
+                onLoad={() => setFrontLoaded(true)}
               />
             </div>
           </div>
@@ -65,6 +73,7 @@ const FlipCard = ({ card, handleClick, isFlipped }: FlipCardProps) => {
                 src={card.image}
                 className="[clip-path:inset(2px)] z-10 opacity-0"
                 alt={card.name}
+                onLoad={() => setBackLoaded(true)}
               />
             </div>
           </div>

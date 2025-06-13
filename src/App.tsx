@@ -5,7 +5,6 @@ import ColorSwatch from "./colors/color-swatch";
 import FlipCard from "./cards/flip-card";
 import { getRandomSubSet } from "./lib/random-utils";
 import CardTitle from "./cards/card-title";
-import { motion } from "motion/react";
 
 function App() {
   const { card } = UseTarotCards();
@@ -24,17 +23,13 @@ function App() {
       />
 
       <div className="flex flex-col md:flex-row pt-4 z-10">
-        <motion.div
-          className="bg-gray-800 flex justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}>
+        <div className="bg-gray-800 flex justify-center">
           <FlipCard
             handleClick={setIsFlipped}
             isFlipped={isFlipped}
             card={card}
           />
-        </motion.div>
+        </div>
 
         <div
           className="w-[340px] flex flex-col px-4 md:p-0 mt-[460px] md:mt-0"
