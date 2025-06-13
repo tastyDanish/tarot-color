@@ -27,7 +27,8 @@ function App() {
         <motion.div
           className="bg-gray-800 flex justify-center"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}>
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}>
           <FlipCard
             handleClick={setIsFlipped}
             isFlipped={isFlipped}
