@@ -16,18 +16,29 @@ function App() {
   );
 
   return (
-    <div className="relative flex flex-col gap-2  w-full overflow-y-scroll md:overflow-y-auto h-full overflow-x-hidden items-center md:pt-14">
-      <CardTitle title={card.name} />
+    <div className="relative flex flex-col gap-2 w-full overflow-y-scroll md:overflow-y-auto h-full overflow-x-hidden items-center pt-4 md:pt-8 bg-gray-800">
+      <CardTitle
+        title={card.name}
+        isVisible={!isFlipped}
+      />
 
-      <div className="flex flex-col md:flex-row h-full">
-        <FlipCard
-          handleClick={setIsFlipped}
-          isFlipped={isFlipped}
-          card={card}
-        />
+      <div className="flex flex-col md:flex-row pt-4 z-10">
+        <div className="bg-gray-800 flex justify-center">
+          <FlipCard
+            handleClick={setIsFlipped}
+            isFlipped={isFlipped}
+            card={card}
+          />
+        </div>
 
-        <div className="w-full md:w-60 flex flex-col text-amber-100 overflow-show md:pt-6">
-          {!isFlipped && <ColorSwatch words={chosenWords} />}
+        <div
+          className="w-[340px] flex flex-col px-4 md:p-0 mt-[440px] md:mt-0"
+          style={{ height: isFlipped ? "1px" : "580px" }}>
+          <ColorSwatch
+            isVisible={!isFlipped}
+            image={card.image}
+            words={chosenWords}
+          />
         </div>
       </div>
     </div>

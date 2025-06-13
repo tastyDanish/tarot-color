@@ -21,13 +21,13 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Ace Of Swords",
     image: "cards/ace-of-swords.jpg",
     description:
-      "large, excessive, over-the-top, extremely, passionately, excessively, furious, choleric, fit of anger, fury, rage, quarreling, choler, vehemence, animosity, transport, impulse, extremity, boundaries, confines, ends, limits, last, last extremity",
+      "Clarity, Insight, Sharpness, Precision, Intellect, Epiphany, Idea, Judgement, Communication, Decision, Awakening, Revelation",
   },
   {
     name: "Ace Of Wands",
     image: "cards/ace-of-wands.jpg",
     description:
-      "nativity, origin, creation, source, spring, beginning, principle, primacy, first-fruits, extraction, race, family, house, line of descent, descendant, opportunity, occasion, cause, reason, presage, sign",
+      "Drive, Energy, Ambition, Creativity, Desire, Courage, Potential, Vision, Action, Ignition, Impulse, Momentum",
   },
   {
     name: "Death",
@@ -39,43 +39,43 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Eight Of Cups",
     image: "cards/eight-of-cups.jpg",
     description:
-      "honor, discretion, modesty, restraint, timidity, apprehension, sweetness",
+      "Departure, Letting go, Withdrawal, Disenchantment, Transition, Search, Longing, Release, Journey, Emptiness, Moving on",
   },
   {
     name: "Eight Of Pentacles",
     image: "cards/eight-of-pentacles.jpg",
     description:
-      "obliging, welcoming, thoughtfulness, politeness, civility, honesty, kindness, condescension, hospitality, customs, character, nature",
+      "Skill, Practice, Focus, Mastery, Improvement, Commitment, Apprenticeship, Work Ethic, Patience, Precision, Building, Method, Progress, Perseverance",
   },
   {
     name: "Eight Of Swords",
     image: "cards/eight-of-swords.jpg",
     description:
-      "critical moment, decisive instant, difficult position, delicate circumstance, crisis, examination, discussion, research, inspection, commentary, annotation, epilogue, analysis, criticism, blame, censure, disapproval, condemnation, contempt",
+      "Trapped, Paralysis, Fear, Doubt, Confusion, Limitation, Stuck, Isolation, Powerlessness, Restriction, Constraint",
   },
   {
     name: "Eight Of Wands",
     image: "cards/eight-of-wands.jpg",
     description:
-      "land, agriculture, farming, cultivation, tillage, properties, farm structures, sheepfold, garden, orchard, pasture, meadow, woods, grove, thicket, shade, forest, pleasure, entertainment, amusement, pastime, recreation, merrymaking, peace, calm tranquility, innocence, rural or pastoral life",
+      "Movement, Momentum, Speed, Progress, Flow, Launch, Direction, Clarity, Flight, Rush, Unfolding",
   },
   {
     name: "Five Of Cups",
     image: "cards/five-of-cups.jpg",
     description:
-      "inheritance, estate, legacy, holdings, legitimate, gift, donation, dowry, jointure, provision, grant, transmission, testament",
+      "Grief, Regret, Sadness, Longing, Dwelling, Letting go, Attachment, Remorse, Reflection, Perspective",
   },
   {
     name: "Five Of Pentacles",
     image: "cards/five-of-pentacles.jpg",
     description:
-      "amorous, gallant, husband, wife, spouse, boyfriend, girlfriend, to love, to cherish, to adore, assortment, agreement, liking, rapport, fitting, propriety, seemliness",
+      "Hardship, Isolation, Scarcity, Vulnerability, Struggle, Survival, Need, Insecurity, Cold, Crisis",
   },
   {
     name: "Five Of Swords",
     image: "cards/five-of-swords.jpg",
     description:
-      "damages, harm, disadvantage, failure, defeat, rout, setback, ruin, theft, abduction, plagiarism, opprobrium, disgrace, waste",
+      "Conflict, Defeat, Tension, Ego, Manipulation, Regret, Fallout, Isolation, Self-sabotage, Disappointment, Manipulation",
   },
   {
     name: "Five Of Wands",
@@ -87,246 +87,247 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Four Of Cups",
     image: "cards/four-of-cups.jpg",
     description:
-      "boredom, displeasure, discontentment, disgust, aversion, worry, spiritual anguish, grief, affliction, difficult, annoying, vexing, unpleasant, distressing, causing grief, disappointing",
+      "Discontent, Apathy, Indifference, Boredom, Introspection, Contemplation, Restlessness, Stagnation, Dissatisfaction, Disconnection, Unfulfilled",
   },
   {
     name: "Four Of Pentacles",
     image: "cards/four-of-pentacles.jpg",
     description:
-      "gift, generosity, good deed, donation, gratification, service, the color white, lunar medicine, precious stone",
+      "Possession, Control, Guarded, Caution, Boundaries, Conservation, Clinging, Resistance, Attachment, Reserved",
   },
   {
     name: "Four Of Swords",
     image: "cards/four-of-swords.jpg",
     description:
-      "desert, exile, banishment, proscription, retirement, hermitage, uninhabited, isolated, abandoned, derelict, tomb, tombstone, sepulcher, casket",
+      "Rest, Recovery, Retreat, Pause, Healing, Solitude, Respite, Repose, Withdrawal, Quiet",
   },
   {
     name: "Four Of Wands",
     image: "cards/four-of-wands.jpg",
     description:
-      "association, assembly, connection, federation, confederation, church, congregation, flock, multitude, crowd, troupe, band, company, cohort, army, convocation, accompaniment, mixture, medley, alloy, amalgam",
+      "Celebration, Joy, Harmony, Community, Milestone, Stability, Gathering, Success, Comfort, Peace, Gratitude, Support, Foundation",
   },
   {
     name: "Judgement",
     image: "cards/judgement.jpg",
     description:
-      "discernment, intelligence, reason, understanding, conception, view, thought, comparison, deliberation, opinion, feeling, false judgment, last judgment",
+      "Awakening, Reckoning, Renewal, Transformation, Clarity, Rebirth, Redemption, Decision, Realization, Release, Truth, Resolution",
   },
   {
     name: "Justice",
     image: "cards/justice.jpg",
     description:
-      "equilibrium, equity, probity, uprightness, right, natural right, human right, moral right, public right, civil right, rectitude, reason, execution",
+      "Balance, Fairness, Truth, Integrity, Ethics, Responsibility, Judgement, Honesty, Transparency",
   },
   {
     name: "King Of Cups",
     image: "cards/king-of-cups.jpg",
-    description: "scientist, artist, probity, equity, integrity, principles",
+    description:
+      "Compassion, Wisdom, Empathy, Patience, Diplomacy, Integrity, Maturity, Kindness, Nurturing",
   },
   {
     name: "King Of Pentacles",
     image: "cards/king-of-pentacles.jpg",
     description:
-      "trader, storekeeper, merchant, banker, foreign exchange broker, calculating person, speculator, physicist, geometer, mathematics, science, master, professor",
+      "Abundance, Stewardship, Leadership, Dependability, Entrepreneurship, Resourcefulness, Patience, Comfort",
   },
   {
     name: "King Of Swords",
     image: "cards/king-of-swords.jpg",
     description:
-      "judge, senator, lawyer, prosecutor, jurist, defense lawyer, legal scholar, jurisprudence, doctor, physician, practitioner, consultant, to advise",
+      "Clear thinking, Authority, Truth, Rationality, Objectivity, Strategy, Integrity, Discipline, Wisdom, Leadership, Mental clarity, Justice",
   },
   {
     name: "King Of Wands",
     image: "cards/king-of-wands.jpg",
     description:
-      "rustic, villager, peasant, redneck, farmer, grower, agriculture, cultivation, conscience, integrity, probity",
+      "Visionary, Passion, Leadership, Charisma, Courage, Drive, Initiative, Innocation, Energy, Trailblazer",
   },
   {
     name: "Knight Of Cups",
     image: "cards/knight-of-cups.jpg",
     description:
-      "coming, approach, advent, entrance, reception, coming together, meeting, agreement, compliance, conformity, get closer, approximation, squeeze together, gathering, crowd",
+      "Invitation, Proposal, Approach, Charm, Dreamer, Tenderness, Intuition, Empathy, Hope, Opening, Offer",
   },
   {
     name: "Knight Of Pentacles",
     image: "cards/knight-of-pentacles.jpg",
     description:
-      "advantage, gain, profit, interest, useful, practical, profitable, interesting, advantageous, important, necessary, obliging, officious",
+      "Steadfast, Reliable, Diligent, Patient, Grounded, Cautious, Thorough, Dependable, Endurance, Commitment, Trustworthy",
   },
   {
     name: "Knight Of Swords",
     image: "cards/knight-of-swords.jpg",
     description:
-      "man of the sword, man-at-arms, fencing master, professional assassin, hunter, office, soldier, combatant, enemy, hanger-on, briber, dispute, war, combat, battle, duel, attack, defense, opposition, resistance, hostility, enmity, hate, choler, resentment, destruction, courage, valor, bravery",
+      "Decisive, Bold, Energistic, Direct, Driven, Intellectual, Unwavering, Strategic, Assertive, Determined, Fearless",
   },
   {
     name: "Knight Of Wands",
     image: "cards/knight-of-wands.jpg",
     description:
-      "to leave, movement, transfer, distance, remoteness, sending away, absence, abandonment, desertion, change, flight, escape, evasion, transmigration, emigration, transposition, translation, transplantation",
+      "Adventure, Energy, Passion, Boldness, Movement, Action, Courage, Travel, Exploration, Confidence, Drive, Restlessness, Momentum",
   },
   {
     name: "Nine Of Cups",
     image: "cards/nine-of-cups.jpg",
     description:
-      "success, accomplishment, advantage, gain, winner, upper hand, lead, pomp, triumph, trophy, majesty, spectacle, parade, apparatus, gear",
+      "Contentment, Joy, Satisfaction, Gratitude, Success, Happiness, Comfort, Celebration, Delight, Harmony, Bliss, Reward, Confidence, Enjoyment",
   },
   {
     name: "Nine Of Pentacles",
     image: "cards/nine-of-pentacles.jpg",
     description:
-      "next consequence, result, conclusion, event, evidence, demonstrability, conviction, execution, accomplishment, achievement, perfection, effective, personal effects, goods, furniture",
+      "Independence, Abundance, Luxury, Comfort, Enjoyment, Prosperity, Discipline, Reward, Elegance, Freedom, Growth, Security",
   },
   {
     name: "Nine Of Swords",
     image: "cards/nine-of-swords.jpg",
     description:
-      "apostle, pope, cardinal, bishop, abbot, priest, monk, hermit, nun, recluse, anchorite, vestal, religious, piety, devotion, celibate, virginity, cult, religion, rite, ceremonies, ritual, temple, church, monastery, convent, hermitage, sanctuary",
+      "Anxiety, Worry, Guilt, Insomnia, Regret, Dread, Fear, Panic, Shame, Rumination, Doubt",
   },
   {
     name: "Nine Of Wands",
     image: "cards/nine-of-wands.jpg",
     description:
-      "delay, putting-back, tardiness, dismissal, suspension , drawing out, lengthening, slowness, to reduce speed",
+      "Defense, Courage, Boundaries, Persistence, Perseverance, Resilience, Endurance, Vigilance, Wariness, Recovery, Experience",
   },
   {
     name: "Page Of Cups",
     image: "cards/page-of-cups.jpg",
     description:
-      "studious, study, diligence, application, work, activity, occupation, hobby, trade, employment, observation, reflection, consideration, meditation, contemplation",
+      "Imagination, Creativity, Curiosity, Emotion, Wonder, Inspiration, Dreaminess, Affection, Surprise, Intuition, Sentiment, Tenderness, Message, Openness",
   },
   {
     name: "Page Of Pentacles",
     image: "cards/page-of-pentacles.jpg",
     description:
-      "schoolchild, pupil, student, apprentice, amateur, study, instruction, diligence, learning, meditation, reflection, work, occupation, apprenticeship",
+      "Learning, Focus, Dedication, Effort, Potential, Initiative, Curiosity, Planning",
   },
   {
     name: "Page Of Swords",
     image: "cards/page-of-swords.jpg",
     description:
-      "observer, connoisseur, guard, monitor, steward, curious, searching, examination, note, remark, observations, annotations",
+      "Curiosity, Awareness, Observation, Cleverness, Ideas, Questioning, Debate, Opinion, Wit, Boldness, Inquisitiveness",
   },
   {
     name: "Page Of Wands",
     image: "cards/page-of-wands.jpg",
     description:
-      "a foreigner, someone unknown or anonymous, strange, unusual, rare, uncommon, unaccustomed, unknown, unheard of, incredible, extraordinary, surprising, a prodigy, a miracle",
+      "Exploration, Wanderlust, Curiosity, Spark, Adventure, Impulse, Freedom, Boldness, Discovery, Courage, Originality, Restlessness, Playfulness, Inspiration",
   },
   {
     name: "Queen Of Cups",
     image: "cards/queen-of-cups.jpg",
     description:
-      "honest woman, an expert, virtue, ethics, values, wisdom, honesty, trustworthiness",
+      "Compassion, Empathy, Nurturing, Intuition, Dreaminess, Sensitivity, Healing, Reflection, Creativity, Imagination",
   },
   {
     name: "Queen Of Pentacles",
     image: "cards/queen-of-pentacles.jpg",
     description:
-      "opulence, richness, splendor, luxury, sumptuousness, assurance, surety, confidence, certitude, assertion, safety, audacity, liberty, boldness, candor, outspokenness, frankness",
+      "Stability, Generosity, Nurture, Security, Comfort, Devotion, Earthiness, Abundance, Responsibility, Resourcefulness",
   },
   {
     name: "Queen Of Swords",
     image: "cards/queen-of-swords.jpg",
     description:
-      "widow, privation, withdrawal, absence, scarcity, poverty, indigence, infertility, sterility",
+      "Clarity, Independence, Truth, Boundaries, Wit, Insight, Precision, Integrity, Directness",
   },
   {
     name: "Queen Of Wands",
     image: "cards/queen-of-wands.jpg",
     description:
-      "country-dweller, villager, farmer, grower, woman of the woods, craftswoman, thrifty housekeeper, hostess, an honest and straightforward woman, honesty, honor, civility, politeness, good manners",
+      "Confidence, Charisma, Creativity, Warmth, Courage, Leadership, Optimism, Magnetism, Determination, Generosity, Honour, Sociability, Spontaneity",
   },
   {
     name: "Seven Of Cups",
     image: "cards/seven-of-cups.jpg",
     description:
-      "mind, soul, spirit, intelligence, imagination, understanding, idea, memory, conception, opinion, feeling, meditation, contemplation, reflection, deliberation",
+      "Imagination, Dreams, Choices, Illusion, Fantasy, Desires, Temptation, Options, Indecision, Hope, Delusion, Soul, Spirit, Reflection, Potential",
   },
   {
     name: "Seven Of Pentacles",
     image: "cards/seven-of-pentacles.jpg",
     description:
-      "whiteness, purity, purgation, purification, moon, candor, innocence, ingenuousness, naïveté, silverware, money, wealth, sum",
+      "Patience, Investment, Assessment, Waiting, Progress, Growth, Harvest, Reflection, Sustainability, Persistence, Yield",
   },
   {
     name: "Seven Of Swords",
     image: "cards/seven-of-swords.jpg",
     description:
-      "await, expectation, desire, will, wish, vow, longing, taste, fantasy",
+      "Trickery, Evasion, Escape, Craftiness, Strategy, Deception, Escape, Disguise",
   },
   {
     name: "Seven Of Wands",
     image: "cards/seven-of-wands.jpg",
     description:
-      "speech, to speak, to say, interview, colloquy, conversation, correspondence, deliberation, discussion, to confer, to gossip, to chat, to converse, chatter, chitchat, negotiation, deal, exchange, commerce, trafficking, lecture, dissertation, to proclaim, word, pronunciation, grammar, dictionary, language, idiom, jargon, dialect",
+      "Defense, Challenge, Courage, Resistance, Persistence, Negotiation, Debate, Conflict, Struggle, Advocacy, Boldness, Dispute, Firmness, Resolve",
   },
   {
     name: "Six Of Cups",
     image: "cards/six-of-cups.jpg",
     description:
-      "faded, withered, desiccated, preserved, old age, decrepitude, gone, formerly, previously, before, in older days, once, in the past, antiquity, antiques",
+      "Nostalgia, Memory, Reflection, Recollection, Childhood, Innocence, Warmth, Legacy, Fondness, Reunion, Generosity, Kindness, Timelessness",
   },
   {
     name: "Six Of Pentacles",
     image: "cards/six-of-pentacles.jpg",
     description:
-      "currently, presently, at present, now, here, suddenly, this instant, immediately, at once, right this minute, straight away, firstly, contemporary, modern, up-to-date, existent",
+      "Generosity, Charity, Balance, Fairness, Support, Equity, Aid, Altruism, Gratitude, Philanthropy, Reciprocity",
   },
   {
     name: "Six Of Swords",
     image: "cards/six-of-swords.jpg",
     description:
-      "path, way, road, step, walk, promenade, means, medium, manner, fashion, expedient, career, path in life, delivery, send, broker",
+      "Transition, Journey, Passage, Change, Progress, Travel, Escape, Healing, Recovery, Guidance, Relocation",
   },
   {
     name: "Six Of Wands",
     image: "cards/six-of-wands.jpg",
     description:
-      "housework, home, servant, valet, lackey, maidservant, mercenary, inferior, slave, servitude, messenger, agent, message, announcement",
+      "Victory, Recognition, Success, Achievement, Triumph, Celebration, Confidence, Progress, Leadership, Honors, Praise, Milestone, Momentum, Validation",
   },
   {
     name: "Strength",
     image: "cards/strength.jpg",
     description:
-      "Fortitude, ability, power, greatness of soul, magnanimity, moral or spiritual work, perseverance, constancy, patience, resignation, heroism, courage",
+      "Resilience, Courage, Perseverance, Patience, Determination, Endurance, Confidence, Bravery, Fortitude, Willpower, Steadfastness",
   },
   {
     name: "Temperance",
     image: "cards/temperance.jpg",
     description:
-      "moderation, discretion, continence, abstinence, sobriety, frugality, chastity, patience, calm, restraint, accommodation, regard, consideration, mending, mediation, softening, musical tempering, air temperature, climate, temperament",
+      "Balance, Harmony, Moderation, Patience, Restraint, Adaptability, Calm, Integration, Healing, Flow, Compromise, Blending, Mindfulness, Cooperation, Synthesis",
   },
   {
     name: "Ten Of Cups",
     image: "cards/ten-of-cups.jpg",
     description:
-      "city, village, homeland, country, home, abode, dwelling, residence, citizens, place, site, location",
+      "Harmony, Joy, Family, Togetherness, Peace, Love, Bliss, Gratitude, Celebration, Connection",
   },
   {
     name: "Ten Of Pentacles",
     image: "cards/ten-of-pentacles.jpg",
     description:
-      "housework, economy, savings, dwelling, domicile, habitation, abode, housing, building, manor, hotel, palace, boutique, bungalow, lodge, shack, castle, inn, cabaret, tavern, barn, vessel, base, archive, religious house, monastery, convent, hermitage, burial, tomb, sepulcher, family, lair, cavern, hideout, retreat",
+      "Legacy, Wealth, Inheritance, Abundance, Prosperity, Heritage, Estate, Success, Comfort, Assets, Stability, Roots",
   },
   {
     name: "Ten Of Swords",
     image: "cards/ten-of-swords.jpg",
     description:
-      "sobs, whines, sighs, moans, lamentations, grievances, afflictions, grief, sadness, pain, sorrow, droplets, dew, condensation, bleeding",
+      "Endings, Closure, Transformation, Release, Finality, Recovery, Renewal, Acceptance, Regeneration",
   },
   {
     name: "Ten Of Wands",
     image: "cards/ten-of-wands.jpg",
     description:
-      "disloyalty, betrayal, infidelity, conspiracy, corruption, malpractice, wrongdoing, crime, subversion, deceit, dissimulation, hypocrisy, duplicity, faithlessness",
+      "Burden, Stress, Resonsibility, Pressure, Commitment, Fatigue, Perseverance, Obligation, Struggle, Exhaustion, Duty, Persistence, Endurance",
   },
   {
     name: "The Chariot",
     image: "cards/the-chariot.jpg",
     description:
-      "Dissension, discord, disturbances, agitation, noise, nuisance, disorder, riots, insurrection, revolt, sedition, rebellion, defection, faction, conspiracy, war, battle, conflict, combat, duel, violence, impulse, outburst, anger, quarrel, dispute, debate, argumentation, struggle, vengeance",
+      "Determination, Willpower, Drive, Focus, Control, Victory, Triumph, Ambition, Progress, Momentum, Confidence, Mastery, Direction, Achievement",
   },
   {
     name: "The Devil",
@@ -338,31 +339,31 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "The Emperor",
     image: "cards/the-emperor.jpg",
     description:
-      "Support, backing, holding up, column, base, foundation, basis, founding principles, hypothesis, reason, cause, subject, fixity, stability, assurance, persuasion, conviction, confidence, security, reliability, help, aid",
+      "Leadership, Authority, Structure, Foundation, Stability, Responsibility, Security, Confidence, Guidance, Order, Support, Reliability, Governance, Control, Discipline, Framework, Backbone",
   },
   {
     name: "The Empress",
     image: "cards/the-empress.jpg",
     description:
-      "Night, darkness, eclipse, mist, obscurity, mystery, secret, hidden, unknown, clandestine, occult, parable, allegory, mystical meaning, mask, veil, cover, sheath, envelop, unvoiced, blindness, oblivion, obfuscate, cover",
+      "Creativity, Growth, Abundance, Nature, Intuition, Mystery, Secrets, Veil, Embrace, Transformation, Depth",
   },
   {
     name: "The Fool",
     image: "cards/the-fool.jpg",
     description:
-      "Madness, insanity, insane, eccentricity, enthusiasm, unreasonableness, blindness, ignorance, senseless, confusion, wandering, drunkenness, delirium, fever, frenzy, rage, passion, fury, transport, innocent, simple, silly",
+      "Spontaneity, Adventure, Curiosity, Innocence, Naivety, Enthusiam, Playfulness, Freedom, Unpredictability, Openness, Recklessness, Wonder, Boldness, Experimentation, Passion, Unconventional",
   },
   {
     name: "The Hanged Man",
     image: "cards/the-hanged-man.jpg",
     description:
-      "Prudence, wisdom, reserve, circumspection, restraint, discernment, foresight, forecast, presentiment, prediction, prognostic, divination, prophecy, horoscope",
+      "Reflection, Suspension, Surrender, Insight, Stillness, Acceptance, Contemplation, Waiting, Resilience, Deliberation, Observation, Forethought",
   },
   {
     name: "The Hermit",
     image: "cards/the-hermit.jpg",
     description:
-      "Traitor, deceiver, dissimulation, hypocrite, fanatic, hypocrisy, fanaticism, impostor, disguise, imposture, corruptor, seducer, treason, craftiness, trickery",
+      "Solitude, Reflection, Introspection, Mindfulness, Meditation, Wisdom, Clarity, Focus, Retreat, Contemplation, Insight",
   },
   {
     name: "The Hierophant",
@@ -374,13 +375,13 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "The High Priestess",
     image: "cards/the-high-priestess.jpg",
     description:
-      "Nature, rest, tranquility, retreat, private life, retired life, solitary life, life of a hermit, religious life, orphic life, rest of the old, temple of heat, silence, taciturnity",
+      "Intuition, Mystery, Secrets, Subconcious, Reflection Dreams, Receptivity, Meditation, Trust, Hidden",
   },
   {
     name: "The Lovers",
     image: "cards/the-lovers.jpg",
     description:
-      "Marriage, wedding, nuptials, alliance, meeting, link, assembly, pledge, promise, oath, intimacy, liaison, junction, conjunction, copulation, coupling, chain, bondage",
+      "Connection, Union, Choice, Harmony, Attraction, Bond, Affinity, Trust, Balance, Commitment, Synergy, Understanding, Collaboration, Affinity, Duality, Integration",
   },
   {
     name: "The Magician",
@@ -404,7 +405,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "The Sun",
     image: "cards/the-sun.jpg",
     description:
-      "Brightening, clearing, explanation, development, instruction, interpretation, analysis, opening, discovery, revelation, clarity, elucidation, light, fire, sun, sky and earth, temple of heat",
+      "Brightness, Clarity, Growth, Revelation, Energy, Warmth, Illumination, Insight, Vitality, Optimism, Enlightenment, Joy, Hope, Discovery, Confidence",
   },
   {
     name: "The Tower",
@@ -422,7 +423,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "The World",
     image: "cards/the-world.jpg",
     description:
-      "Voyage, pilgrimage, peregrination, tour, emigration, transmigration, change of scenery, movement, steps, walking, running, rotation, circulation, route, reroute, change course, incursion, flight, escape",
+      "Journey, Voyage, Pilgrimage, Travel, migration, Exploration, Transition, Movement, Rotation, Circulation, Progress, Change, Flow, Adventure, Passage, Escape, Discovery, Expansion",
   },
   {
     name: "Three Of Cups",
@@ -434,42 +435,42 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Three Of Pentacles",
     image: "cards/three-of-pentacles.jpg",
     description:
-      "nobility, substantial, important, grand, major, magnificent, sublime, renowned, famous, illustrious, powerful, high, of quality, extensive, vast, esteem, greatness of soul, noble conduct, generous actions",
+      "Prestige, Renown, Excellence, Quality, Grandeur, Importance, Fame, Distinction, Influence, Honor, Generosity, Integrity, Mastery, Skill, Impact",
   },
   {
     name: "Three Of Swords",
     image: "cards/three-of-swords.jpg",
     description:
-      "departure, absence, removal, dispersion, misanthropy, antisocial, disdain, aversion, incompatibility, incivility, antipathy, separation, division, section, severance",
+      "Heartbreak, Loss, Grief, Separation, Disappointment, Betrayal, Conflict, Division, Breakup, Sadness, Rejection, Hurt, Fracture, Discord, Regret, Sorrow",
   },
   {
     name: "Three Of Wands",
     image: "cards/three-of-wands.jpg",
     description:
-      "initiative, to begin, to undertake, to start, to usurp, to seize, audacity, daring, temerity, boldness, hardness, imprudence, enterprising, resourceful, keen, adventurous, audacious, risk-taking",
+      "Initiative, Beginnings, Enterprise, Ambition, Boldness, Vision, Exploration, Opportunity, Resourcefulness, Drive, Determination, Innovation, Pioneering, Fearlessness",
   },
   {
     name: "Two Of Cups",
     image: "cards/two-of-cups.jpg",
     description:
-      "passion, inclination, sympathy, attraction, appeal, affinity, friendship, relationship, goodwill, affection, attachment, relationship, courtly love, gallantry, chivalry",
+      "Passion, Affinity, Attraction, Sympathy, Friendship, Connection, Harmony, Affection, Attachment, Goodwill, Partnership, Bond, Unity, Trust, Respect, Chivalry, Gallantry",
   },
   {
     name: "Two Of Pentacles",
     image: "cards/two-of-pentacles.jpg",
     description:
-      "predicament, obstacle, blockage, congestion, obstruction, cloudy, muddled, trouble, emotion, agitation, inquietude, perplexity",
+      "Predicament, Onbstacle, Blockage, Congestion, Obstruction, Confusion, Muddled, Trouble, Agitation, Unease, Perplexity, Instability, Balance, Fluctuation, Adjustment, Juggling, Tension, Uncertainty",
   },
   {
     name: "Two Of Swords",
     image: "cards/two-of-swords.jpg",
     description:
-      "attachment, affection, tenderness, benevolence, liking, affinity, attraction, rapport, relationship, intimacy, sympathy, interest, similarity, connection, conformity",
+      "Conflict, Stalemate, Dilemma, Indecision, Opposition, Balance, Tension, Impasse, Choice, Division, Compromise, Reflection, Deliberation",
   },
   {
     name: "Two Of Wands",
     image: "cards/two-of-wands.jpg",
     description:
-      "sadness, affliction, displeasure, pain, desolation, hopelessness, bleakness, mortification, mood, spirits, tantrum, melancholy, vapors, somber ideas",
+      "Planning, Strategy, Vision, Choice, Ambition, Goals, Preparation, Prospect, Possibility, Exploration, Opportunity, Direction, Intent, Leadership, Initiative",
   },
 ];
