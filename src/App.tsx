@@ -18,33 +18,35 @@ function App() {
     setIsFlipped(isNewReading);
   }, [isNewReading]);
 
-  const handleShare = async () => {
+  const handleShare = () => {
     const element = document.getElementById("reading");
     if (!element) return;
 
-    try {
-      const dataUrl = await domToPng(element, {
-        backgroundColor: "#1f2937", // gray-800
-        style: {
-          opacity: "100%",
-          padding: "10px",
-          transform: "scale(1)",
-        },
-      });
+    setTimeout(async () => {
+      try {
+        const dataUrl = await domToPng(element, {
+          backgroundColor: "#1f2937", // gray-800
+          style: {
+            opacity: "100%",
+            padding: "10px",
+            transform: "scale(1)",
+          },
+        });
 
-      const blob = await (await fetch(dataUrl)).blob();
+        const blob = await (await fetch(dataUrl)).blob();
 
-      await navigator.clipboard.write([
-        new ClipboardItem({
-          "image/png": blob,
-        }),
-      ]);
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "image/png": blob,
+          }),
+        ]);
 
-      alert("Screenshot copied to clipboard!");
-    } catch (err) {
-      console.error("Failed to copy screenshot:", err);
-      alert(`Failed to copy screenshot. error ${err}`);
-    }
+        alert("Screenshot copied to clipboard!");
+      } catch (err) {
+        console.error("Clipboard error:", err);
+        alert("Could not copy. Try saving the image instead.");
+      }
+    }, 0);
   };
 
   if (!reading || loading)
