@@ -10,7 +10,7 @@ type ColorSwatchProps = {
 
 const ColorSwatch = ({ words, isVisible }: ColorSwatchProps) => {
   return (
-    <motion.div className=" relative flex flex-col gap-4 h-full w-full text-2xl items-start justify-center overflow-hidden md:pl-4 md:-mt-4">
+    <motion.div className="relative flex flex-col gap-4 h-full w-full text-2xl items-start justify-center overflow-hidden md:pl-4 md:-mt-4">
       {words?.map((word, i) => (
         <motion.div
           key={word.color}

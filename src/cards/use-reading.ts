@@ -40,7 +40,6 @@ export const useReading = () => {
         saved.expiration = new Date(saved.expiration);
 
         if (saved.expiration > new Date()) {
-          console.log("WE'RE UPDATING THE READING");
           setIsNewReading(false);
           setReading(saved);
           return;

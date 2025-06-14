@@ -4,5 +4,41 @@
   text-align: center;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.mask-bottom-half-circle {
+  mask-image: radial-gradient(
+    circle at center bottom,
+    transparent 0%,
+    transparent 50px,
+    black 50px
+  );
+  mask-composite: exclude;
+  -webkit-mask-image: radial-gradient(
+    circle at center bottom,
+    transparent 0%,
+    transparent 50px,
+    black 50px
+  );
+  -webkit-mask-composite: destination-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1f2937; /* Tailwind's gray-800 */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #94a3b8; /* Tailwind's slate-400 */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #cbd5e1; /* Tailwind's slate-200 */
 }
