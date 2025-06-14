@@ -33,7 +33,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Death",
     image: "cards/death.jpg",
     description:
-      "Transformation, Ending, Release, Rebirth, Shedding, Closure, Transition, Metamorphosis, Threshold, Unmaking, Cycle, Change, Unraveling, Renewal, Compost",
+      "Transformation, Ending, Release, Rebirth, Shedding, Closure, Transition, Metamorphosis, Threshold, Cycle, Change, Unraveling, Renewal",
   },
   {
     name: "Eight Of Cups",
@@ -255,7 +255,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Seven Of Swords",
     image: "cards/seven-of-swords.jpg",
     description:
-      "Trickery, Evasion, Escape, Craftiness, Strategy, Deception, Escape, Disguise",
+      "Trickery, Evasion, Escape, Craftiness, Strategy, Deception, Escape, Disguise, Greed",
   },
   {
     name: "Seven Of Wands",
@@ -297,7 +297,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Temperance",
     image: "cards/temperance.jpg",
     description:
-      "Balance, Harmony, Moderation, Patience, Restraint, Adaptability, Calm, Integration, Healing, Flow, Compromise, Blending, Mindfulness, Cooperation, Synthesis",
+      "Balance, Harmony, Moderation, Patience, Restraint, Adaptability, Calm, Integration, Healing, Flow, Compromise, Blending, Mindfulness, Cooperation, Synthesis, Diplomacy",
   },
   {
     name: "Ten Of Cups",
@@ -411,13 +411,13 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "The Tower",
     image: "cards/the-tower.jpg",
     description:
-      "Collapse, Upheaval, Reckoning, Disruption, Shock, Breakdown, Truth, Awakening, Revelation, Fracture, Unmaking, Shatter, Flashpoint, Catalyst, Exposure, Fall, Clarity",
+      "Collapse, Upheaval, Disruption, Shock, Breakdown, Truth, Awakening, Revelation, Fracture, Shatter, Flashpoint, Catalyst, Exposure, Clarity, Rebuilding, Renewal, Change",
   },
   {
     name: "The Wheel Of Fortune",
     image: "cards/the-wheel-of-fortune.jpg",
     description:
-      "luck, happiness, joy, bliss, improvement, prosperity, bonus, blessing, benefits, graces, favors, goods, wealth, profits, lot, fate, destiny, adventure, good fortune, entropy, probability",
+      "luck, happiness, joy, bliss, improvement, prosperity, bonus, blessing, benefits, graces, favors, goods, wealth, profits, lot, fate, destiny, adventure, entropy, probability",
   },
   {
     name: "The World",
