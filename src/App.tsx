@@ -1,5 +1,4 @@
 import "./App.css";
-import { domToPng } from "modern-screenshot";
 import { useEffect, useState } from "react";
 import ColorSwatch from "./colors/color-swatch";
 import FlipCard from "./cards/flip-card";
@@ -17,34 +16,6 @@ function App() {
   useEffect(() => {
     setIsFlipped(isNewReading);
   }, [isNewReading]);
-
-  const handleShare = async () => {
-    const element = document.getElementById("reading");
-    if (!element) return;
-
-    const item = new ClipboardItem({
-      "image/png": (async () => {
-        const dataUrl = await domToPng(element, {
-          backgroundColor: "#1f2937",
-          style: {
-            opacity: "100%",
-            padding: "10px",
-            transform: "scale(1)",
-          },
-        });
-        const blob = await (await fetch(dataUrl)).blob();
-        return blob;
-      })(),
-    });
-
-    try {
-      await navigator.clipboard.write([item]);
-      alert("Screenshot copied to clipboard!");
-    } catch (err) {
-      console.error(err);
-      alert("Clipboard failed. Try saving image instead.");
-    }
-  };
 
   if (!reading || loading)
     return (
@@ -77,7 +48,7 @@ function App() {
           </div>
           <div className="flex w-full flex-row items-center gap-8 justify-around">
             <CardTitle title={reading.card.name} />
-            <ShareButton onClick={handleShare} />
+            <ShareButton />
           </div>
         </motion.div>
 
