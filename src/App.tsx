@@ -1,24 +1,27 @@
 import "./App.css";
-import { UseTarotCards } from "./cards/use-tarot-cards";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import ColorSwatch from "./colors/color-swatch";
 import FlipCard from "./cards/flip-card";
-import { getRandomSubSet } from "./lib/random-utils";
 import CardTitle from "./cards/card-title";
+import { useReading } from "./cards/use-reading";
 
 function App() {
-  const { card } = UseTarotCards();
-  const [isFlipped, setIsFlipped] = useState(true);
+  const { reading, loading, isNewReading } = useReading();
+  const [isFlipped, setIsFlipped] = useState(false);
 
-  const chosenWords = useMemo(
-    () => getRandomSubSet(card.description.split(", "), 5),
-    [card.description]
-  );
+  useEffect(() => {
+    setIsFlipped(isNewReading);
+  }, [isNewReading]);
+
+  if (!reading || loading)
+    return (
+      <div className="relative flex flex-col gap-2 w-full overflow-y-scroll md:overflow-y-auto h-full overflow-x-hidden items-center pt-4 md:pt-8 bg-gray-800"></div>
+    );
 
   return (
     <div className="relative flex flex-col gap-2 w-full overflow-y-scroll md:overflow-y-auto h-full overflow-x-hidden items-center pt-4 md:pt-8 bg-gray-800">
       <CardTitle
-        title={card.name}
+        title={reading.card.name}
         isVisible={!isFlipped}
       />
 
@@ -27,7 +30,7 @@ function App() {
           <FlipCard
             handleClick={setIsFlipped}
             isFlipped={isFlipped}
-            card={card}
+            card={reading.card}
           />
         </div>
 
@@ -36,8 +39,8 @@ function App() {
           style={{ height: isFlipped ? "1px" : "580px" }}>
           <ColorSwatch
             isVisible={!isFlipped}
-            image={card.image}
-            words={chosenWords}
+            image={reading?.card.image}
+            words={reading?.words}
           />
         </div>
       </div>
