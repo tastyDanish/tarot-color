@@ -44,7 +44,7 @@ function App() {
         alert("Screenshot copied to clipboard!");
       } catch (err) {
         console.error("Clipboard error:", err);
-        alert("Could not copy. Try saving the image instead.");
+        alert(`Could not copy. Try saving the image instead. ${err}`);
       }
     }, 0);
   };
