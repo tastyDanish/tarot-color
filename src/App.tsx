@@ -43,7 +43,7 @@ function App() {
       alert("Screenshot copied to clipboard!");
     } catch (err) {
       console.error("Failed to copy screenshot:", err);
-      alert("Failed to copy screenshot.");
+      alert(`Failed to copy screenshot. error ${err}`);
     }
   };
 
@@ -65,9 +65,9 @@ function App() {
       </div>
 
       <ShareCard reading={reading} />
-      <div className="relative flex flex-col items-center opacity-100">
+      <div className="relative flex flex-col items-center opacity-100 w-full">
         <motion.div
-          className="flex flex-col items-center"
+          className="flex flex-col items-center z-10"
           initial={{ opacity: 0 }}
           animate={{
             opacity: !isFlipped ? 1 : 0,
