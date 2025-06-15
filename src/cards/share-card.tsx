@@ -10,7 +10,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
   return (
     <div
       id="reading"
-      className="flex flex-col items-center opacity-0 pointer-events-none fixed top-0 left-0 py-4 px-8 rounded-2xl">
+      className="flex flex-col items-center opacity-0 pointer-events-none fixed top-0 left-0 pt-8 px-8 rounded-4xl">
       <CardTitle
         title={reading.card.name}
         isShare
@@ -18,18 +18,8 @@ const ShareCard = ({ reading }: ShareCardProps) => {
 
       <div className="flex flex-row pt-4 z-10">
         <div className="bg-gray-800 flex justify-center gap-4">
-          <div
-            className="relative h-[580px] w-[340px]"
-            style={{
-              transformStyle: "preserve-3d",
-              WebkitTransformStyle: "preserve-3d",
-            }}>
-            <div
-              className="absolute bg-stone-100 p-4 rounded-xl backface-hidden overflow-hidden shadow-md"
-              style={{
-                WebkitBackfaceVisibility: "hidden",
-                WebkitPerspective: 0,
-              }}>
+          <div className="relative h-[580px] w-[340px]">
+            <div className="absolute bg-stone-100 p-4 rounded-xl backface-hidden overflow-hidden shadow-md">
               <div className="bg-slate-950 p-1 rounded-md">
                 <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
                   <img
@@ -69,6 +59,9 @@ const ShareCard = ({ reading }: ShareCardProps) => {
             ))}
           </div>
         </div>
+      </div>
+      <div className="text-sm text-white opacity-70 text-center">
+        Divined at fortunespalette.com
       </div>
     </div>
   );

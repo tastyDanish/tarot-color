@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ColorSwatch from "./colors/color-swatch";
 import FlipCard from "./cards/flip-card";
 import CardTitle from "./cards/card-title";
@@ -10,14 +10,10 @@ import ShareButton from "./share-button";
 import { motion } from "motion/react";
 
 function App() {
-  const { reading, loading, isNewReading } = useReading();
-  const [isFlipped, setIsFlipped] = useState(false);
+  const { reading } = useReading();
+  const [isFlipped, setIsFlipped] = useState(reading.new);
 
-  useEffect(() => {
-    setIsFlipped(isNewReading);
-  }, [isNewReading]);
-
-  if (!reading || loading)
+  if (!reading)
     return (
       <div className="relative flex flex-col gap-2 w-full overflow-y-scroll md:overflow-y-hidden h-full overflow-x-hidden items-center pt-4 md:pt-8 bg-gray-800"></div>
     );
@@ -29,8 +25,10 @@ function App() {
         <p>Welcome, traveler.</p>
         <p>
           I offer you divination as a service. Focus your thoughts on a
-          question, turn the card, and read the signs: Look into the words and
-          hues to find your answer or inspiration
+          question, turn the card, and read the signs. Each reading reveals not
+          only words, but a unique palette; colors drawn from fate itself. Look
+          into the hues and phrases to find your answer, your insight, or simply
+          your inspiration.
         </p>
       </div>
 
@@ -38,7 +36,7 @@ function App() {
       <div className="relative flex flex-col items-center opacity-100 w-full">
         <motion.div
           className="flex flex-col items-center z-10"
-          initial={{ opacity: 0 }}
+          initial={{ opacity: reading.new ? 0 : 1 }}
           animate={{
             opacity: !isFlipped ? 1 : 0,
           }}
@@ -65,6 +63,7 @@ function App() {
             className="w-[340px] flex flex-col px-4 md:p-0 mt-[460px] md:mt-0"
             style={{ height: isFlipped ? "1px" : "580px" }}>
             <ColorSwatch
+              isNew={reading.new}
               isVisible={!isFlipped}
               image={reading?.card.image}
               words={reading?.words}
