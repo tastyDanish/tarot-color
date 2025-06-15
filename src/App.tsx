@@ -42,7 +42,7 @@ function App() {
           }}
           transition={{ duration: 1.2, ease: "easeInOut" }}>
           <div className="flex gap-2 items-center p-2 ">
-            <p className="text-amber-100"> your reading for today is</p>
+            <p className="text-amber-100"> Your reading for today is</p>
           </div>
           <div className="flex w-full flex-row items-center gap-8 justify-around">
             <CardTitle title={reading.card.name} />
