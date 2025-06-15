@@ -369,7 +369,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "The Hierophant",
     image: "cards/the-hierophant.jpg",
     description:
-      "Tradition, Ritual, Initiation, Order, Doctrine, Code, Belief, Confiction, Structure, Mentor, Sanction, Custom, Instruction, Symbol, Hierarchy",
+      "Tradition, Ritual, Initiation, Order, Doctrine, Code, Belief, Conviction, Structure, Mentor, Sanction, Custom, Instruction, Symbol, Hierarchy",
   },
   {
     name: "The High Priestess",
