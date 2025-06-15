@@ -1,8 +1,8 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { capitalize } from "@/lib/string-utils";
 import { getContrastTextColor } from "@/lib/color-utils";
 import { motion } from "motion/react";
-import { cn } from "@/lib/utils"; // 👈 import cn
+import { cn } from "@/lib/utils";
 
 type ColorCardProps = {
   color: string;
@@ -19,20 +19,20 @@ const ColorCard = ({
   index,
   isNew,
 }: ColorCardProps) => {
-  const [hovering, setHovering] = useState(false);
-  const [copied, setCopied] = useState(false);
+  // const [hovering, setHovering] = useState(false);
+  // const [copied, setCopied] = useState(false);
 
   const textColor = getContrastTextColor(color);
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(color);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1000);
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
-  };
+  // const handleCopy = async () => {
+  //   try {
+  //     await navigator.clipboard.writeText(color);
+  //     setCopied(true);
+  //     setTimeout(() => setCopied(false), 1000);
+  //   } catch (err) {
+  //     console.error("Failed to copy:", err);
+  //   }
+  // };
 
   return (
     <motion.div
@@ -51,15 +51,15 @@ const ColorCard = ({
       </div>
 
       <div
-        onMouseEnter={() => setHovering(true)}
-        onMouseLeave={() => setHovering(false)}
-        onClick={handleCopy}
+        // onMouseEnter={() => setHovering(true)}
+        // onMouseLeave={() => setHovering(false)}
+        // onClick={handleCopy}
         style={{ backgroundColor: color }}
         className={cn(
-          "h-12 rounded-b-md w-full z-20 relative cursor-pointer flex items-center justify-end pr-4",
+          "h-12 rounded-b-md w-full z-20 relative flex items-center justify-end pr-4",
           textColor
         )}>
-        {hovering ? (copied ? "Copied!" : color.toUpperCase()) : ""}
+        {/* {hovering ? (copied ? "Copied!" : color.toUpperCase()) : ""} */}
       </div>
     </motion.div>
   );

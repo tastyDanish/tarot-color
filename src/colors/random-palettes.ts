@@ -31,10 +31,10 @@ function jitterSaturation(base: number, range = 0.1): number {
 }
 
 export const generatePalette = (): string[] => {
-  const paletteType = getRandomItem(["mono", "duo", "tri", "quad"]);
+  const paletteType = getRandomItem(["mono", "duo", "tri", "quad", "five"]);
   const lightAnchor = getRandomItem(LIGHT_ANCHORS);
-  const base = getRandomItem(getRandomItem(PALETTES));
-  const baseHue = getHue(base);
+  const baseColor = getRandomItem(getRandomItem(PALETTES));
+  const baseHue = getHue(baseColor);
 
   if (paletteType === "mono") {
     return Array.from({ length: 5 }).map((_, i) => {
@@ -64,28 +64,19 @@ export const generatePalette = (): string[] => {
       return chroma.hsl(hue, sat, light).hex();
     });
 
-    return colors;
+    return shuffleArray(colors);
   }
 
   if (paletteType === "tri") {
+    const angle = getRandomItem([90, 110, 120, 130, 150]);
+    const base = jitterHue(baseHue);
+    const second = jitterHue((base + angle) % 360);
+    const third = jitterHue((base + (360 - angle)) % 360);
+
     const triColors = [
-      chroma
-        .hsl(jitterHue(baseHue), randomSaturation(), jitterLightness(0.5))
-        .hex(),
-      chroma
-        .hsl(
-          jitterHue((baseHue + 120) % 360),
-          randomSaturation(),
-          jitterLightness(0.5)
-        )
-        .hex(),
-      chroma
-        .hsl(
-          jitterHue((baseHue + 240) % 360),
-          randomSaturation(),
-          jitterLightness(0.5)
-        )
-        .hex(),
+      chroma.hsl(base, randomSaturation(), jitterLightness(0.5)).hex(),
+      chroma.hsl(second, randomSaturation(), jitterLightness(0.5)).hex(),
+      chroma.hsl(third, randomSaturation(), jitterLightness(0.5)).hex(),
     ];
 
     const colors = chroma
@@ -124,6 +115,18 @@ export const generatePalette = (): string[] => {
     return shuffleArray(colors);
   }
 
+  if (paletteType === "five") {
+    const startHue = Math.random() * 360;
+    const hueStep = 360 / 5;
+
+    return Array.from({ length: 5 }).map((_, i) => {
+      const hue = (startHue + i * hueStep) % 360;
+      const sat = 0.5 + 0.3 * Math.sin(i);
+      const light = 0.4 + 0.2 * Math.cos(i);
+      return chroma.hsl(hue, sat, light).hex();
+    });
+  }
+
   // fallback
-  return chroma.scale([base, lightAnchor]).mode("lab").colors(5);
+  return chroma.scale([baseColor, lightAnchor]).mode("lab").colors(5);
 };
