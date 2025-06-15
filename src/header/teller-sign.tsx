@@ -22,7 +22,7 @@ const TellerSign = () => {
               <defs>
                 <path
                   id="curve"
-                  d="M 20,120 A 195,80 0 0,1 390,120"
+                  d="M 10,110 A 200, 80 0 0,1 390,110"
                   fill="none"
                 />
                 <filter
@@ -44,7 +44,7 @@ const TellerSign = () => {
               <text
                 filter="url(#text-shadow)"
                 fill="currentColor"
-                fontSize="64"
+                fontSize="58"
                 fontWeight="bold"
                 textAnchor="middle"
                 className="uppercase tracking-widest">
