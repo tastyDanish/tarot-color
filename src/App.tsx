@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="relative flex flex-col gap-2 w-full overflow-y-scroll md:overflow-y-auto h-full overflow-x-hidden items-center  bg-gray-800 pt-4">
       <TellerSign />
-      <div className="text-amber-100 text-center w-full px-8 max-w-150 flex flex-col gap-4 pt-2">
+      <div className="text-amber-100 text-center w-full px-8 max-w-150 flex text-base flex-col gap-4 pt-2 body-font">
         <p>Welcome, traveler.</p>
         <p>
           I offer you divination as a service. Focus your thoughts on a
@@ -41,7 +41,7 @@ function App() {
             opacity: !isFlipped ? 1 : 0,
           }}
           transition={{ duration: 1.2, ease: "easeInOut" }}>
-          <div className="flex gap-2 items-center p-2 ">
+          <div className="flex gap-2 items-center p-2 body-font">
             <p className="text-amber-100"> Your reading for today is</p>
           </div>
           <div className="flex w-full flex-row items-center gap-8 justify-around">
