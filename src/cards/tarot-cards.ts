@@ -63,7 +63,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Five Of Cups",
     image: "cards/five-of-cups.jpg",
     description:
-      "Grief, Regret, Sadness, Longing, Dwelling, Letting go, Attachment, Remorse, Reflection, Perspective",
+      "Grief, Regret, Longing, Dwelling, Letting go, Attachment, Remorse, Reflection, Perspective",
   },
   {
     name: "Five Of Pentacles",
@@ -441,7 +441,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Three Of Swords",
     image: "cards/three-of-swords.jpg",
     description:
-      "Loss, Grief, Separation, Disappointment, Betrayal, Conflict, Division, Breakup, Sadness, Rejection, Hurt, Fracture, Discord, Regret, Sorrow",
+      "Loss, Grief, Separation, Disappointment, Betrayal, Conflict, Division, Breakup, Rejection, Hurt, Fracture, Discord, Regret, Sorrow",
   },
   {
     name: "Three Of Wands",

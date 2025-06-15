@@ -60,7 +60,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
           </div>
         </div>
       </div>
-      <div className="text-sm text-white opacity-70 text-center">
+      <div className="text-sm text-white opacity-70 text-center pt-2">
         Divined at fortunespalette.com
       </div>
     </div>

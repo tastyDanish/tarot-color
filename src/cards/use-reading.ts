@@ -3,6 +3,7 @@ import { type TarotCard, TAROT_CARDS } from "./tarot-cards";
 import { getRandomItem, getRandomSubSet } from "@/lib/random-utils";
 import { getNextMidnight } from "@/lib/time-utils";
 import { generatePalette } from "@/colors/random-palettes";
+import { PALETTES } from "@/colors/palettes";
 
 export type WordColor = {
   word: string;
@@ -34,7 +35,9 @@ const getReading = () => {
   }
 
   const card = getRandomItem(TAROT_CARDS);
-  const palette = generatePalette();
+
+  const chance = Math.random();
+  const palette = chance > 0.4 ? generatePalette() : getRandomItem(PALETTES);
 
   const wordsRaw = card.description.split(",").map((w) => w.trim());
   const chosenWords = getRandomSubSet(wordsRaw, 5);
