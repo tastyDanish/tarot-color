@@ -24,11 +24,12 @@ function App() {
       <div className="text-amber-100 text-center w-full px-8 max-w-150 flex text-base flex-col gap-4 pt-2 body-font">
         <p>Welcome, traveler.</p>
         <p>
-          I offer you divination as a service. Focus your thoughts on a
-          question, turn the card, and read the signs. Each reading reveals not
-          only words, but a unique palette; colors drawn from fate itself. Look
-          into the hues and phrases to find your answer, your insight, or simply
-          your inspiration.
+          Focus your thoughts on a question, turn the card, and read the signs.
+        </p>
+        <p>
+          Each reading reveals not only words, but a unique palette; colors
+          drawn from fate itself. Look into the hues and phrases to find your
+          answer, insight, or inspiration.
         </p>
       </div>
 
