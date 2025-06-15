@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { type TarotCard, TAROT_CARDS } from "./tarot-cards";
 import { getRandomItem, getRandomSubSet } from "@/lib/random-utils";
 import { getNextMidnight } from "@/lib/time-utils";
