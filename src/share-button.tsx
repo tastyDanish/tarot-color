@@ -1,10 +1,16 @@
-import { useState } from "react";
 import { Sparkles } from "lucide-react";
 import { domToPng } from "modern-screenshot";
+import { useState } from "react";
+import { toast } from "react-toastify";
+
+const CopyToast = () => (
+  <div className="w-full h-full text-amber-950">
+    🔮 Reading copied to clipboard 🔮
+  </div>
+);
 
 const ShareButton = () => {
-  const [copied, setCopied] = useState(false);
-
+  const [toastOpen, setToastOpen] = useState(false);
   const handleShare = async () => {
     const element = document.getElementById("reading");
     if (!element) return;
@@ -26,8 +32,16 @@ const ShareButton = () => {
 
     try {
       await navigator.clipboard.write([item]);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setToastOpen(true);
+      toast(CopyToast, {
+        autoClose: 4000,
+        closeButton: true,
+        onClose: () => setToastOpen(false),
+        progressClassName:
+          "bg-gradient-to-r from-amber-400 via-rose-300 to-pink-400 rounded-full shadow-md shadow-amber-500 animate-[shimmer_2s_linear_infinite] bg-[length:200%_100%] bg-[position:200%_0]",
+        className:
+          "bg-orange-300 text-amber-950 rounded-xl shadow-lg relative overflow-hidden p-0",
+      });
     } catch (err) {
       console.error(err);
       alert("Clipboard failed. Try saving the image instead.");
@@ -36,22 +50,12 @@ const ShareButton = () => {
 
   return (
     <button
+      disabled={toastOpen}
       onClick={handleShare}
       className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-orange-200 to-indigo-200 text-slate-900 rounded-full shadow-md transition hover:scale-105 w-fit h-fit text-md">
       <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
       <span className="relative w-[50px] h-[1em] flex items-center justify-center">
-        <span
-          className={`absolute transition-opacity duration-300 ${
-            copied ? "opacity-0" : "opacity-100"
-          }`}>
-          Copy
-        </span>
-        <span
-          className={`absolute transition-opacity duration-300 ${
-            copied ? "opacity-100" : "opacity-0"
-          }`}>
-          Copied!
-        </span>
+        Share
       </span>
     </button>
   );

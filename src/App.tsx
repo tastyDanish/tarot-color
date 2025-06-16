@@ -8,6 +8,7 @@ import ShareCard from "./cards/share-card";
 import TellerSign from "./header/teller-sign";
 import ShareButton from "./share-button";
 import { motion } from "motion/react";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const { reading } = useReading();
@@ -72,6 +73,10 @@ function App() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        limit={1}
+        position="top-center"
+      />
     </div>
   );
 }

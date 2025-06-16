@@ -9,6 +9,19 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --toastify-color-progress-light: linear-gradient(
+    to right,
+
+    #818cf8,
+    #38bdf8
+  );
+
+  /* Ethereal purple glow for dark theme */
+  --toastify-color-progress-dark: #c084fc;
+  --toastify-toast-background: #818cf8;
+  --toastify-color-light: #edece7;
+  --toastify-color-dark: #edece7;
 }
 
 .body-font {
