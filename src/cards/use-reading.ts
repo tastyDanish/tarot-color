@@ -42,7 +42,7 @@ const getReading = () => {
 
   const chance = Math.random();
   const palette =
-    chance > 0.4 ? generatePalette() : shuffleArray(getRandomItem(PALETTES));
+    chance > 0.2 ? generatePalette() : shuffleArray(getRandomItem(PALETTES));
 
   const wordsRaw = card.description.split(",").map((w) => w.trim());
   const chosenWords = getRandomSubSet(wordsRaw, 5);
