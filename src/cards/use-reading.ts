@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { type TarotCard, TAROT_CARDS } from "./tarot-cards";
-import { getRandomItem, getRandomSubSet } from "@/lib/random-utils";
+import {
+  getRandomItem,
+  getRandomSubSet,
+  shuffleArray,
+} from "@/lib/random-utils";
 import { getNextMidnight } from "@/lib/time-utils";
 import { generatePalette } from "@/colors/random-palettes";
 import { PALETTES } from "@/colors/palettes";
@@ -37,7 +41,8 @@ const getReading = () => {
   const card = getRandomItem(TAROT_CARDS);
 
   const chance = Math.random();
-  const palette = chance > 0.4 ? generatePalette() : getRandomItem(PALETTES);
+  const palette =
+    chance > 0.4 ? generatePalette() : shuffleArray(getRandomItem(PALETTES));
 
   const wordsRaw = card.description.split(",").map((w) => w.trim());
   const chosenWords = getRandomSubSet(wordsRaw, 5);
