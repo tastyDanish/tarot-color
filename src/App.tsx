@@ -6,9 +6,9 @@ import CardTitle from "./cards/card-title";
 import { useReading } from "./cards/use-reading";
 import ShareCard from "./cards/share-card";
 import TellerSign from "./header/teller-sign";
-import ShareButton from "./share-button";
 import { motion } from "motion/react";
 import { ToastContainer } from "react-toastify";
+import ShareButton from "./share";
 
 function App() {
   const { reading } = useReading();
