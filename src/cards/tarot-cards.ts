@@ -387,7 +387,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "The Magician",
     image: "cards/the-magician.jpg",
     description:
-      "Inifity, Potential, Initiation, Willpower, Focus, Concentration, Craft, Channel, Flow, Toolset, Direction, Coherence, Interface",
+      "Infinity, Potential, Initiation, Willpower, Focus, Concentration, Craft, Channel, Flow, Toolset, Direction, Coherence, Interface",
   },
   {
     name: "The Moon",
@@ -459,7 +459,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Two Of Pentacles",
     image: "cards/two-of-pentacles.jpg",
     description:
-      "Predicament, Onbstacle, Blockage, Congestion, Obstruction, Confusion, Muddled, Trouble, Agitation, Unease, Perplexity, Instability, Balance, Fluctuation, Adjustment, Juggling, Tension, Uncertainty",
+      "Predicament, Obstacle, Blockage, Congestion, Obstruction, Confusion, Muddled, Trouble, Agitation, Unease, Perplexity, Instability, Balance, Fluctuation, Adjustment, Juggling, Tension, Uncertainty",
   },
   {
     name: "Two Of Swords",
