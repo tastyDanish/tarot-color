@@ -3,8 +3,9 @@ import { cn } from "@/lib/utils";
 type CardTitleProps = {
   title: string;
   isShare?: boolean;
+  isReversed?: boolean;
 };
-const CardTitle = ({ title, isShare }: CardTitleProps) => {
+const CardTitle = ({ title, isShare, isReversed }: CardTitleProps) => {
   return (
     <div
       className={cn(
@@ -17,7 +18,16 @@ const CardTitle = ({ title, isShare }: CardTitleProps) => {
           isShare ? "w-20" : "md:w-20"
         )}
       />
-      <div className="text-3xl font-thin">{title}</div>
+      <div className="flex flex-col">
+        <div
+          className={cn(
+            "text-3xl font-thin",
+            isShare ? "whitespace-nowrap" : ""
+          )}>
+          {title}
+        </div>
+        {isReversed && <div className="font-thin text-md">REVERSED</div>}
+      </div>
 
       <div
         className={cn(

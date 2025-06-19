@@ -1,10 +1,12 @@
 import { motion } from "motion/react";
 import type { TarotCard } from "./tarot-cards";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 type FlipCardProps = {
   card: TarotCard;
   isFlipped: boolean;
+  isReversed: boolean;
   handleClick: (isFlipped: boolean) => void;
 };
 
@@ -14,7 +16,12 @@ const textureStyle = {
   backgroundPosition: "30% 0%",
 };
 
-const FlipCard = ({ card, handleClick, isFlipped }: FlipCardProps) => {
+const FlipCard = ({
+  card,
+  handleClick,
+  isFlipped,
+  isReversed,
+}: FlipCardProps) => {
   const [frontLoaded, setFrontLoaded] = useState(false);
   const [backLoaded, setBackLoaded] = useState(false);
   return (
@@ -44,7 +51,10 @@ const FlipCard = ({ card, handleClick, isFlipped }: FlipCardProps) => {
             <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
               <img
                 src={card.image}
-                className="[clip-path:inset(2px)] z-10"
+                className={cn(
+                  "[clip-path:inset(2px)] z-10",
+                  isReversed ? "rotate-180" : ""
+                )}
                 alt={card.name}
                 onLoad={() => setFrontLoaded(true)}
               />

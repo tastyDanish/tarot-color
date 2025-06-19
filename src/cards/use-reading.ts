@@ -19,6 +19,7 @@ export type Reading = {
   words: WordColor[];
   expiration: Date;
   new: boolean;
+  reversed?: boolean;
 };
 
 const LOCAL_STORAGE_KEY = "divination-as-a-service";
@@ -29,6 +30,7 @@ const getReading = () => {
     try {
       const saved: Reading = JSON.parse(raw);
       saved.expiration = new Date(saved.expiration);
+      saved.reversed = saved.reversed ?? false; // default to false if missing
 
       if (saved.expiration > new Date()) {
         return { ...saved, new: false };
@@ -39,12 +41,16 @@ const getReading = () => {
   }
 
   const card = getRandomItem(TAROT_CARDS);
+  const reverseChance = Math.random();
+  const reversed = reverseChance <= 0.15 ? true : false;
 
   const chance = Math.random();
   const palette =
     chance > 0.2 ? generatePalette() : shuffleArray(getRandomItem(PALETTES));
 
-  const wordsRaw = card.description.split(",").map((w) => w.trim());
+  const wordsRaw = reversed
+    ? card.reversed.split(",").map((w) => w.trim())
+    : card.description.split(",").map((w) => w.trim());
   const chosenWords = getRandomSubSet(wordsRaw, 5);
 
   const words: WordColor[] = chosenWords.map((word, i) => ({
@@ -54,7 +60,7 @@ const getReading = () => {
 
   const expiration = getNextMidnight();
 
-  const newReading: Reading = { card, words, expiration, new: true };
+  const newReading: Reading = { card, words, expiration, new: true, reversed };
 
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newReading));
 

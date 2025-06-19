@@ -47,7 +47,10 @@ function App() {
             <p className="text-amber-100"> Your reading for today is</p>
           </div>
           <div className="flex w-full flex-row items-center gap-8 justify-around">
-            <CardTitle title={reading.card.name} />
+            <CardTitle
+              title={reading.card.name}
+              isReversed={reading.reversed}
+            />
             <ShareButton />
           </div>
         </motion.div>
@@ -56,6 +59,7 @@ function App() {
           <div className="bg-gray-800 flex-col justify-center">
             <FlipCard
               handleClick={setIsFlipped}
+              isReversed={reading.reversed ?? false}
               isFlipped={isFlipped}
               card={reading.card}
             />

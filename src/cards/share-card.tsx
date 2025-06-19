@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import CardTitle from "./card-title";
 import type { Reading } from "./use-reading";
 import { capitalize } from "@/lib/string-utils";
@@ -13,6 +14,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
       className="flex flex-col items-center opacity-0 pointer-events-none fixed top-0 left-0 pt-8 px-8 rounded-4xl">
       <CardTitle
         title={reading.card.name}
+        isReversed={reading.reversed}
         isShare
       />
 
@@ -24,7 +26,10 @@ const ShareCard = ({ reading }: ShareCardProps) => {
                 <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
                   <img
                     src={reading.card.image}
-                    className="[clip-path:inset(2px)] z-10"
+                    className={cn(
+                      "[clip-path:inset(2px)] z-10",
+                      reading.reversed === true ? "rotate-180" : ""
+                    )}
                     alt={reading.card.name}
                   />
                 </div>
