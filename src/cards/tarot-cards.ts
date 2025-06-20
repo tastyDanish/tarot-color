@@ -12,7 +12,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Offering, Nourishment, Overflow, Blessing, Invitation, Hospitatlity, Feast, Abundance, Receptivity, Openness, Emotion, Love, Affection, Grace, Vessel, Sacred, Beginning",
     reversed:
-      "Witholding, Emptiness, Overflowing, Drought, Closed, Disconnection, Guarded, Withdrawal, Echo, Overwhelm, Fragile, Hollow, Distance, Hesitation",
+      "Guarded, Disconnnected, Tender, Vulnerable, Introspective, Drained, Sensitive",
   },
   {
     name: "Ace Of Pentacles",
@@ -60,7 +60,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Skill, Practice, Focus, Mastery, Improvement, Commitment, Apprenticeship, Work Ethic, Patience, Precision, Building, Method, Progress, Perseverance",
     reversed:
-      "Flow, Improvisation, Rest, Intuition, Breakthrough, Pause, Redirection, Trust, Instict, Reset, Flexibility, Ease, Release, Play",
+      "Flow, Improvisation, Rest, Intuition, Breakthrough, Pause, Redirection, Trust, Instict, Reset, Flexibility",
   },
   {
     name: "Eight Of Swords",
@@ -68,7 +68,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Trapped, Paralysis, Fear, Doubt, Confusion, Limitation, Stuck, Isolation, Powerlessness, Restriction, Constraint, Blindfold, Hesitation, Indecision, Pressure",
     reversed:
-      "Liberation, Clarity, Awakening, Release, Breakthrough, Perspective, Shift, Self-Belief, Empowerment, Detachment, Honest, Lightness, Escape, Choice, Unbinding",
+      "Liberation, Clarity, Awakening, Release, Breakthrough, Perspective, Shift, Self-Belief, Empowerment, Detachment, Honest, Lightness",
   },
   {
     name: "Eight Of Wands",
@@ -76,7 +76,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Movement, Momentum, Speed, Progress, Flow, Launch, Direction, Clarity, Flight, Rush, Unfolding, Swift, Rapid, Action, Journey, Surge, Velocity",
     reversed:
-      "Delay, Slowdown, Pause, Miscommunication, Jumbled, Redirect, Stalled, Disruption, Confusion, Recalibration, Hesitation, Overwhelm, Rest",
+      "Delay, Slowdown, Pause, Miscommunication, Jumbled, Redirect, Stalled, Disruption, Confusion, Recalibration, Hesitation, Overwhelm",
   },
   {
     name: "Five Of Cups",
@@ -106,7 +106,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Five Of Wands",
     image: "cards/five-of-wands.jpg",
     description:
-      "Conflict, Competition, Struggle, Chaos, Disagreement, Tension, Clash, Debate, Friction, Resistance, Hustle, Testing, Sparring, Group, Scattered",
+      "Challenge, Debate, Group, Passion, Energy, Chaos, Friction, Tension, Hustle, Scattered",
     reversed:
       "Cooperation, Harmony, Alignment, Compromise, Resolution, Integration, Understanding, Group, Refinement, Focus, Shared Vision",
   },
@@ -132,7 +132,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Rest, Recovery, Retreat, Pause, Healing, Solitude, Respite, Repose, Withdrawal, Quiet, Meditation, Recuperation, Stillness, Space",
     reversed:
-      "Burnout, Restlessness, Overthinking, Exhaustion, Stress, Mental Fatigue, Avoidance, Inner Turmoil, Anxiety",
+      "Recovery, Resilience, Transition, Stirring, Reflection, Mindfulness, Reawakening, Rebalance",
   },
   {
     name: "Four Of Wands",
@@ -140,7 +140,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Celebration, Joy, Harmony, Community, Milestone, Stability, Gathering, Success, Comfort, Peace, Gratitude, Support, Foundation",
     reversed:
-      "Disruption, Instability, Disharmony, Delay, Misalignment, Exclusion, Separation",
+      "Disruption, Recalibration, Transition, Reflection, Adjustment, Redirection, Threshold, Freedom, Reset, Empowerment",
   },
   {
     name: "Judgement",
@@ -148,7 +148,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Awakening, Reckoning, Renewal, Transformation, Clarity, Rebirth, Redemption, Decision, Realization, Release, Truth, Resolution, Decision, Forgiveness, Acceptance",
     reversed:
-      "Avoidance, Denial, Inaction, Stagnation, Regret, Guilt, Disconnection, Suppression, Lack of Clarity, Unfinished Business",
+      "Introspection, Review, Pause, Healing, Clarity, Reconnection, Emergence, Discovery, Integration, Healing",
   },
   {
     name: "Justice",
@@ -164,7 +164,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Compassion, Wisdom, Empathy, Patience, Diplomacy, Integrity, Maturity, Kindness, Nurturing",
     reversed:
-      "Manipulation, Coldness, Withdrawal, Avoidance, Instability, Repression, Overwhelm, Bitterness",
+      "Stability, Detachment, Containement, Maturity, Emotionality, Restraint, Composure, Boundaries, Compassion",
   },
   {
     name: "King Of Pentacles",
@@ -172,7 +172,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Abundance, Stewardship, Leadership, Dependability, Entrepreneurship, Resourcefulness, Patience, Comfort, Success, Wisdom, Control, Generosity",
     reversed:
-      "Greed, Corruption, Insecurity, Control, Waste, Obsession, Arrogance, Instability, Exploitation",
+      "Humility, Mindfulness, Awareness, Discipline, Clarification, Restructure, Grounding, Reevaluation",
   },
   {
     name: "King Of Swords",
@@ -180,7 +180,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Clear thinking, Authority, Truth, Rationality, Objectivity, Strategy, Integrity, Discipline, Wisdom, Leadership, Mental clarity, Justice",
     reversed:
-      "Manipulation, Cruelty, Harshness, Dishonesty, Arrogance, Deceit, Control, Overthinking, Bias",
+      "Truthfulness, Balance, Perspective, Refinement, Awareness, Integrity, Honesty, Discernment, Reflection",
   },
   {
     name: "King Of Wands",
@@ -188,7 +188,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Visionary, Passion, Leadership, Charisma, Courage, Drive, Initiative, Innocation, Energy, Trailblazer, Compassion, Empathy, Diplomacy, Generosity",
     reversed:
-      "Moodiness, Volatility, Coldness, Jealousy, Overwhelm, Insincerity, Selfishness, Detached, Toxicity",
+      "Temperence, Intention, Restraint, Purpose, Leadership, Reflection, Presence, Authenticity",
   },
   {
     name: "Knight Of Cups",
@@ -204,7 +204,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Steadfast, Reliable, Diligent, Patient, Grounded, Cautious, Thorough, Dependable, Endurance, Commitment, Trustworthy, Methodical, Persistent, Consistent",
     reversed:
-      "Stubborness, Laziness, Rigidity, Complacency, Procrastination, Slow Movement, Unreliability, Burnout, Inflexibility, Hesitation",
+      "Steadiness, Patience, Reflection, Consistency, Focus, Diligence, Persistence",
   },
   {
     name: "Knight Of Swords",
@@ -212,7 +212,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Decisive, Bold, Energistic, Direct, Driven, Intellectual, Unwavering, Strategic, Assertive, Determined, Fearless, Quick-Thinking, Ambitious, Focused, Swift, Analytical, Competitive",
     reversed:
-      "Impulsiveness, Recklessness, Aggressiveness, Haste, Restlessness, Carelessness, Bluntness, Temper, Overconfidence, Scattered",
+      "Boldness, Courage, Drive, Passion, Energy, Momentum, Initiative, Growth, Learning",
   },
   {
     name: "Knight Of Wands",
@@ -228,7 +228,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Contentment, Joy, Satisfaction, Gratitude, Success, Happiness, Comfort, Celebration, Delight, Harmony, Bliss, Reward, Confidence, Enjoyment, Fulfillment, Abundance, Pleasure",
     reversed:
-      "Dissatisfaction, Overindulgence, Greed, Discontent, Excess, Selfishness, Emptiness, Vanity, Frustation, Materialism, Restlessness",
+      "Moderation, Fulfillment, Patience, Restraint, Mindfulness, Balance, Gratitude, Humility",
   },
   {
     name: "Nine Of Pentacles",
@@ -268,7 +268,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Learning, Focus, Dedication, Effort, Potential, Initiative, Curiosity, Planning, Sturdy, Grounding, Discipline, Investment, Growth, Reliability, Exploration",
     reversed:
-      "Scattered, Distracted, Unfocused, Hesitation, Delay, Restlessness, Overwhelmed, Inconsistent, Frustation",
+      "Exploration, Potential, Reflection, Focus, Discovery, Persistence, Curiosity, Flexibility",
   },
   {
     name: "Page Of Swords",
@@ -276,7 +276,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Curiosity, Awareness, Observation, Cleverness, Ideas, Questioning, Debate, Opinion, Wit, Boldness, Inquisitiveness, Insight, Alertness, Communication",
     reversed:
-      "Deception, Confusion, Rashness, Manipulation, Overthinking, Nervousness, Immaturity, Insecurity",
+      "Introspection, Confidence, Presence, Acceptance, Centering, Calm, Clarity, Stability",
   },
   {
     name: "Page Of Wands",
@@ -284,7 +284,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Exploration, Wanderlust, Curiosity, Spark, Adventure, Impulse, Freedom, Boldness, Discovery, Courage, Originality, Restlessness, Playfulness, Inspiration",
     reversed:
-      "Hesitation, Frustation, Immaturity, Avoidance, Inconsistency, Distration",
+      "Preperation, Persistence, Reflection, Vision, Composure, Poise, Strategy",
   },
   {
     name: "Queen Of Cups",
@@ -300,7 +300,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Stability, Generosity, Nurture, Security, Comfort, Devotion, Earthiness, Abundance, Responsibility, Resourcefulness, Reliability, Care, Support, Warmth",
     reversed:
-      "Imbalance, Neglect, Overwhelm, Dependency, Stubborness, Overprotectiveness, Exhaustion",
+      "Recovery, Release, Renewal, Prioritization, Empowerment, Strength, Resilience, Boundaries, Rebuilding",
   },
   {
     name: "Queen Of Swords",
@@ -308,7 +308,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Clarity, Independence, Truth, Boundaries, Wit, Insight, Precision, Integrity, Directness",
     reversed:
-      "Coldness, Bitterness, Cruelty, Harshness, Deception, Indecision, Confusion, Resentment",
+      "Intellect, Honesty, Empathy, Openness, Resilience, Insight, Compassion, Vulnerability",
   },
   {
     name: "Queen Of Wands",
@@ -332,13 +332,13 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Patience, Investment, Assessment, Waiting, Progress, Growth, Harvest, Reflection, Sustainability, Persistence, Yield, Evaluation, Care, Reward",
     reversed:
-      "Impatience, Frustation, Delay, Reevaluation, Haste, Burnout, Neglect",
+      "Reflection, Recalibration, Adjustment, Hesitation, Caution, Waiting, Frustation",
   },
   {
     name: "Seven Of Swords",
     image: "cards/seven-of-swords.jpg",
     description:
-      "Trickery, Evasion, Escape, Craftiness, Strategy, Deception, Escape, Disguise, Greed, Secrecy, Risk, Cleverness, Diplomacy",
+      "Trickery, Evasion, Craftiness, Strategy, Deception, Disguise, Greed, Secrecy, Risk, Cleverness, Diplomacy",
     reversed:
       "Exposure, Confession, Accountability, Truth, Redemption, Regret, Confrontation, Guilt, Repentance, Consequences, Restitution, Forgiveness, Revelation, Justice",
   },
@@ -370,9 +370,9 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Six Of Swords",
     image: "cards/six-of-swords.jpg",
     description:
-      "Transition, Journey, Passage, Change, Progress, Travel, Escape, Healing, Recovery, Guidance, Relocation, Movement, Adaptation, Improvement",
+      "Transition, Journey, Passage, Change, Progress, Travel, Healing, Recovery, Guidance, Relocation, Movement, Adaptation, Improvement",
     reversed:
-      "Stagnation, Resistance, Delay, Avoidance, Unwillingness, Confusion, Setbacks, Embrace",
+      "Stagnation, Resistance, Delay, Avoidance, Unwillingness, Confusion",
   },
   {
     name: "Six Of Wands",
@@ -380,7 +380,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Victory, Recognition, Success, Achievement, Triumph, Celebration, Confidence, Progress, Leadership, Honors, Praise, Milestone, Momentum, Validation",
     reversed:
-      "Doubt, Obstacles, Crticism, Discouragement, Momentum, Rejection, Persist, Hope, Courage",
+      "Doubt, Obstacles, Crticism, Discouragement, Momentum, Rejection, Persist",
   },
   {
     name: "Strength",
@@ -428,7 +428,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Burden, Stress, Resonsibility, Pressure, Commitment, Fatigue, Perseverance, Obligation, Struggle, Exhaustion, Duty, Persistence, Endurance",
     reversed:
-      "Release, Avoidance, Burnout, Isolation, Delegation, Collapse, Resentment",
+      "Release, Recovery, Rest, Support, Unburdening, Respite, Awareness, Delegation, Reprioritization",
   },
   {
     name: "The Chariot",
@@ -444,7 +444,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Temptation, Contract, Obsession, Desire, Bond, Vice, Power, Dependency, Control, Facade, Enticement, Manipulation, Illusion, Cost, Leverage, Pact, Seduction, Chains, Indulgence",
     reversed:
-      "Release, Freedom, Detachment, Independence, Awareness, liberation, Recovery, Escape, Awakening, Empowerment",
+      "Release, Freedom, Detachment, Independence, Awareness, liberation, Recovery, Awakening, Empowerment",
   },
   {
     name: "The Emperor",
@@ -508,7 +508,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Connection, Union, Choice, Harmony, Attraction, Bond, Affinity, Trust, Balance, Commitment, Synergy, Understanding, Collaboration, Affinity, Duality, Integration",
     reversed:
-      "Conflict, Disharmony, Imbalance, Distance, Regret, Temptation, Confusion, Hesitation, Choose, Boundaries",
+      "Conflict, Disharmony, Imbalance, Distance, Regret, Temptation, Confusion, Hesitation, Boundaries",
   },
   {
     name: "The Magician",
@@ -524,7 +524,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Illusion, Dream, Mystery, Instinct, Subconscious, Enigma, Delirium, Whispers, Symbol, Refraction, Myth, Intuition, Secrets, Pull, Cycle, Myth, Mirage, Fog",
     reversed:
-      "Clarity, Truth, Exposure, Anxiety, Deception, Unveiling, Misunderstanding, Release, Awakening, Escape, Distrust, Understand, Confront, Illuminate, Reveal, Dispel",
+      "Clarity, Truth, Exposure, Anxiety, Deception, Unveiling, Misunderstanding, Release, Awakening, Distrust, Understand, Confront, Illuminate, Reveal, Dispel",
   },
   {
     name: "The Star",
@@ -532,7 +532,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Hope, Inspiration, Guidance, Healing, Renewal, Grace, Serenity, Clarity, Blessing, Vision, Light, Dream, Peace, Flow, Calm, Radiance, Stillness, Trust",
     reversed:
-      "Despair, Doubt, Delay, Disconnection, Insecurity, Exhaustion, Frustation, Stagnation, Persevere",
+      "Acceptance, Closure, Peace, Reflection, Gratitude, Serenity, Understanding, Integration",
   },
   {
     name: "The Sun",
@@ -540,7 +540,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Brightness, Clarity, Growth, Revelation, Energy, Warmth, Illumination, Insight, Vitality, Optimism, Enlightenment, Joy, Hope, Discovery, Confidence",
     reversed:
-      "Cloudiness, Confusion, Pessimism, Exhaustion, SHadow, Obstruction, Burnout, Isolation, Frustration, Focus, Seek",
+      "Cloudiness, Confusion, Pessimism, Exhaustion, SHadow, Obstruction, Isolation, Frustration",
   },
   {
     name: "The Tower",
@@ -548,7 +548,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Collapse, Upheaval, Disruption, Shock, Breakdown, Truth, Awakening, Revelation, Fracture, Shatter, Flashpoint, Catalyst, Exposure, Clarity, Rebuilding, Renewal, Change",
     reversed:
-      "Resistance, Denial, Collapse, Hesitation, Fragility, Concealment, Suppression, Embrace, Transform, Heal, Rebuild, Reflect",
+      "Resistance, Denial, Collapse, Hesitation, Fragility, Concealment, Suppression, Embrace, Transform, Rebuild, Reflect",
   },
   {
     name: "The Wheel Of Fortune",
@@ -562,9 +562,9 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "The World",
     image: "cards/the-world.jpg",
     description:
-      "Journey, Voyage, Pilgrimage, Travel, migration, Exploration, Transition, Movement, Rotation, Circulation, Progress, Change, Flow, Adventure, Passage, Escape, Discovery, Expansion",
+      "Journey, Voyage, Pilgrimage, Travel, migration, Exploration, Transition, Movement, Rotation, Circulation, Progress, Change, Flow, Adventure, Passage, Discovery, Expansion",
     reversed:
-      "Stagnation, Delay, Fragmentation, Frustation, Inertia, Avoidance, Limitation, Unrealized, Unfinished, Persist, Complete, Anchor, Secure, Center, Settle, Rest",
+      "Stagnation, Delay, Fragmentation, Frustation, Inertia, Avoidance, Limitation, Unrealized, Unfinished, Persist, Complete, Anchor, Secure, Center, Settle",
   },
   {
     name: "Three Of Cups",
@@ -612,7 +612,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Predicament, Obstacle, Blockage, Congestion, Obstruction, Confusion, Muddled, Trouble, Agitation, Unease, Perplexity, Instability, Balance, Fluctuation, Adjustment, Juggling, Tension, Uncertainty",
     reversed:
-      "Overwhelm, Burnout, Neglect, Instability, Inflexibility, Exhaustion, Disorder",
+      "Control, Adaptability, Poise, Agility, Efficiency, Flexibility, Composure, Mastery",
   },
   {
     name: "Two Of Swords",
@@ -628,6 +628,6 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Planning, Strategy, Vision, Choice, Ambition, Goals, Preparation, Prospect, Possibility, Exploration, Opportunity, Direction, Intent, Leadership, Initiative",
     reversed:
-      "Indecision, Obstacles, Hesitation, Stagnation, Uncertainty, Confusion, Procrastination, Narrowness",
+      "Patience, Flow, Acceptance, Ease, Calm, Trust, Observation, Waiting, Stillness, Peace, Receptivity",
   },
 ];
