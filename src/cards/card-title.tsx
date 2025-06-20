@@ -4,8 +4,9 @@ type CardTitleProps = {
   title: string;
   isShare?: boolean;
   isReversed?: boolean;
+  isFoil?: boolean;
 };
-const CardTitle = ({ title, isShare, isReversed }: CardTitleProps) => {
+const CardTitle = ({ title, isShare, isReversed, isFoil }: CardTitleProps) => {
   return (
     <div
       className={cn(
@@ -26,7 +27,10 @@ const CardTitle = ({ title, isShare, isReversed }: CardTitleProps) => {
           )}>
           {title}
         </div>
-        {isReversed && <div className="font-thin text-md">REVERSED</div>}
+        <div className="flex gap-2 justify-center">
+          {isFoil && <div className="font-thin text-md">FOIL</div>}
+          {isReversed && <div className="font-thin text-md">REVERSED</div>}
+        </div>
       </div>
 
       <div

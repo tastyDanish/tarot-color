@@ -2,11 +2,13 @@ import { motion } from "motion/react";
 import type { TarotCard } from "./tarot-cards";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import FoilAnimation from "./foil-animation";
 
 type FlipCardProps = {
   card: TarotCard;
   isFlipped: boolean;
   isReversed: boolean;
+  isFoil: boolean;
   handleClick: (isFlipped: boolean) => void;
 };
 
@@ -21,9 +23,11 @@ const FlipCard = ({
   handleClick,
   isFlipped,
   isReversed,
+  isFoil,
 }: FlipCardProps) => {
   const [frontLoaded, setFrontLoaded] = useState(false);
   const [backLoaded, setBackLoaded] = useState(false);
+
   return (
     <div
       onClick={() => handleClick(false)}
@@ -64,7 +68,9 @@ const FlipCard = ({
             className="absolute inset-0 opacity-40 pointer-events-none"
             style={textureStyle}
           />
+          {isFoil && <FoilAnimation />}
         </motion.div>
+
         <motion.div
           className="absolute backface-hidden bg-stone-200 p-4 justify-center items-center rounded-xl overflow-hidden shadow-md"
           style={{

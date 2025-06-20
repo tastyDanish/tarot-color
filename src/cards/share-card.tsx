@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import CardTitle from "./card-title";
 import type { Reading } from "./use-reading";
 import { capitalize } from "@/lib/string-utils";
+import FoilAnimation from "./foil-animation";
 
 type ShareCardProps = {
   reading: Reading;
@@ -15,6 +16,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
       <CardTitle
         title={reading.card.name}
         isReversed={reading.reversed}
+        isFoil={reading.foil}
         isShare
       />
 
@@ -42,6 +44,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
                   backgroundPosition: "30% 0%",
                 }}
               />
+              {reading.foil && <FoilAnimation />}
             </div>
           </div>
         </div>

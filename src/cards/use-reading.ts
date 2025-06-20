@@ -20,6 +20,7 @@ export type Reading = {
   expiration: Date;
   new: boolean;
   reversed?: boolean;
+  foil?: boolean;
 };
 
 const LOCAL_STORAGE_KEY = "divination-as-a-service";
@@ -44,6 +45,8 @@ const getReading = () => {
   const reverseChance = Math.random();
   const reversed = reverseChance <= 0.12 ? true : false;
 
+  const foil = Math.random() <= 0.5;
+
   const chance = Math.random();
   const palette =
     chance > 0.2 ? generatePalette() : shuffleArray(getRandomItem(PALETTES));
@@ -60,7 +63,14 @@ const getReading = () => {
 
   const expiration = getNextMidnight();
 
-  const newReading: Reading = { card, words, expiration, new: true, reversed };
+  const newReading: Reading = {
+    card,
+    words,
+    expiration,
+    new: true,
+    reversed,
+    foil,
+  };
 
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newReading));
 

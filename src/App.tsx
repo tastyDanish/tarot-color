@@ -50,6 +50,7 @@ function App() {
             <CardTitle
               title={reading.card.name}
               isReversed={reading.reversed}
+              isFoil={reading.foil ?? false}
             />
             <ShareButton />
           </div>
@@ -62,6 +63,7 @@ function App() {
               isReversed={reading.reversed ?? false}
               isFlipped={isFlipped}
               card={reading.card}
+              isFoil={reading.foil ?? false}
             />
           </div>
 
