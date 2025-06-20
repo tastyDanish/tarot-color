@@ -53,13 +53,21 @@ const ShareCard = ({ reading }: ShareCardProps) => {
                 key={word.color}
                 className="flex flex-col items-start w-full text-border-white  font-extrabold text2xl rounded-md relative overflow-hidden"
                 title={word.color}>
+                {reading.reversed && (
+                  <div
+                    style={{ backgroundColor: word.color }}
+                    className="h-12 rounded-b-md w-full z-20 relative"
+                  />
+                )}
                 <div className="px-4  text-amber-100">
                   {capitalize(word.word?.trim()) ?? "uh oh broken"}
                 </div>
-                <div
-                  style={{ backgroundColor: word.color }}
-                  className="h-12 rounded-b-md w-full z-20 relative"
-                />
+                {!reading.reversed && (
+                  <div
+                    style={{ backgroundColor: word.color }}
+                    className="h-12 rounded-b-md w-full z-20 relative"
+                  />
+                )}
               </div>
             ))}
           </div>

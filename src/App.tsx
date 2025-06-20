@@ -73,6 +73,7 @@ function App() {
               isVisible={!isFlipped}
               image={reading?.card.image}
               words={reading?.words}
+              isReversed={reading?.reversed ?? false}
             />
           </div>
         </div>

@@ -10,29 +10,18 @@ type ColorCardProps = {
   isNew: boolean;
   isVisible: boolean;
   index: number;
+  isReversed: boolean;
 };
 
 const ColorCard = ({
   color,
   word,
   isVisible,
+  isReversed,
   index,
   isNew,
 }: ColorCardProps) => {
-  // const [hovering, setHovering] = useState(false);
-  // const [copied, setCopied] = useState(false);
-
   const textColor = getContrastTextColor(color);
-
-  // const handleCopy = async () => {
-  //   try {
-  //     await navigator.clipboard.writeText(color);
-  //     setCopied(true);
-  //     setTimeout(() => setCopied(false), 1000);
-  //   } catch (err) {
-  //     console.error("Failed to copy:", err);
-  //   }
-  // };
 
   return (
     <motion.div
@@ -46,21 +35,25 @@ const ColorCard = ({
         ease: "easeOut",
       }}
       title={color}>
+      {isReversed && (
+        <div
+          style={{ backgroundColor: color }}
+          className={cn(
+            "h-12 rounded-b-md w-full z-20 relative flex items-center justify-end pr-4",
+            textColor
+          )}></div>
+      )}
       <div className="px-4 text-amber-100">
         {capitalize(word?.trim()) ?? "uh oh broken"}
       </div>
-
-      <div
-        // onMouseEnter={() => setHovering(true)}
-        // onMouseLeave={() => setHovering(false)}
-        // onClick={handleCopy}
-        style={{ backgroundColor: color }}
-        className={cn(
-          "h-12 rounded-b-md w-full z-20 relative flex items-center justify-end pr-4",
-          textColor
-        )}>
-        {/* {hovering ? (copied ? "Copied!" : color.toUpperCase()) : ""} */}
-      </div>
+      {!isReversed && (
+        <div
+          style={{ backgroundColor: color }}
+          className={cn(
+            "h-12 rounded-b-md w-full z-20 relative flex items-center justify-end pr-4",
+            textColor
+          )}></div>
+      )}
     </motion.div>
   );
 };

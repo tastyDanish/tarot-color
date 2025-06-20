@@ -42,7 +42,7 @@ const getReading = () => {
 
   const card = getRandomItem(TAROT_CARDS);
   const reverseChance = Math.random();
-  const reversed = reverseChance <= 0.1 ? true : false;
+  const reversed = reverseChance <= 0.12 ? true : false;
 
   const chance = Math.random();
   const palette =
