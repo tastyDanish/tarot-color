@@ -428,7 +428,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Burden, Stress, Resonsibility, Pressure, Commitment, Fatigue, Perseverance, Obligation, Struggle, Exhaustion, Duty, Persistence, Endurance",
     reversed:
-      "Release, Avoidance, Burnout, Isolation, Delegation, Collapse, Resentment, Unload, Declutter, Recover",
+      "Release, Avoidance, Burnout, Isolation, Delegation, Collapse, Resentment",
   },
   {
     name: "The Chariot",
@@ -436,7 +436,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Determination, Willpower, Drive, Focus, Control, Victory, Triumph, Ambition, Progress, Momentum, Confidence, Mastery, Direction, Achievement, Resolve, Purpose, Movement",
     reversed:
-      "Obstacles, Inaction, Hesitation, Frustation, Doubt, Overwhelm, Control, Prioritize, Persist, Recover, Refocus",
+      "Obstacles, Inaction, Hesitation, Frustation, Doubt, Overwhelm, Control, Prioritize, Persist",
   },
   {
     name: "The Devil",
