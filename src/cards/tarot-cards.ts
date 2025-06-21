@@ -236,7 +236,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Independence, Abundance, Luxury, Comfort, Enjoyment, Prosperity, Discipline, Reward, Elegance, Freedom, Growth, Security, Accomplishment, Confidence, Grace, Success",
     reversed:
-      "Reflection Patience, Humility, Learning, Growth, Balance, Adaption, Flexibility, Grounding, Letting-Go, Recovery, Insight",
+      "Reflection Patience, Humility, Learning, Growth, Balance, Adaptation, Flexibility, Grounding, Letting-Go, Recovery, Insight",
   },
   {
     name: "Nine Of Swords",
