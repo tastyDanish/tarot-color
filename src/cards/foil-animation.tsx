@@ -27,7 +27,7 @@ const FoilAnimation = () => {
       setTimeout(() => {
         setSparkles((prev) => prev.filter((s) => s.id !== newSparkle.id));
       }, 1200);
-    }, 200); // new sparkle every 0.3s
+    }, 100);
 
     return () => clearInterval(interval);
   }, []);

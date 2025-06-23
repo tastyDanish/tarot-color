@@ -3,11 +3,27 @@ import { getRandomItem, shuffleArray } from "@/lib/random-utils";
 import { PALETTES } from "./palettes";
 
 export const LIGHT_ANCHORS = [
-  "#ffffff",
-  "#f8f9fa",
-  "#f0f0f0",
-  "#eaeaea",
-  "#fdf6e3",
+  "#f8f9fa", // near-white gray
+  "#fdf6e3", // solarized base3 (warm cream)
+  "#f0f8ff", // alice blue (cool tint)
+  "#ffe4e1", // misty rose (soft red-pink)
+  "#e0fff4", // minty white
+  "#fffdd0", // cream
+  "#e6f7ff", // soft baby blue
+  "#f3e5f5", // lavender blush
+  "#fff0f5", // light pink-lavender
+];
+
+export const DARK_ANCHORS = [
+  "#0d1117", // GitHub dark theme base
+  "#1c1c1c", // neutral charcoal
+  "#1a1e1f", // dark cyan-gray
+  "#1b1b2f", // bluish slate
+  "#2e1a47", // purple-black
+  "#2b2b2b", // dark neutral gray
+  "#2a1f14", // brown-black (warm)
+  "#1e2d24", // forest black (cool green tint)
+  "#1a0f13", // crimson-black (reddish tint)
 ];
 
 function getHue(color: string): number {
@@ -32,7 +48,7 @@ function jitterSaturation(base: number, range = 0.1): number {
 
 export const generatePalette = (): string[] => {
   const paletteType = getRandomItem(["mono", "duo", "tri", "quad", "five"]);
-  const lightAnchor = getRandomItem(LIGHT_ANCHORS);
+  const anchor = getRandomItem(getRandomItem([LIGHT_ANCHORS, DARK_ANCHORS]));
   const baseColor = getRandomItem(getRandomItem(PALETTES));
   const baseHue = getHue(baseColor);
 
@@ -80,7 +96,7 @@ export const generatePalette = (): string[] => {
     ];
 
     const colors = chroma
-      .scale([...triColors, lightAnchor])
+      .scale([...triColors, anchor])
       .mode("lab")
       .colors(5);
 
@@ -108,7 +124,7 @@ export const generatePalette = (): string[] => {
     ];
 
     const colors = chroma
-      .scale([...quadColors.map((c) => c.hex()), lightAnchor])
+      .scale([...quadColors.map((c) => c.hex()), anchor])
       .mode("lab")
       .colors(5);
 
@@ -128,5 +144,5 @@ export const generatePalette = (): string[] => {
   }
 
   // fallback
-  return chroma.scale([baseColor, lightAnchor]).mode("lab").colors(5);
+  return chroma.scale([baseColor, anchor]).mode("lab").colors(5);
 };

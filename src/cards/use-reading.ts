@@ -45,7 +45,7 @@ const getReading = () => {
   const reverseChance = Math.random();
   const reversed = reverseChance <= 0.12 ? true : false;
 
-  const foil = Math.random() <= 0.05;
+  const foil = Math.random() <= 0.07;
 
   const chance = Math.random();
   const palette =
