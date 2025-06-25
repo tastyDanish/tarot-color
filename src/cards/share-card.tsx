@@ -28,6 +28,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
                 <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
                   <img
                     src={reading.card.image}
+                    draggable={false}
                     className={cn(
                       "[clip-path:inset(2px)] z-10",
                       reading.reversed === true ? "rotate-180" : ""

@@ -55,6 +55,7 @@ const FlipCard = ({
             <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
               <img
                 src={card.image}
+                draggable={false}
                 className={cn(
                   "[clip-path:inset(2px)] z-10",
                   isReversed ? "rotate-180" : ""
@@ -87,6 +88,7 @@ const FlipCard = ({
 
               <img
                 src={card.image}
+                draggable={false}
                 className="[clip-path:inset(2px)] z-10 opacity-0"
                 alt={card.name}
                 onLoad={() => setBackLoaded(true)}
