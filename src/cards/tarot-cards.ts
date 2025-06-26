@@ -98,7 +98,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Five Of Swords",
     image: "cards/five-of-swords.jpg",
     description:
-      "Conflict, Defeat, Tension, Ego, Manipulation, Regret, Fallout, Isolation, Self-sabotage, Disappointment, Manipulation, Dishonor, Grudge, Cruelty, Friction",
+      "Conflict, Defeat, Tension, Ego, Manipulation, Regret, Fallout, Isolation, Self-sabotage, Disappointment, Dishonor, Grudge, Cruelty, Friction",
     reversed:
       "Resolution, Reconciliation, Forgiveness, Peace Offering, Maturity, Clarity, Letting Go, Humility, Empathy, Inner Peace, Reflection",
   },
