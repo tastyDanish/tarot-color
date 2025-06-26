@@ -43,7 +43,7 @@ const ColorCard = ({
             textColor
           )}></div>
       )}
-      <div className="px-4 text-amber-100 pt-1">
+      <div className="px-4 text-amber-100 pt-1 whitespace-nowrap">
         {capitalize(word?.trim()) ?? "uh oh broken"}
       </div>
       {!isReversed && (
