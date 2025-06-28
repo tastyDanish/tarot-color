@@ -18,7 +18,7 @@ export const TAROT_CARDS: TarotCard[] = [
     name: "Ace Of Pentacles",
     image: "cards/ace-of-pentacles.jpg",
     description:
-      "Oppurtunity, Foundation, Seed, Growth, Stabiilty, Prosperity, Security, Blessing, Abundance, Wealth, Health, Gift, Tangible, Realization, Manifestation",
+      "Opportunity, Foundation, Seed, Growth, Stabiilty, Prosperity, Security, Blessing, Abundance, Wealth, Health, Gift, Tangible, Realization, Manifestation",
     reversed:
       "Missed, Cracked, Instability, Delay, Withheld, Hollow, Risk, Mirage, Slipped, Unfounded, Erosion, Scarcity, Unsown, Untethered, Lost, Unrooted, Dissonance",
   },
