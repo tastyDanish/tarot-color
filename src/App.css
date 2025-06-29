@@ -7,6 +7,19 @@
   overflow: visible;
 }
 
+.ticket-modal {
+  clip-path: polygon(
+    0% 10px,
+    10px 0%,
+    calc(100% - 10px) 0%,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0% calc(100% - 10px)
+  );
+}
+
 .mask-bottom-half-circle {
   mask-image: radial-gradient(
     circle at center bottom,

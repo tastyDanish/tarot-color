@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 import CardTitle from "./card-title";
-import type { Reading } from "./use-reading";
 import { capitalize } from "@/lib/string-utils";
 import FoilAnimation from "./foil-animation";
+import type { Reading } from "@/stores/use-reading-store";
 
 type ShareCardProps = {
   reading: Reading;
