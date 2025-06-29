@@ -1,6 +1,6 @@
-import type { WordColor } from "@/cards/use-reading";
 import { motion } from "motion/react";
 import ColorCard from "./color-card";
+import type { WordColor } from "@/stores/use-reading-store";
 
 type ColorSwatchProps = {
   words: WordColor[];
