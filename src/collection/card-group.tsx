@@ -43,6 +43,7 @@ const CardGroup = ({ suit }: CardGroupProps) => {
                   <img
                     src={card.image}
                     alt={card.name}
+                    draggable={false}
                     height={80}
                     width={120}
                     loading="lazy"
