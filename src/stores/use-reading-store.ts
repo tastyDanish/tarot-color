@@ -18,7 +18,7 @@ export type Reading = {
 	foil?: boolean;
 };
 
-const LOCAL_STORAGE_KEY = "divination-as-a-service";
+const LOCAL_STORAGE_KEY = "divination-as-a-service-2";
 
 const loadFromStorage = (): Reading | null => {
 	try {
