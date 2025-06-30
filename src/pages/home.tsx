@@ -15,7 +15,7 @@ const Home = () => {
 
   // Once user is done loading, load the reading
   useEffect(() => {
-    if (!userLoading && !reading) {
+    if (!userLoading) {
       loadReading(userId ?? undefined);
     }
   }, [userLoading, userId]);
@@ -29,7 +29,20 @@ const Home = () => {
 
   if (readingLoading || !reading || isFlipped == null) {
     return (
-      <div className="relative flex flex-col gap-2 w-full  overflow-y-hidden h-full overflow-x-hidden items-center pt-4 md:pt-8 bg-gray-800"></div>
+      <div className="relative flex flex-col w-full  overflow-y-hidden h-full overflow-x-hidden items-center bg-gray-800">
+        <div className="text-amber-100 text-center w-full px-8 max-w-150 flex text-base flex-col gap-4 pt-2 body-font">
+          <p>Welcome, traveler.</p>
+          <p>
+            Focus your thoughts on a question, turn the card, and read the
+            signs.
+          </p>
+          <p>
+            Each reading reveals not only words, but a unique palette; colors
+            drawn from fate itself. Look into the hues and phrases to find your
+            answer, insight, or inspiration.
+          </p>
+        </div>
+      </div>
     );
   }
 
