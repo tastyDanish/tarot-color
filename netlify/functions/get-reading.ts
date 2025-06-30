@@ -25,7 +25,6 @@ const getSuit = (reading: Reading) => {
 };
 
 const getOrder = (reading: Reading) => {
-	console.log("here is reading: ", reading);
 	if (reading.card.order == null) {
 		return TAROT_CARDS.find((s) => s.name === reading.card.name)?.order;
 	}
@@ -42,7 +41,7 @@ const handler: Handler = async (event) => {
 		}
 
 		const body = JSON.parse(event.body || "{}");
-		const { user_id, fallback_reading, expiration } = body;
+		const { user_id, fallback_reading, expiration, current_time } = body;
 
 		if (!user_id) {
 			return {
@@ -68,9 +67,7 @@ const handler: Handler = async (event) => {
 			};
 		}
 
-		const now = new Date();
-
-		if (existing && new Date(existing.expires_at) > now) {
+		if (existing && new Date(existing.expires_at) > new Date(current_time)) {
 			return {
 				statusCode: 200,
 				body: JSON.stringify({ reading: existing, source: "db" }),
@@ -78,7 +75,10 @@ const handler: Handler = async (event) => {
 		}
 
 		// 2. Use fallback if provided
-		if (fallback_reading && new Date(fallback_reading.expiration) > now) {
+		if (
+			fallback_reading &&
+			new Date(fallback_reading.expiration) > new Date(current_time)
+		) {
 			const actualReading: Reading = fallback_reading;
 
 			const readingToSave = {

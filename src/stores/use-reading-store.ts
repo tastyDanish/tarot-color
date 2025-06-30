@@ -54,14 +54,21 @@ export const useReadingStore = create<ReadingState>((set) => ({
 		const localReading = loadFromStorage();
 
 		const expiration = getNextMidnight();
-		console.log("here is expiration from client: ", expiration);
+		const currentTime = new Date();
 
 		// If no user, just use the local reading or generate one
 		if (!userId) {
-			const reading = localReading ?? generateReading(expiration);
-			saveToStorage({ ...reading, new: false });
-			set({ reading, isLoading: false });
-			return;
+			if (localReading && localReading.expiration > currentTime) {
+				const reading = localReading;
+				saveToStorage({ ...reading, new: false });
+				set({ reading, isLoading: false });
+				return;
+			} else {
+				const reading = generateReading(expiration);
+				saveToStorage({ ...reading, new: false });
+				set({ reading, isLoading: false });
+				return;
+			}
 		}
 
 		// Call Netlify function with userId and optional fallback
@@ -72,6 +79,7 @@ export const useReadingStore = create<ReadingState>((set) => ({
 				user_id: userId,
 				fallback_reading: localReading,
 				expiration,
+				current_time: currentTime,
 			}),
 		});
 
