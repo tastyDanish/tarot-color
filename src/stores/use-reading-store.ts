@@ -2,6 +2,7 @@ import { create } from "zustand";
 import type { TarotCard } from "@/cards/tarot-cards";
 import { generateReading } from "@/cards/readings";
 import { mapDbReadingToReading } from "@/db/mappers";
+import { getNextMidnight } from "@/lib/time-utils";
 
 export type WordColor = {
 	word: string;
@@ -52,9 +53,12 @@ export const useReadingStore = create<ReadingState>((set) => ({
 
 		const localReading = loadFromStorage();
 
+		const expiration = getNextMidnight();
+		console.log("here is expiration from client: ", expiration);
+
 		// If no user, just use the local reading or generate one
 		if (!userId) {
-			const reading = localReading ?? generateReading();
+			const reading = localReading ?? generateReading(expiration);
 			saveToStorage({ ...reading, new: false });
 			set({ reading, isLoading: false });
 			return;
@@ -67,6 +71,7 @@ export const useReadingStore = create<ReadingState>((set) => ({
 			body: JSON.stringify({
 				user_id: userId,
 				fallback_reading: localReading,
+				expiration,
 			}),
 		});
 

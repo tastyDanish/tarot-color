@@ -42,7 +42,7 @@ const handler: Handler = async (event) => {
 		}
 
 		const body = JSON.parse(event.body || "{}");
-		const { user_id, fallback_reading } = body;
+		const { user_id, fallback_reading, expiration } = body;
 
 		if (!user_id) {
 			return {
@@ -114,7 +114,7 @@ const handler: Handler = async (event) => {
 		}
 
 		// 3. Generate a new one
-		const newReading = generateReading();
+		const newReading = generateReading(new Date(expiration));
 		const readingToInsert = {
 			card_name: newReading.card.name,
 			card_image: newReading.card.image,
@@ -145,6 +145,8 @@ const handler: Handler = async (event) => {
 			body: JSON.stringify({ reading: readingToInsert, source: "generated" }),
 		};
 	} catch (err) {
+		console.log("ERROR - final: ", err.message);
+
 		return {
 			statusCode: 500,
 			body: JSON.stringify({ error: "Unexpected server error", detail: err }),

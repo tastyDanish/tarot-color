@@ -5,11 +5,10 @@ import {
 	getRandomSubSet,
 	shuffleArray,
 } from "@/lib/random-utils";
-import { getNextMidnight } from "@/lib/time-utils";
 import { TAROT_CARDS } from "./tarot-cards";
 import type { Reading, WordColor } from "@/stores/use-reading-store";
 
-export const generateReading = (): Reading => {
+export const generateReading = (expiration: Date): Reading => {
 	const card = getRandomItem(TAROT_CARDS);
 	const reversed = Math.random() <= 0.12;
 	const foil = Math.random() <= 0.07;
@@ -27,8 +26,6 @@ export const generateReading = (): Reading => {
 		word,
 		color: palette[i % palette.length],
 	}));
-
-	const expiration = getNextMidnight();
 
 	const reading: Reading = {
 		card,
