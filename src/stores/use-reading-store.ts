@@ -65,7 +65,7 @@ export const useReadingStore = create<ReadingState>((set) => ({
 				return;
 			} else {
 				const reading = generateReading(expiration);
-				saveToStorage({ ...reading, new: false });
+				saveToStorage({ ...reading, new: true });
 				set({ reading, isLoading: false });
 				return;
 			}
