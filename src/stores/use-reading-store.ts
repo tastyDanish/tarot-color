@@ -89,9 +89,12 @@ export const useReadingStore = create<ReadingState>((set) => ({
 			return;
 		}
 
-		const { reading } = await res.json();
+		const { reading, source } = await res.json();
 		const loadedReading: Reading = mapDbReadingToReading(reading);
 		saveToStorage({ ...loadedReading });
-		set({ reading: loadedReading, isLoading: false });
+		set({
+			reading: { ...loadedReading, new: source === "generated" },
+			isLoading: false,
+		});
 	},
 }));

@@ -24,7 +24,7 @@ export const mapDbReadingToReading = (reading: ReadingRow): Reading => {
 		},
 		words: reading.words as { word: string; color: string }[], // cast Json to expected type
 		expiration: new Date(reading.expires_at),
-		new: false, // default or set based on your logic
+		new: false,
 		foil: variations.includes("foil"),
 		reversed: variations.includes("reversed"),
 	};
