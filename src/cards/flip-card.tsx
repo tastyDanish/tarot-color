@@ -4,28 +4,24 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import CardBorder from "./card-border";
 import CardBack from "./card-back";
+import { useReadingStore } from "@/stores/use-reading-store";
 
 type FlipCardProps = {
   card: TarotCard;
   isFlipped: boolean;
   isReversed: boolean;
   isFoil: boolean;
-  handleClick: (isFlipped: boolean) => void;
 };
 
-const FlipCard = ({
-  card,
-  handleClick,
-  isFlipped,
-  isReversed,
-  isFoil,
-}: FlipCardProps) => {
+const FlipCard = ({ card, isReversed, isFoil }: FlipCardProps) => {
   const [frontLoaded, setFrontLoaded] = useState(false);
   const [backLoaded, setBackLoaded] = useState(false);
 
+  const { isFlipped, setIsFlipped } = useReadingStore();
+
   return (
     <div
-      onClick={() => handleClick(false)}
+      onClick={() => setIsFlipped(false)}
       className="h-full"
       style={{
         perspective: "1000px",

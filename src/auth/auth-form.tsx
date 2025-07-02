@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 type Mode = "login" | "signup";
 
 const AuthForm = () => {
-  const { loadReading } = useReadingStore();
+  const { loadReading, setIsFlipped } = useReadingStore();
   const { loadUser } = useUserStore();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -32,7 +32,10 @@ const AuthForm = () => {
       if (error) throw error;
 
       const userId = await loadUser();
-      if (userId) await loadReading(userId);
+      if (userId) {
+        setIsFlipped(null);
+        await loadReading(userId);
+      }
       setMessage(
         mode === "login"
           ? "Logged in successfully!"

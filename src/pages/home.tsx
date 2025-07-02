@@ -6,12 +6,16 @@ import ShareButton from "@/share";
 import { useReadingStore } from "@/stores/use-reading-store";
 import { useUserStore } from "@/stores/user-user-store";
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const Home = () => {
   const { id: userId, loading: userLoading } = useUserStore();
-  const { reading, isLoading: readingLoading, loadReading } = useReadingStore();
-  const [isFlipped, setIsFlipped] = useState<boolean | null>(null);
+  const {
+    reading,
+    isLoading: readingLoading,
+    loadReading,
+    isFlipped,
+  } = useReadingStore();
 
   // Once user is done loading, load the reading
   useEffect(() => {
@@ -19,13 +23,6 @@ const Home = () => {
       loadReading(userId ?? undefined);
     }
   }, [userLoading, userId]);
-
-  // Flip animation on fresh reading
-  useEffect(() => {
-    if (reading) {
-      setIsFlipped(Boolean(reading.new));
-    }
-  }, [reading]);
 
   if (readingLoading || !reading || isFlipped == null) {
     return (
@@ -64,9 +61,9 @@ const Home = () => {
       <div className="relative flex flex-col items-center opacity-100 w-full">
         <motion.div
           className="flex flex-col items-center z-10"
-          initial={{ opacity: reading.new ? 0 : 1 }}
+          initial={{ opacity: isFlipped ? 0 : 1 }}
           animate={{
-            opacity: !isFlipped ? 1 : 0,
+            opacity: isFlipped ? 0 : 1,
           }}
           transition={{ duration: 1.2, ease: "easeInOut" }}>
           <div className="flex gap-2 items-center p-2 body-font">
@@ -86,7 +83,6 @@ const Home = () => {
           <div className="bg-gray-800 flex-col justify-center">
             {isFlipped !== undefined && (
               <FlipCard
-                handleClick={setIsFlipped}
                 isReversed={reading.reversed ?? false}
                 isFlipped={isFlipped}
                 card={reading.card}

@@ -41,13 +41,18 @@ const saveToStorage = (reading: Reading) => {
 type ReadingState = {
 	reading: Reading | null;
 	isLoading: boolean;
+	isFlipped: boolean | null;
+	setIsFlipped: (flip: boolean | null) => void;
 	loadReading: (userId?: string) => Promise<void>;
 };
 
-export const useReadingStore = create<ReadingState>((set) => ({
+export const useReadingStore = create<ReadingState>((set, get) => ({
 	reading: null,
 	isLoading: false,
-
+	isFlipped: null,
+	setIsFlipped: (flip: boolean | null) => {
+		set({ isFlipped: flip });
+	},
 	loadReading: async (userId?: string) => {
 		set({ isLoading: true });
 
@@ -56,17 +61,19 @@ export const useReadingStore = create<ReadingState>((set) => ({
 		const expiration = getNextMidnight();
 		const currentTime = new Date();
 
+		const currentFlip = get().isFlipped;
+
 		// If no user, just use the local reading or generate one
 		if (!userId) {
 			if (localReading && localReading.expiration > currentTime) {
 				const reading = localReading;
 				saveToStorage({ ...reading, new: false });
-				set({ reading, isLoading: false });
+				set({ reading, isLoading: false, isFlipped: false });
 				return;
 			} else {
 				const reading = generateReading(expiration);
 				saveToStorage({ ...reading, new: true });
-				set({ reading, isLoading: false });
+				set({ reading, isLoading: false, isFlipped: true });
 				return;
 			}
 		}
@@ -92,6 +99,9 @@ export const useReadingStore = create<ReadingState>((set) => ({
 		const { reading, source } = await res.json();
 		const loadedReading: Reading = mapDbReadingToReading(reading);
 		saveToStorage({ ...loadedReading });
+		if (currentFlip == null) {
+			set({ isFlipped: source === "generated" });
+		}
 		set({
 			reading: { ...loadedReading, new: source === "generated" },
 			isLoading: false,
