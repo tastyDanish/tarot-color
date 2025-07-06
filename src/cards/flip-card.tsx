@@ -29,7 +29,7 @@ const FlipCard = ({ card, isReversed, isFoil }: FlipCardProps) => {
         opacity: frontLoaded && backLoaded ? 1 : 0,
       }}>
       <motion.div
-        className="relative md:w-[340px] md:h-[580px] w-[300px] h:[400px]"
+        className="relative md:w-[340px] md:h-[580px] w-[300px] h:[400px] pb-16"
         style={{
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",

@@ -92,7 +92,7 @@ const Home = () => {
           </div>
 
           <div
-            className="w-[340px] flex flex-col px-4 md:p-0 mt-[460px] md:mt-0"
+            className="w-[340px] flex flex-col px-4 md:p-0 mt-[420px] md:mt-0"
             style={{ height: isFlipped ? "1px" : "580px" }}>
             <ColorSwatch
               isNew={reading.new}

@@ -15,7 +15,7 @@ export default function Layout() {
     <div className="bg-gray-800 h-dvh overflow-y-scroll flex flex-col">
       <TellerSign />
 
-      <main className="text-amber-100 flex-grow pb-4">
+      <main className="text-amber-100 flex-grow">
         <Outlet />
         <ToastContainer
           limit={1}
