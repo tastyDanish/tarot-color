@@ -60,7 +60,7 @@ const AuthForm = () => {
     }
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "https://your-site.com/reset-password", // Replace with your actual URL
+      redirectTo: "https://fortunespalette.com/forgot-password",
     });
 
     if (error) {
