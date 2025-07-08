@@ -36,6 +36,7 @@ const AuthForm = () => {
         setIsFlipped(null);
         await loadReading(userId);
       }
+
       setMessage(
         mode === "login"
           ? "Logged in successfully!"
@@ -46,6 +47,26 @@ const AuthForm = () => {
       setError(err.message || "Something went wrong.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handlePasswordReset = async () => {
+    setError(null);
+    setMessage(null);
+
+    if (!email) {
+      setError("Please enter your email first.");
+      return;
+    }
+
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: "https://your-site.com/reset-password", // Replace with your actual URL
+    });
+
+    if (error) {
+      setError(error.message);
+    } else {
+      setMessage("Password reset link sent! Check your email.");
     }
   };
 
@@ -83,8 +104,20 @@ const AuthForm = () => {
             : "SIGN UP"}
         </button>
       </form>
+
       {error && <p className="text-red-600 mt-2 text-sm">{error}</p>}
       {message && <p className="text-green-600 mt-2 text-sm">{message}</p>}
+
+      <div className="text-sm text-center mt-4">
+        Forgot your password?{" "}
+        <button
+          type="button"
+          className="underline"
+          onClick={handlePasswordReset}>
+          Reset it here
+        </button>
+      </div>
+
       <div className="text-sm text-center mt-4">
         {mode === "login" ? (
           <>
