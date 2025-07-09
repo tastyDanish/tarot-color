@@ -21,10 +21,10 @@ export const getContrastTextColor = (hex: string): string => {
 };
 
 const isWhite = ({ r, g, b }: { r: number; g: number; b: number }) =>
-  r > 220 && g > 220 && b > 220;
+  r > 200 && g > 200 && b > 200;
 
 const isBlack = ({ r, g, b }: { r: number; g: number; b: number }) =>
-  r < 35 && g < 35 && b < 35;
+  r < 45 && g < 45 && b < 45;
 
 export const groupColors = (
   rgbList: { r: number; g: number; b: number }[],
