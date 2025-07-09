@@ -1,8 +1,4 @@
-import CardTitle from "@/cards/card-title";
-import FlipCard from "@/cards/flip-card";
 import ShareCard from "@/cards/share-card";
-import ColorSwatch from "@/colors/color-swatch";
-import ShareButton from "@/share";
 import { useReadingStore } from "@/stores/use-reading-store";
 import { useUserStore } from "@/stores/user-user-store";
 import { motion } from "motion/react";
