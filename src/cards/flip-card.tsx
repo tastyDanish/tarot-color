@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import CardBorder from "./card-border";
 import CardBack from "./card-back";
 import { useReadingStore } from "@/stores/use-reading-store";
+import { createAccountPush } from "./create-account-push";
+import { useUserStore } from "@/stores/user-user-store";
 
 type FlipCardProps = {
   card: TarotCard;
@@ -16,12 +18,18 @@ type FlipCardProps = {
 const FlipCard = ({ card, isReversed, isFoil }: FlipCardProps) => {
   const [frontLoaded, setFrontLoaded] = useState(false);
   const [backLoaded, setBackLoaded] = useState(false);
+  const { id } = useUserStore();
 
   const { isFlipped, setIsFlipped } = useReadingStore();
 
+  const handleClick = () => {
+    setIsFlipped(false);
+    if (id == null) createAccountPush(1000);
+  };
+
   return (
     <div
-      onClick={() => setIsFlipped(false)}
+      onClick={handleClick}
       className="h-full"
       style={{
         perspective: "1000px",
@@ -29,7 +37,7 @@ const FlipCard = ({ card, isReversed, isFoil }: FlipCardProps) => {
         opacity: frontLoaded && backLoaded ? 1 : 0,
       }}>
       <motion.div
-        className="relative md:w-[340px] md:h-[580px] w-[300px] h:[400px] pb-16"
+        className="relative md:w-[340px] md:h-[600px] w-[300px] h:[480px] pb-16"
         style={{
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",
@@ -39,7 +47,9 @@ const FlipCard = ({ card, isReversed, isFoil }: FlipCardProps) => {
           rotateY: isFlipped ? 180 : 0,
         }}
         transition={{ duration: 0.8, ease: "easeInOut" }}>
-        <CardBorder isFoil={isFoil}>
+        <CardBorder
+          isFoil={isFoil}
+          size="large">
           <img
             src={card.image}
             draggable={false}

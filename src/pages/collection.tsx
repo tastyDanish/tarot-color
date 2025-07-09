@@ -1,10 +1,20 @@
+import Aura from "@/collection/aura";
 import CardCollection from "@/collection/card-collection";
+import { useCollectionStore } from "@/stores/use-collection-store";
 import { useUserStore } from "@/stores/user-user-store";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Collection = () => {
   const { signOut, email } = useUserStore();
   const navigate = useNavigate();
+
+  const { id } = useUserStore();
+  const { loadReadings } = useCollectionStore();
+
+  useEffect(() => {
+    if (id) loadReadings(id);
+  }, [id]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -13,6 +23,7 @@ const Collection = () => {
 
   return (
     <div className="flex flex-col px-4 pt-6 pb-12 bg-background text-foreground">
+      <Aura />
       {/* Header */}
       <header className="mb-6">
         <h1 className="text-2xl font-bold text-center">Your Collection</h1>

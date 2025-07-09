@@ -2,8 +2,10 @@ import { type ReactNode } from "react";
 import FoilAnimation from "./foil-animation";
 import { cn } from "@/lib/utils";
 
+type Size = "small" | "medium" | "large";
+
 type CardBorderProps = {
-  isSmall?: boolean;
+  size: Size;
   isFoil?: boolean;
   children: ReactNode;
 };
@@ -14,19 +16,29 @@ const textureStyle = {
   backgroundPosition: "30% 0%",
 };
 
-const CardBorder = ({ children, isFoil, isSmall }: CardBorderProps) => {
+const CardBorder = ({ children, isFoil, size }: CardBorderProps) => {
+  const getBorder = () => {
+    if (size == "small") return "p-1 reounded";
+    if (size == "medium") return "p-2 rounded-lg";
+    if (size == "large") return "p-4 rounded-xl";
+    return "p-2 rounded-l";
+  };
   return (
     <div
       className={cn(
         "absolute bg-stone-100 backface-hidden overflow-hidden shadow-md",
-        isSmall ? "p-1 rounded" : "p-4 rounded-xl"
+        getBorder()
       )}
       style={{ WebkitBackfaceVisibility: "hidden", WebkitPerspective: 0 }}>
-      <div className="bg-slate-950 p-1 rounded-md">
+      <div className={cn("bg-slate-950 rounded-md p-1")}>
         <div
           className={cn(
             "overflow-hidden  flex justify-center items-center",
-            isSmall ? "rounded" : "rounded-2xl"
+            size == "small"
+              ? "rounded"
+              : size == "medium"
+              ? "rounded"
+              : "rounded-2xl"
           )}>
           <div className="z-10">{children}</div>
         </div>

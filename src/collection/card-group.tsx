@@ -39,7 +39,7 @@ const CardGroup = ({ suit }: CardGroupProps) => {
               <div
                 key={card.name}
                 className="min-w-[80px] h-[140px] overflow-hidden flex-shrink-0 relative">
-                <CardBorder isSmall>
+                <CardBorder size="small">
                   <img
                     src={card.image}
                     alt={card.name}

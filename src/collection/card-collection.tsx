@@ -1,17 +1,9 @@
 import { useCollectionStore } from "@/stores/use-collection-store";
 import CardGroup from "./card-group";
-import { useEffect } from "react";
-import { useUserStore } from "@/stores/user-user-store";
 import CardLoader from "./card-loader";
 
 const CardCollection = () => {
-  const { id } = useUserStore();
-  const { major, cups, pentacles, swords, wands, loadReadings } =
-    useCollectionStore();
-
-  useEffect(() => {
-    if (id) loadReadings(id);
-  }, [id]);
+  const { major, cups, pentacles, swords, wands } = useCollectionStore();
 
   return (
     <section className="flex flex-col gap-6 w-full items-center">

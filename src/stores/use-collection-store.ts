@@ -3,6 +3,7 @@ import { create } from "zustand";
 import type { Reading } from "./use-reading-store";
 import { mapDbReadingToReading } from "@/db/mappers";
 import { generateSuitCollection } from "./generate-suit-collection";
+import { groupColors } from "@/lib/color-utils";
 
 export type TarotSuit = {
 	name: string;
@@ -14,6 +15,13 @@ export type TarotSuit = {
 		collected: boolean;
 	}[];
 };
+
+type MostCommonCard = {
+	name: string;
+	image: string;
+	count: number;
+};
+
 type CollectionState = {
 	readings: Reading[] | null;
 	loading: boolean;
@@ -23,11 +31,65 @@ type CollectionState = {
 	cups: TarotSuit | null;
 	swords: TarotSuit | null;
 	wands: TarotSuit | null;
+	mostCommonCard: MostCommonCard | null;
+	auraColor: string | null;
 
 	loadReadings: (userId: string) => Promise<void>;
 	clear: () => void;
 };
 
+// --- Aura Color Utilities ---
+const hexToRgb = (hex: string) => {
+	const parsed = hex.replace("#", "");
+	const bigint = parseInt(parsed, 16);
+	return {
+		r: (bigint >> 16) & 255,
+		g: (bigint >> 8) & 255,
+		b: bigint & 255,
+	};
+};
+
+const getAuraColor = (readings: Reading[]): string | null => {
+	const allColors = readings.flatMap((r) => r.words?.map((w) => w.color) || []);
+	if (allColors.length === 0) return null;
+
+	const rgbList = allColors.map(hexToRgb);
+	return groupColors(rgbList);
+};
+
+// --- Most Common Card ---
+const findMostCommonCard = (readings: Reading[]): MostCommonCard | null => {
+	const cardCountMap: Record<
+		string,
+		{ name: string; image: string; count: number }
+	> = {};
+
+	for (const reading of readings) {
+		const card = reading.card;
+		if (!card) continue;
+
+		const key = card.name;
+
+		if (!cardCountMap[key]) {
+			cardCountMap[key] = {
+				name: card.name,
+				image: card.image,
+				count: 1,
+			};
+		} else {
+			cardCountMap[key].count += 1;
+		}
+	}
+
+	const mostCommon = Object.values(cardCountMap).reduce(
+		(prev, current) => current.count > prev.count ? current : prev,
+		{ name: "", image: "", count: 0 },
+	);
+
+	return mostCommon.count > 0 ? mostCommon : null;
+};
+
+// --- Store ---
 export const useCollectionStore = create<CollectionState>((set) => ({
 	readings: null,
 	loading: false,
@@ -37,6 +99,8 @@ export const useCollectionStore = create<CollectionState>((set) => ({
 	cups: null,
 	swords: null,
 	wands: null,
+	mostCommonCard: null,
+	auraColor: null,
 
 	loadReadings: async (userId) => {
 		set({ loading: true, error: null });
@@ -59,9 +123,32 @@ export const useCollectionStore = create<CollectionState>((set) => ({
 		const pentacles = generateSuitCollection("Pentacles", readings);
 		const swords = generateSuitCollection("Swords", readings);
 		const wands = generateSuitCollection("Wands", readings);
+		const mostCommonCard = findMostCommonCard(readings);
+		const auraColor = getAuraColor(readings);
 
-		set({ readings, loading: false, major, cups, pentacles, swords, wands });
+		set({
+			readings,
+			loading: false,
+			major,
+			cups,
+			pentacles,
+			swords,
+			wands,
+			mostCommonCard,
+			auraColor,
+		});
 	},
 
-	clear: () => set({ readings: null, error: null }),
+	clear: () =>
+		set({
+			readings: null,
+			error: null,
+			major: null,
+			cups: null,
+			pentacles: null,
+			swords: null,
+			wands: null,
+			mostCommonCard: null,
+			auraColor: null,
+		}),
 }));
