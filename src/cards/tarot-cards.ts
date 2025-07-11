@@ -234,7 +234,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 14,
     image: "cards/king-of-wands.jpg",
     description:
-      "Visionary, Passion, Leadership, Charisma, Courage, Drive, Initiative, Innocation, Energy, Trailblazer, Compassion, Empathy, Diplomacy, Generosity",
+      "Visionary, Passion, Leadership, Charisma, Courage, Drive, Initiative, Innovation, Energy, Trailblazer, Compassion, Empathy, Diplomacy, Generosity",
     reversed:
       "Temperence, Intention, Restraint, Purpose, Leadership, Reflection, Presence, Authenticity",
   },
