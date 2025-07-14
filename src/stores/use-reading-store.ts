@@ -16,6 +16,7 @@ export type Reading = {
 	new: boolean;
 	reversed?: boolean;
 	foil?: boolean;
+	streak?: number;
 };
 
 const LOCAL_STORAGE_KEY = "divination-as-a-service-2";
@@ -72,8 +73,16 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 				return;
 			} else {
 				const reading = generateReading(expiration);
-				saveToStorage({ ...reading, new: true });
-				set({ reading, isLoading: false, isFlipped: true });
+				saveToStorage({
+					...reading,
+					new: true,
+					streak: (localReading?.streak ?? 0) + 1,
+				});
+				set({
+					reading: { ...reading, streak: 1 },
+					isLoading: false,
+					isFlipped: true,
+				});
 				return;
 			}
 		}
@@ -96,8 +105,9 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 			return;
 		}
 
-		const { reading, source } = await res.json();
-		const loadedReading: Reading = mapDbReadingToReading(reading);
+		const { reading, source, streak } = await res.json();
+		const loadedReading: Reading = mapDbReadingToReading(reading, streak);
+		console.log("here is the reading:", loadedReading);
 		saveToStorage({ ...loadedReading });
 		if (currentFlip == null) {
 			set({ isFlipped: source === "generated" });

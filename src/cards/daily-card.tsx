@@ -4,6 +4,7 @@ import { type Reading } from "@/stores/use-reading-store";
 import { motion } from "motion/react";
 import CardTitle from "./card-title";
 import FlipCard from "./flip-card";
+import StreakCounter from "./streak-counter";
 
 type DailyCardProps = {
   isFlipped: boolean;
@@ -22,13 +23,20 @@ const DailyCard = ({ isFlipped, reading }: DailyCardProps) => {
         <div className="flex gap-2 items-center p-2 body-font">
           <p className="text-amber-100"> Your reading for today is</p>
         </div>
-        <div className="flex w-full flex-row items-center gap-8 justify-around">
+
+        <div className="flex w-full flex-row items-center gap-4 md:gap-8 justify-around pr-2 md:pr-0 md:-mt-8 md:-mb-6">
           <CardTitle
             title={reading.card.name}
             isReversed={reading.reversed}
             isFoil={reading.foil ?? false}
           />
-          <ShareButton />
+          <div className="flex flex-col gap-2 items-center md:mt-8">
+            <ShareButton />
+            <StreakCounter
+              count={reading.streak ?? 1}
+              smallText
+            />
+          </div>
         </div>
       </motion.div>
 

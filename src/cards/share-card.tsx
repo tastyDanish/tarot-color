@@ -3,6 +3,7 @@ import CardTitle from "./card-title";
 import { capitalize } from "@/lib/string-utils";
 import FoilAnimation from "./foil-animation";
 import type { Reading } from "@/stores/use-reading-store";
+import StreakCounter from "./streak-counter";
 
 type ShareCardProps = {
   reading: Reading;
@@ -12,15 +13,18 @@ const ShareCard = ({ reading }: ShareCardProps) => {
   return (
     <div
       id="reading"
-      className="flex flex-col items-center opacity-0 pointer-events-none fixed top-0 left-0 pt-8 px-8 rounded-4xl">
-      <CardTitle
-        title={reading.card.name}
-        isReversed={reading.reversed}
-        isFoil={reading.foil}
-        isShare
-      />
+      className="flex flex-col items-center opacity-0 pointer-events-none fixed top-0 left-0 pt-8 rounded-4xl">
+      <div className="flex justify-center gap-4 w-full">
+        <CardTitle
+          title={reading.card.name}
+          isReversed={reading.reversed}
+          isFoil={reading.foil}
+          isShare
+        />
+        <StreakCounter count={reading.streak ?? 1} />
+      </div>
 
-      <div className="flex flex-row pt-4 z-10">
+      <div className="flex flex-row pt-4 z-10 px-8">
         <div className="bg-gray-800 flex justify-center gap-4">
           <div className="relative h-[580px] w-[340px]">
             <div className="absolute bg-stone-100 p-4 rounded-xl backface-hidden overflow-hidden shadow-md">

@@ -3,7 +3,10 @@ import type { Database } from "@/lib/database.types";
 
 type ReadingRow = Database["public"]["Tables"]["readings"]["Row"];
 
-export const mapDbReadingToReading = (reading: ReadingRow): Reading => {
+export const mapDbReadingToReading = (
+	reading: ReadingRow,
+	streak: number = 1,
+): Reading => {
 	const variations = Array.isArray(reading.variations)
 		? reading.variations
 		: [];
@@ -27,5 +30,6 @@ export const mapDbReadingToReading = (reading: ReadingRow): Reading => {
 		new: false,
 		foil: variations.includes("foil"),
 		reversed: variations.includes("reversed"),
+		streak,
 	};
 };
