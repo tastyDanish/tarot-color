@@ -31,6 +31,48 @@ const getOrder = (reading: Reading) => {
 	return reading.card.order;
 };
 
+import { DateTime } from "luxon"; // if you're not using luxon, use native Date instead
+
+const getStreak = (dates: string[]): number => {
+	const sortedDates = dates
+		.map((d) => DateTime.fromISO(d).toISODate()) // strip time part
+		.filter((v, i, a) => a.indexOf(v) === i) // dedupe
+		.sort((a, b) => (a < b ? 1 : -1)); // newest first
+
+	let streak = 0;
+	let expected = DateTime.now().startOf("day");
+
+	for (const dateStr of sortedDates) {
+		const current = DateTime.fromISO(dateStr).startOf("day");
+
+		if (current.equals(expected)) {
+			streak++;
+			expected = expected.minus({ days: 1 });
+		} else if (current < expected) {
+			break;
+		}
+	}
+
+	return streak;
+};
+
+const computeStreak = async (user_id: string) => {
+	const { data: allDates, error: streakError } = await supabase
+		.from("readings")
+		.select("created_at")
+		.eq("user_id", user_id);
+
+	if (streakError) {
+		console.log("ERROR - streak query: ", streakError.message);
+		return {
+			statusCode: 500,
+			body: JSON.stringify({ error: "Failed to compute streak" }),
+		};
+	}
+
+	return getStreak(allDates.map((r) => r.created_at));
+};
+
 const handler: Handler = async (event) => {
 	try {
 		if (event.httpMethod !== "POST") {
@@ -68,9 +110,15 @@ const handler: Handler = async (event) => {
 		}
 
 		if (existing && new Date(existing.expires_at) > new Date(current_time)) {
+			const streak = await computeStreak(user_id);
+
 			return {
 				statusCode: 200,
-				body: JSON.stringify({ reading: existing, source: "db" }),
+				body: JSON.stringify({
+					reading: existing,
+					streak,
+					source: "db",
+				}),
 			};
 		}
 
@@ -107,9 +155,15 @@ const handler: Handler = async (event) => {
 				};
 			}
 
+			const streak = await computeStreak(user_id);
+
 			return {
 				statusCode: 200,
-				body: JSON.stringify({ reading: readingToSave, source: "fallback" }),
+				body: JSON.stringify({
+					reading: readingToSave,
+					streak,
+					source: "fallback",
+				}),
 			};
 		}
 
@@ -140,9 +194,15 @@ const handler: Handler = async (event) => {
 			};
 		}
 
+		const streak = await computeStreak(user_id);
+
 		return {
 			statusCode: 200,
-			body: JSON.stringify({ reading: readingToInsert, source: "generated" }),
+			body: JSON.stringify({
+				reading: readingToInsert,
+				streak,
+				source: "generated",
+			}),
 		};
 	} catch (err) {
 		console.log("ERROR - final: ", err.message);
