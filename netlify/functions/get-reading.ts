@@ -62,7 +62,7 @@ const getStreak = (dates: string[]): number => {
 const computeStreak = async (user_id: string) => {
 	const { data: allDates, error: streakError } = await supabase
 		.from("readings")
-		.select("created_at")
+		.select("expires_at")
 		.eq("user_id", user_id);
 
 	if (streakError) {
@@ -73,7 +73,7 @@ const computeStreak = async (user_id: string) => {
 		};
 	}
 
-	return getStreak(allDates.map((r) => r.created_at));
+	return getStreak(allDates.map((r) => r.expires_at));
 };
 
 const handler: Handler = async (event) => {
