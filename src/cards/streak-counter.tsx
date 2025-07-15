@@ -7,7 +7,6 @@ type StreakCounterProps = {
 };
 
 const StreakCounter = ({ count, smallText }: StreakCounterProps) => {
-  return <div></div>;
   return (
     <div
       className={cn(
