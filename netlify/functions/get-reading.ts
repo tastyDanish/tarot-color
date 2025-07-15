@@ -31,24 +31,27 @@ const getOrder = (reading: Reading) => {
 	return reading.card.order;
 };
 
-import { DateTime } from "luxon"; // if you're not using luxon, use native Date instead
-
 const getStreak = (dates: string[]): number => {
-	const sortedDates = dates
-		.map((d) => DateTime.fromISO(d).toISODate()) // strip time part
-		.filter((v, i, a) => a.indexOf(v) === i) // dedupe
-		.sort((a, b) => (a < b ? 1 : -1)); // newest first
+	const toUTCDate = (d: string) => new Date(d).toISOString().split("T")[0];
+
+	// Dedupe and sort by date string descending (newest first)
+	const sortedDates = [...new Set(dates.map(toUTCDate))].sort((a, b) =>
+		a < b ? 1 : -1
+	);
 
 	let streak = 0;
-	let expected = DateTime.now().startOf("day");
+	let expected = new Date(sortedDates[0]);
 
 	for (const dateStr of sortedDates) {
-		const current = DateTime.fromISO(dateStr).startOf("day");
+		const current = new Date(dateStr);
 
-		if (current.equals(expected)) {
+		if (
+			current.toISOString().split("T")[0] ===
+				expected.toISOString().split("T")[0]
+		) {
 			streak++;
-			expected = expected.minus({ days: 1 });
-		} else if (current < expected) {
+			expected.setUTCDate(expected.getUTCDate() - 1); // Go back one day
+		} else {
 			break;
 		}
 	}
