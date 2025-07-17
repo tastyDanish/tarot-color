@@ -314,7 +314,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 9,
     image: "cards/nine-of-wands.jpg",
     description:
-      "Defense, Courage, Boundaries, Persistence, Perseverance, Resilience, Endurance, Vigilance, Wariness, Recovery, Experience, Tenacity, Grit, Fortitude, Caution, Strength",
+      "Defense, Courage, Boundaries, Persistence, Perseverance, Resilience, Endurance, Vigilance, Weariness, Recovery, Experience, Tenacity, Grit, Fortitude, Caution, Strength",
     reversed:
       "Caution, Hesitation, Reflection, Vulnerability, Adaptation, Guardedness, Awareness",
   },
@@ -464,7 +464,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 6,
     image: "cards/six-of-swords.jpg",
     description:
-      "Transition, Journey, Passage, Change, Progress, Travel, Healing, Recovery, Guidance, Relocation, Movement, Adaptation, Improvement",
+      "Transition, Journey, Passage, Change, Progress, Travel, Healing, Recovery, Guidance, Relocation, Movement, Adaptation, Improvement, Purge",
     reversed:
       "Stagnation, Resistance, Delay, Avoidance, Unwillingness, Confusion",
   },
