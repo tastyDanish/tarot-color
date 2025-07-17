@@ -79,7 +79,7 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 					streak: (localReading?.streak ?? 0) + 1,
 				});
 				set({
-					reading: { ...reading, streak: 1 },
+					reading: { ...reading, streak: (localReading?.streak ?? 0) + 1 },
 					isLoading: false,
 					isFlipped: true,
 				});
@@ -107,7 +107,6 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 
 		const { reading, source, streak } = await res.json();
 		const loadedReading: Reading = mapDbReadingToReading(reading, streak);
-		console.log("here is the reading:", loadedReading);
 		saveToStorage({ ...loadedReading });
 		if (currentFlip == null) {
 			set({ isFlipped: source === "generated" });
