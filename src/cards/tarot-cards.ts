@@ -624,7 +624,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 1,
     image: "cards/the-high-priestess.jpg",
     description:
-      "Intuition, Mystery, Secrets, Subconcious, Reflection Dreams, Receptivity, Meditation, Trust, Hidden, Insight, Silence, Wisdom, Veil, Awareness, Enigma, Knowledge",
+      "Intuition, Mystery, Secrets, Subconcious, Reflection, Dreams, Receptivity, Meditation, Trust, Hidden, Insight, Silence, Wisdom, Veil, Awareness, Enigma, Knowledge",
     reversed:
       "Blocked, Deception, Distruct, Ignorance, Repression, Denial, Reveal, Question, Listen, Seek, Confront",
   },
