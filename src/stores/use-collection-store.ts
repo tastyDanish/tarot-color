@@ -61,7 +61,13 @@ const getAuraColor = (readings: Reading[]): string | null => {
 const findMostCommonCard = (readings: Reading[]): MostCommonCard | null => {
 	const cardCountMap: Record<
 		string,
-		{ name: string; image: string; count: number }
+		{
+			name: string;
+			image: string;
+			count: number;
+			suit?: string;
+			order?: number;
+		}
 	> = {};
 
 	for (const reading of readings) {
@@ -75,6 +81,8 @@ const findMostCommonCard = (readings: Reading[]): MostCommonCard | null => {
 				name: card.name,
 				image: card.image,
 				count: 1,
+				suit: card.suit,
+				order: card.order,
 			};
 		} else {
 			cardCountMap[key].count += 1;
@@ -82,11 +90,39 @@ const findMostCommonCard = (readings: Reading[]): MostCommonCard | null => {
 	}
 
 	const mostCommon = Object.values(cardCountMap).reduce(
-		(prev, current) => current.count > prev.count ? current : prev,
-		{ name: "", image: "", count: 0 },
+		(prev, current) => {
+			if (current.count > prev.count) {
+				return current;
+			}
+			if (current.count < prev.count) {
+				return prev;
+			}
+
+			// Tie-breaker: Major Arcana preferred
+			const currentIsMajor = current.suit === "Major";
+			const prevIsMajor = prev.suit === "Major";
+			if (currentIsMajor && !prevIsMajor) return current;
+			if (!currentIsMajor && prevIsMajor) return prev;
+
+			// Final tie-breaker: higher `order` value wins
+			const currentOrder = current.order ?? -1;
+			const prevOrder = prev.order ?? -1;
+			if (currentOrder > prevOrder) return current;
+			if (currentOrder < prevOrder) return prev;
+
+			// Final fallback: alphabetically by name (stable-ish)
+			return current.name < prev.name ? current : prev;
+		},
+		{ name: "", image: "", count: 0, suit: undefined, order: undefined },
 	);
 
-	return mostCommon.count > 0 ? mostCommon : null;
+	return mostCommon.count > 0
+		? {
+			name: mostCommon.name,
+			image: mostCommon.image,
+			count: mostCommon.count,
+		}
+		: null;
 };
 
 // --- Store ---
