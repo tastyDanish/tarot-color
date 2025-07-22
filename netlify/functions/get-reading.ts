@@ -132,13 +132,18 @@ const handler: Handler = async (event) => {
 		) {
 			const actualReading: Reading = fallback_reading;
 
+			const variations: string[] = [];
+
+			if (actualReading.reversed) variations.push("reversed");
+			if (actualReading.foil) variations.push("foil");
+
 			const readingToSave = {
 				card_name: actualReading.card.name,
 				card_image: actualReading.card.image,
 				words: actualReading.words,
 				card_order: getOrder(actualReading),
 				card_suit: getSuit(actualReading),
-				variations: [],
+				variations,
 				alternate_art: null,
 				user_id,
 				created_at: new Date().toISOString(),
@@ -172,13 +177,17 @@ const handler: Handler = async (event) => {
 
 		// 3. Generate a new one
 		const newReading = generateReading(new Date(expiration));
+		const variations: string[] = [];
+		if (newReading.reversed) variations.push("reversed");
+		if (newReading.foil) variations.push("foil");
+
 		const readingToInsert = {
 			card_name: newReading.card.name,
 			card_image: newReading.card.image,
 			card_suit: newReading.card.suit,
 			card_order: newReading.card.order,
 			words: newReading.words,
-			variations: [],
+			variations,
 			alternate_art: null,
 			user_id,
 			created_at: new Date().toISOString(),
