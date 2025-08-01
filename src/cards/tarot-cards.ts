@@ -104,7 +104,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 5,
     image: "cards/five-of-cups.jpg",
     description:
-      "Grief, Regret, Longing, Dwelling, Letting go, Attachment, Remorse, Reflection, Perspective, Sorrow, Disappointment, Isolation, Bitterness, Nostalgia, Wounded, Setback, Tears, Reflection",
+      "Grief, Regret, Longing, Dwelling, Letting go, Attachment, Remorse, Perspective, Sorrow, Disappointment, Isolation, Bitterness, Nostalgia, Wounded, Setback, Tears, Reflection",
     reversed:
       "Acceptance, Healing, Forgiveness, Renewal, Optimism, Hope, Closure, Recovery, Gratitude, Peace, Balance",
   },
@@ -676,7 +676,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Brightness, Clarity, Growth, Revelation, Energy, Warmth, Illumination, Insight, Vitality, Optimism, Enlightenment, Joy, Hope, Discovery, Confidence",
     reversed:
-      "Cloudiness, Confusion, Pessimism, Exhaustion, SHadow, Obstruction, Isolation, Frustration",
+      "Cloudiness, Confusion, Pessimism, Exhaustion, Shadow, Obstruction, Isolation, Frustration",
   },
   {
     name: "The Tower",
