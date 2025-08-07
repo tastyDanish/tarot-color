@@ -2,9 +2,14 @@ import SignButton from "./sign-button";
 import FortunesPaletteGraphic from "./fortunes-palette-graphic";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "@/stores/user-user-store";
+import { useEffect } from "react";
 
 const TellerSign = () => {
-  const { id, loading } = useUserStore();
+  const { id, loading, loadUser } = useUserStore();
+
+  useEffect(() => {
+    loadUser();
+  }, [loadUser]);
 
   const navigate = useNavigate();
 
