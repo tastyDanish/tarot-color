@@ -22,7 +22,7 @@ const Home = () => {
     }
   }, [userLoading, userId, loadReading]);
 
-  const loading = readingLoading || !reading || isFlipped == null;
+  const loading = readingLoading;
 
   return (
     <div className="relative flex flex-col w-full overflow-y-hidden h-full overflow-x-hidden items-center  bg-gray-800 pb-10">
@@ -39,7 +39,7 @@ const Home = () => {
             <Fog />
           </motion.div>
         )}
-        {!loading && (
+        {!loading && reading && (
           <motion.div
             key="card"
             initial={{ opacity: 0 }}
@@ -48,7 +48,7 @@ const Home = () => {
             <ShareCard reading={reading} />
             <DailyCard
               reading={reading}
-              isFlipped={isFlipped}
+              isFlipped={isFlipped ?? true}
             />
           </motion.div>
         )}
