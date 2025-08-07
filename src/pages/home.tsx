@@ -9,12 +9,7 @@ import Fog from "@/components/fog";
 
 const Home = () => {
   const { id: userId, loading: userLoading } = useUserStore();
-  const {
-    reading,
-    isLoading: readingLoading,
-    loadReading,
-    isFlipped,
-  } = useReadingStore();
+  const { reading, isLoading, loadReading, isFlipped } = useReadingStore();
 
   useEffect(() => {
     if (!userLoading) {
@@ -22,13 +17,11 @@ const Home = () => {
     }
   }, [userLoading, userId, loadReading]);
 
-  const loading = readingLoading;
-
   return (
     <div className="relative flex flex-col w-full overflow-y-hidden h-full overflow-x-hidden items-center  bg-gray-800 pb-10">
       <SiteIntrouction />
       <AnimatePresence mode="popLayout">
-        {loading && (
+        {isLoading && (
           <motion.div
             key="fog"
             className="w-full flex relative"
@@ -39,7 +32,7 @@ const Home = () => {
             <Fog />
           </motion.div>
         )}
-        {!loading && reading && (
+        {!isLoading && reading && (
           <motion.div
             key="card"
             initial={{ opacity: 0 }}
