@@ -49,7 +49,7 @@ type ReadingState = {
 
 export const useReadingStore = create<ReadingState>((set, get) => ({
 	reading: null,
-	isLoading: false,
+	isLoading: true,
 	isFlipped: null,
 	setIsFlipped: (flip: boolean | null) => {
 		set({ isFlipped: flip });
