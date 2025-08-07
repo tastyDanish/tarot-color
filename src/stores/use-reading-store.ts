@@ -55,7 +55,9 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 		set({ isFlipped: flip });
 	},
 	loadReading: async (userId?: string) => {
-		set({ isLoading: true });
+		if (!get().isLoading) {
+			set({ isLoading: true });
+		}
 
 		const localReading = loadFromStorage();
 
