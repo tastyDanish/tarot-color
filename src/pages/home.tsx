@@ -2,20 +2,23 @@ import ShareCard from "@/cards/share-card";
 import { useReadingStore } from "@/stores/use-reading-store";
 import { useUserStore } from "@/stores/user-user-store";
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import SiteIntrouction from "./site-intro";
 import DailyCard from "@/cards/daily-card";
 import Fog from "@/components/fog";
 
 const Home = () => {
-  const { id: userId, loading: userLoading } = useUserStore();
+  const { id: userId } = useUserStore();
   const { reading, isLoading, loadReading, isFlipped } = useReadingStore();
 
+  const lastUserId = useRef<string | null | undefined>(undefined);
+
   useEffect(() => {
-    if (!userLoading) {
+    if (userId !== null && lastUserId.current !== userId) {
       loadReading(userId ?? undefined);
+      lastUserId.current = userId;
     }
-  }, [userLoading, userId, loadReading]);
+  }, [userId, loadReading]);
 
   return (
     <div className="relative flex flex-col w-full overflow-y-hidden h-full overflow-x-hidden items-center  bg-gray-800 pb-10">
