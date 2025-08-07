@@ -110,12 +110,14 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 		const { reading, source, streak } = await res.json();
 		const loadedReading: Reading = mapDbReadingToReading(reading, streak);
 		saveToStorage({ ...loadedReading });
-		if (currentFlip == null) {
-			set({ isFlipped: source === "generated" });
-		}
+		const newIsFlipped = currentFlip == null
+			? source === "generated"
+			: get().isFlipped;
+
 		set({
 			reading: { ...loadedReading, new: source === "generated" },
 			isLoading: false,
+			isFlipped: newIsFlipped,
 		});
 	},
 }));
