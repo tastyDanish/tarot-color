@@ -616,7 +616,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Tradition, Ritual, Initiation, Order, Doctrine, Code, Belief, Conviction, Structure, Mentor, Sanction, Custom, Instruction, Symbol, Hierarchy",
     reversed:
-      "Rebellion, Challenge, Restriction, Rigidity, Restrained, Isolation, Restriction, Skepticism, Questioning, Rebel, Innovate, Question, Experiment, Explore, Free",
+      "Rebellion, Challenge, Rigidity, Restrained, Isolation, Restriction, Skepticism, Questioning, Rebel, Innovate, Question, Experiment",
   },
   {
     name: "The High Priestess",
