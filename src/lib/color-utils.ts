@@ -30,7 +30,7 @@ export const groupColors = (
   rgbList: { r: number; g: number; b: number }[],
   tolerance = 32,
 ): string => {
-  const filtered = rgbList.filter((c) => !isWhite(c) && !isBlack(c));
+  const filtered = rgbList.filter((c) => !isWhite(c) && !isBlack(c)).slice(-10);
   const buckets: Record<
     string,
     { r: number; g: number; b: number; count: number }
