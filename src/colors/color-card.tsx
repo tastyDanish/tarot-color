@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 type ColorCardProps = {
   color: string;
   word: string;
-  isNew: boolean;
+  isFlipped: boolean;
   isVisible: boolean;
   index: number;
   isReversed: boolean;
@@ -19,7 +19,7 @@ const ColorCard = ({
   isVisible,
   isReversed,
   index,
-  isNew,
+  isFlipped,
 }: ColorCardProps) => {
   const textColor = getContrastTextColor(color);
 
@@ -27,10 +27,10 @@ const ColorCard = ({
     <motion.div
       key={color}
       className="flex flex-col items-start w-full text-border-white font-extrabold text-2xl rounded-md relative overflow-hidden"
-      initial={{ x: isNew ? -340 : 0 }}
+      initial={{ x: isFlipped ? -340 : 0 }}
       animate={{ x: isVisible ? 0 : -340 }}
       transition={{
-        delay: 0.7 + index * 0.3,
+        delay: isFlipped ? 0.7 + index * 0.3 : index * 0.3,
         duration: 0.5,
         ease: "easeOut",
       }}

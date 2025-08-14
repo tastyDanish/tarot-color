@@ -10,13 +10,14 @@ export type WordColor = {
 };
 
 export type Reading = {
+	id: string;
 	card: TarotCard;
 	words: WordColor[];
 	expiration: Date;
-	new: boolean;
 	reversed?: boolean;
 	foil?: boolean;
 	streak?: number;
+	flipped?: boolean;
 };
 
 const LOCAL_STORAGE_KEY = "divination-as-a-service-2";
@@ -29,6 +30,7 @@ const loadFromStorage = (): Reading | null => {
 		const saved: Reading = JSON.parse(raw);
 		saved.expiration = new Date(saved.expiration);
 		saved.reversed = saved.reversed ?? false;
+		saved.flipped = saved.flipped ?? true;
 		return saved;
 	} catch {
 		return null;
@@ -42,17 +44,34 @@ const saveToStorage = (reading: Reading) => {
 type ReadingState = {
 	reading: Reading | null;
 	isLoading: boolean;
-	isFlipped: boolean | null;
-	setIsFlipped: (flip: boolean | null) => void;
+	setIsFlipped: (
+		settings: { flipped: boolean; userId: string | null; readingId: string },
+	) => void;
 	loadReading: (userId?: string) => Promise<void>;
 };
 
 export const useReadingStore = create<ReadingState>((set, get) => ({
 	reading: null,
 	isLoading: false,
-	isFlipped: null,
-	setIsFlipped: (flip: boolean | null) => {
-		set({ isFlipped: flip });
+	setIsFlipped: async (settings) => {
+		const { flipped, userId, readingId } = settings;
+		const reading = get().reading;
+		if (reading) {
+			saveToStorage({ ...reading, flipped });
+			set({ reading: { ...reading, flipped } });
+
+			if (userId) {
+				await fetch("/.netlify/functions/update-flipped", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						user_id: userId,
+						reading_id: readingId,
+						is_flipped: flipped,
+					}),
+				});
+			}
+		}
 	},
 	loadReading: async (userId?: string) => {
 		set({ isLoading: true });
@@ -62,26 +81,22 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 		const expiration = getNextMidnight();
 		const currentTime = new Date();
 
-		const currentFlip = get().isFlipped;
-
 		// If no user, just use the local reading or generate one
 		if (!userId) {
 			if (localReading && localReading.expiration > currentTime) {
 				const reading = localReading;
-				saveToStorage({ ...reading, new: false });
-				set({ reading, isLoading: false, isFlipped: false });
+				saveToStorage({ ...reading });
+				set({ reading, isLoading: false });
 				return;
 			} else {
 				const reading = generateReading(expiration);
 				saveToStorage({
 					...reading,
-					new: true,
 					streak: (localReading?.streak ?? 0) + 1,
 				});
 				set({
 					reading: { ...reading, streak: (localReading?.streak ?? 0) + 1 },
 					isLoading: false,
-					isFlipped: true,
 				});
 				return;
 			}
@@ -105,17 +120,13 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 			return;
 		}
 
-		const { reading, source, streak } = await res.json();
+		const { reading, streak } = await res.json();
 		const loadedReading: Reading = mapDbReadingToReading(reading, streak);
 		saveToStorage({ ...loadedReading });
-		const newIsFlipped = currentFlip == null
-			? source === "generated"
-			: get().isFlipped;
 
 		set({
-			reading: { ...loadedReading, new: source === "generated" },
+			reading: { ...loadedReading },
 			isLoading: false,
-			isFlipped: newIsFlipped,
 		});
 	},
 }));

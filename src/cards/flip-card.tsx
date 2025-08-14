@@ -9,26 +9,33 @@ import { createAccountPush } from "./create-account-push";
 import { useUserStore } from "@/stores/user-user-store";
 
 type FlipCardProps = {
+  readingId: string;
   card: TarotCard;
   isFlipped: boolean;
   isReversed: boolean;
   isFoil: boolean;
 };
 
-const FlipCard = ({ card, isReversed, isFoil }: FlipCardProps) => {
+const FlipCard = ({
+  card,
+  isReversed,
+  isFoil,
+  isFlipped,
+  readingId,
+}: FlipCardProps) => {
   const [frontLoaded, setFrontLoaded] = useState(false);
   const [backLoaded, setBackLoaded] = useState(false);
   const { id } = useUserStore();
 
-  const { isFlipped, setIsFlipped } = useReadingStore();
+  const { setIsFlipped } = useReadingStore();
 
   const handleClick = () => {
-    setIsFlipped(false);
+    setIsFlipped({ flipped: true, userId: id, readingId });
     if (id == null) createAccountPush(1000);
   };
 
   return (
-    <div
+    <button
       onClick={handleClick}
       className="h-full"
       style={{
@@ -44,7 +51,7 @@ const FlipCard = ({ card, isReversed, isFoil }: FlipCardProps) => {
         }}
         initial={false}
         animate={{
-          rotateY: isFlipped ? 180 : 0,
+          rotateY: isFlipped ? 0 : 180,
         }}
         transition={{ duration: 0.8, ease: "easeInOut" }}>
         <CardBorder
@@ -72,7 +79,7 @@ const FlipCard = ({ card, isReversed, isFoil }: FlipCardProps) => {
           />
         </CardBack>
       </motion.div>
-    </div>
+    </button>
   );
 };
 

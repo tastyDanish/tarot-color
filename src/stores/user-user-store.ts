@@ -28,16 +28,16 @@ export const useUserStore = create<UserState>((set, get) => ({
 			return null;
 		}
 
-		const { data: profile } = await supabase
-			.from("profiles")
-			.select("username")
-			.eq("id", user.id)
-			.single();
+		// const { data: profile } = await supabase
+		// 	.from("profiles")
+		// 	.select("username")
+		// 	.eq("id", user.id)
+		// 	.single();
 
 		set({
 			id: user.id,
 			email: user.email,
-			username: profile?.username ?? "",
+			username: "",
 			loading: false,
 		});
 		return user.id;

@@ -3,8 +3,8 @@ import { createClient } from "@supabase/supabase-js";
 import { generateReading } from "../../src/cards/readings";
 import { Reading } from "../../src/stores/use-reading-store";
 import { TAROT_CARDS } from "../../src/cards/tarot-cards";
-
-require("dotenv").config();
+import { mapDbReadingToReading } from "../../src/db/mappers";
+import "dotenv/config";
 
 const {
 	VITE_SUPABASE_URL,
@@ -40,7 +40,7 @@ const getStreak = (dates: string[]): number => {
 	);
 
 	let streak = 0;
-	let expected = new Date(sortedDates[0]);
+	const expected = new Date(sortedDates[0]);
 
 	for (const dateStr of sortedDates) {
 		const current = new Date(dateStr);
@@ -65,15 +65,12 @@ const computeStreak = async (user_id: string) => {
 		.select("expires_at")
 		.eq("user_id", user_id);
 
-	if (streakError) {
+	if (streakError || allDates == null) {
 		console.log("ERROR - streak query: ", streakError.message);
-		return {
-			statusCode: 500,
-			body: JSON.stringify({ error: "Failed to compute streak" }),
-		};
+		return -1;
+	} else {
+		return getStreak(allDates.map((r) => r.expires_at));
 	}
-
-	return getStreak(allDates.map((r) => r.expires_at));
 };
 
 const handler: Handler = async (event) => {
@@ -148,9 +145,10 @@ const handler: Handler = async (event) => {
 				user_id,
 				created_at: new Date().toISOString(),
 				expires_at: new Date(fallback_reading.expiration).toISOString(),
+				is_flipped: actualReading.flipped,
 			};
 
-			const { error: insertErr } = await supabase
+			const { data: insertedReading, error: insertErr } = await supabase
 				.from("readings")
 				.insert([readingToSave]);
 
@@ -168,7 +166,7 @@ const handler: Handler = async (event) => {
 			return {
 				statusCode: 200,
 				body: JSON.stringify({
-					reading: readingToSave,
+					reading: mapDbReadingToReading(insertedReading, streak),
 					streak,
 					source: "fallback",
 				}),
@@ -192,9 +190,10 @@ const handler: Handler = async (event) => {
 			user_id,
 			created_at: new Date().toISOString(),
 			expires_at: newReading.expiration.toISOString(),
+			is_flipped: newReading.flipped,
 		};
 
-		const { error: insertError } = await supabase
+		const { data: insertedReading, error: insertError } = await supabase
 			.from("readings")
 			.insert([readingToInsert]);
 
@@ -211,7 +210,7 @@ const handler: Handler = async (event) => {
 		return {
 			statusCode: 200,
 			body: JSON.stringify({
-				reading: readingToInsert,
+				reading: mapDbReadingToReading(insertedReading, streak),
 				streak,
 				source: "generated",
 			}),

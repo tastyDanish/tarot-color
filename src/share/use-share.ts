@@ -35,8 +35,20 @@ export const UseShare = () => {
     }
   };
 
+  const handleDownload = async () => {
+    setToastOpen(true);
+    const element = document.getElementById("instagram-reading");
+    if (!element) return;
+
+    const result = await downloadImage(element);
+    if (result == "download") {
+      toast(SaveToast, toastSettings);
+    }
+  };
+
   return {
     toastOpen,
     handleShare,
+    handleDownload,
   };
 };

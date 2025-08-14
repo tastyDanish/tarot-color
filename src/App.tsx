@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import SignIn from "./pages/sign-in";
 import Collection from "./pages/collection";
 import ForgotPassword from "./pages/forgot-password";
+import Single from "./pages/single";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
         <Route
           path="forgot-password"
           element={<ForgotPassword />}
+        />
+        <Route
+          path="daily-single"
+          element={<Single />}
         />
       </Route>
     </Routes>

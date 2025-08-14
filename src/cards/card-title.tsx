@@ -10,7 +10,7 @@ const CardTitle = ({ title, isShare, isReversed, isFoil }: CardTitleProps) => {
   return (
     <div
       className={cn(
-        "text-amber-100 flex items-center",
+        "text-amber-100 flex items-center px-2",
         isShare ? "gap-8" : "md:gap-8"
       )}>
       <div

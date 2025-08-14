@@ -3,6 +3,7 @@ import FortunesPaletteGraphic from "./fortunes-palette-graphic";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "@/stores/user-user-store";
 import { useEffect } from "react";
+import PaperTexture from "@/components/paper-texture";
 
 const TellerSign = () => {
   const { id, loading, loadUser } = useUserStore();
@@ -82,14 +83,7 @@ const TellerSign = () => {
           </div>
         </div>
 
-        <div
-          className="absolute inset-0 opacity-80 pointer-events-none z-0 mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/paper-texture.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "0% 0%",
-          }}
-        />
+        <PaperTexture opacity={80} />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { capitalize } from "@/lib/string-utils";
 import FoilAnimation from "./foil-animation";
 import type { Reading } from "@/stores/use-reading-store";
 import StreakCounter from "./streak-counter";
+import PaperTexture from "@/components/paper-texture";
 
 type ShareCardProps = {
   reading: Reading;
@@ -41,14 +42,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
                   />
                 </div>
               </div>
-              <div
-                className="absolute inset-0 opacity-40 pointer-events-none"
-                style={{
-                  backgroundImage: "url('/paper-texture.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "30% 0%",
-                }}
-              />
+              <PaperTexture opacity={40} />
               {reading.foil && <FoilAnimation />}
             </div>
           </div>

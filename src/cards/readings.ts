@@ -28,12 +28,13 @@ export const generateReading = (expiration: Date): Reading => {
 	}));
 
 	const reading: Reading = {
+		id: "client-side",
 		card,
 		words,
 		expiration,
-		new: true,
 		reversed,
 		foil,
+		flipped: false,
 	};
 
 	return reading;

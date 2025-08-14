@@ -6,14 +6,14 @@ type ColorSwatchProps = {
   words: WordColor[];
   image: string;
   isVisible: boolean;
-  isNew: boolean;
+  isFlipped: boolean;
   isReversed: boolean;
 };
 
 const ColorSwatch = ({
   words,
   isVisible,
-  isNew,
+  isFlipped,
   isReversed,
 }: ColorSwatchProps) => {
   return (
@@ -24,7 +24,7 @@ const ColorSwatch = ({
           word={word.word}
           color={word.color}
           index={i}
-          isNew={isNew}
+          isFlipped={isFlipped}
           isVisible={isVisible}
           isReversed={isReversed}
         />

@@ -14,9 +14,9 @@ export const mapDbReadingToReading = (
 	return {
 		card: {
 			name: reading.card_name,
-			image: reading.alternate_art ?? reading.card_image, // fallback if alternate_art exists
-			description: "", // fill if you want or leave empty
-			reversed: "", // fill if you want or leave empty
+			image: reading.alternate_art ?? reading.card_image,
+			description: "",
+			reversed: "",
 			suit: reading.card_suit as
 				| "Major"
 				| "Cups"
@@ -25,11 +25,12 @@ export const mapDbReadingToReading = (
 				| "Pentacles",
 			order: reading.card_order,
 		},
-		words: reading.words as { word: string; color: string }[], // cast Json to expected type
+		words: reading.words as { word: string; color: string }[],
 		expiration: new Date(reading.expires_at),
-		new: false,
 		foil: variations.includes("foil"),
 		reversed: variations.includes("reversed"),
 		streak,
+		flipped: reading.is_flipped ?? true,
+		id: reading.id,
 	};
 };

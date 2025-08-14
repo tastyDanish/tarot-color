@@ -7,17 +7,16 @@ import FlipCard from "./flip-card";
 import StreakCounter from "./streak-counter";
 
 type DailyCardProps = {
-  isFlipped: boolean;
   reading: Reading;
 };
-const DailyCard = ({ isFlipped, reading }: DailyCardProps) => {
+const DailyCard = ({ reading }: DailyCardProps) => {
   return (
     <div className="relative flex flex-col items-center opacity-100 w-full">
       <motion.div
         className="flex flex-col items-center z-10"
-        initial={{ opacity: isFlipped ? 0 : 1 }}
+        initial={{ opacity: reading.flipped ? 1 : 0 }}
         animate={{
-          opacity: isFlipped ? 0 : 1,
+          opacity: reading.flipped ? 1 : 0,
         }}
         transition={{ duration: 1.2, ease: "easeInOut" }}>
         <div className="flex gap-2 items-center p-2 body-font">
@@ -42,27 +41,30 @@ const DailyCard = ({ isFlipped, reading }: DailyCardProps) => {
 
       <div className="flex flex-col md:flex-row pt-4 z-10 items-center">
         <div className="bg-gray-800 flex-col justify-center">
-          {isFlipped !== undefined && (
+          {reading.flipped !== undefined && (
             <FlipCard
-              isReversed={reading.reversed ?? false}
-              isFlipped={isFlipped}
+              readingId={reading.id}
+              isReversed={reading.reversed ?? true}
+              isFlipped={reading.flipped}
               card={reading.card}
               isFoil={reading.foil ?? false}
             />
           )}
         </div>
 
-        <div
-          className="w-[340px] flex flex-col px-4 md:p-0 mt-[420px] md:mt-0"
-          style={{ height: isFlipped ? "1px" : "580px" }}>
-          <ColorSwatch
-            isNew={reading.new}
-            isVisible={!isFlipped}
-            image={reading?.card.image}
-            words={reading?.words}
-            isReversed={reading?.reversed ?? false}
-          />
-        </div>
+        {reading.flipped !== undefined && (
+          <div
+            className="w-[340px] flex flex-col px-4 md:p-0 mt-[420px] md:mt-0"
+            style={{ height: reading.flipped ? "580px" : "1px" }}>
+            <ColorSwatch
+              isFlipped={reading.flipped}
+              isVisible={reading.flipped}
+              image={reading?.card.image}
+              words={reading?.words}
+              isReversed={reading?.reversed ?? false}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
