@@ -19,10 +19,6 @@ const DailyCard = ({ reading }: DailyCardProps) => {
           opacity: reading.flipped ? 1 : 0,
         }}
         transition={{ duration: 1.2, ease: "easeInOut" }}>
-        <div className="flex gap-2 items-center p-2 body-font">
-          <p className="text-amber-100"> Your reading for today is</p>
-        </div>
-
         <div className="flex w-full flex-row items-center gap-4 md:gap-8 justify-around pr-2 md:pr-0 md:-mt-8 md:-mb-6">
           <CardTitle
             title={reading.card.name}
@@ -40,7 +36,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
       </motion.div>
 
       <div className="flex flex-col md:flex-row pt-4 z-10 items-center">
-        <div className="bg-gray-800 flex-col justify-center">
+        <div className="flex-col justify-center">
           {reading.flipped !== undefined && (
             <FlipCard
               readingId={reading.id}

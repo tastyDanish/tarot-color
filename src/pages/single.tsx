@@ -3,22 +3,14 @@ import InstagramShareCopy from "@/cards/instagram-share-copy";
 import ShareCard from "@/cards/share-card";
 import Fog from "@/components/fog";
 import { useReadingStore } from "@/stores/use-reading-store";
-import { useUserStore } from "@/stores/user-user-store";
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect } from "react";
 
 const Single = () => {
-  const { id: userId, loading: userLoading } = useUserStore();
-  const { reading, isLoading, loadReading } = useReadingStore();
-
-  useEffect(() => {
-    if (!userLoading) {
-      loadReading(userId ?? undefined);
-    }
-  }, [userLoading, userId, loadReading]);
+  const { reading, isLoading } = useReadingStore();
 
   return (
     <div className="w-full flex flex-col">
+      <p className="text-amber-100 py-4 text-xl"> Your reading for today is</p>
       <AnimatePresence mode="popLayout">
         {isLoading && (
           <motion.div

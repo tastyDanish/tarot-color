@@ -10,7 +10,7 @@ const PaperTexture = ({ opacity }: PaperTextureProps) => {
   return (
     <div
       className={cn(
-        "absolute inset-0 pointer-events-none z-0 mix-blend-multiply",
+        "absolute inset-0 pointer-events-none z-50 mix-blend-multiply",
         `opacity-${opacity}`
       )}
       style={{

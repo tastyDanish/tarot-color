@@ -1,7 +1,7 @@
 const FortunesPaletteGraphic = () => {
   return (
     <svg
-      viewBox="0 0 400 190"
+      viewBox="0 00 400 190"
       className="w-full h-full md:scale-100 transition-transform">
       <defs>
         <path

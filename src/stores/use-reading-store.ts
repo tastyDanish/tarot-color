@@ -52,7 +52,7 @@ type ReadingState = {
 
 export const useReadingStore = create<ReadingState>((set, get) => ({
 	reading: null,
-	isLoading: false,
+	isLoading: true,
 	setIsFlipped: async (settings) => {
 		const { flipped, userId, readingId } = settings;
 		const reading = get().reading;

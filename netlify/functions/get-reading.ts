@@ -195,7 +195,7 @@ const handler: Handler = async (event) => {
 
 		const { data: insertedReading, error: insertError } = await supabase
 			.from("readings")
-			.insert([readingToInsert]);
+			.insert([readingToInsert]).select().single();
 
 		if (insertError) {
 			console.log("ERROR - newReading: ", insertError.message);
@@ -210,7 +210,7 @@ const handler: Handler = async (event) => {
 		return {
 			statusCode: 200,
 			body: JSON.stringify({
-				reading: mapDbReadingToReading(insertedReading, streak),
+				reading: insertedReading,
 				streak,
 				source: "generated",
 			}),

@@ -13,8 +13,18 @@ const Collection = () => {
   const { loadReadings } = useCollectionStore();
 
   useEffect(() => {
-    if (id) loadReadings(id);
-  }, [id]);
+    if (!id) return;
+
+    const fetchReadings = async () => {
+      try {
+        await loadReadings(id);
+      } catch (err) {
+        console.error("Failed to load readings:", err);
+      }
+    };
+
+    fetchReadings();
+  }, [id, loadReadings]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -22,7 +32,7 @@ const Collection = () => {
   };
 
   return (
-    <div className="flex flex-col px-4 pt-6 pb-12 bg-background text-foreground">
+    <div className="flex flex-col px-4 pt-6 pb-12 bg-background text-foreground w-120">
       <Aura />
       {/* Header */}
       <header className="mb-6">

@@ -7,7 +7,7 @@ export const mapDbReadingToReading = (
 	reading: ReadingRow,
 	streak: number = 1,
 ): Reading => {
-	const variations = Array.isArray(reading.variations)
+	const variations = Array.isArray(reading?.variations)
 		? reading.variations
 		: [];
 

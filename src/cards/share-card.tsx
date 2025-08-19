@@ -26,7 +26,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
       </div>
 
       <div className="flex flex-row pt-4 z-10 px-8">
-        <div className="bg-gray-800 flex justify-center gap-4">
+        <div className=" flex justify-center gap-4">
           <div className="relative h-[580px] w-[340px]">
             <div className="absolute bg-stone-100 p-4 rounded-xl backface-hidden overflow-hidden shadow-md">
               <div className="bg-slate-950 p-1 rounded-md">

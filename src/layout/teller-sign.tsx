@@ -16,12 +16,11 @@ const TellerSign = () => {
 
   return (
     <div className="flex items-center flex-col relative">
-      <div className="bg-gray-800 w-full h-4 z-20" />
-      <div className="relative w-[300px] h-[180px] md:w-[480px] md:h-[240px] bg-orange-100 text-amber-950 p-3 md:p-4 rounded-xl md:rounded-2xl overflow-hidden z-20 shadow-md">
+      <div className="relative w-[300px] h-[180px] md:w-120 md:h-[240px] bg-orange-100 text-amber-950 px-3 pb-3 md:px-4 md:pb-4 rounded-b-xl md:rounded-b-2xl overflow-hidden z-20 shadow-md -mt-6">
         <div className="relative h-full overflow-hidden">
           {[
-            "-top-5 -left-5",
-            "-top-5 -right-5",
+            // "-top-5 -left-5",
+            // "-top-5 -right-5",
             "-bottom-5 -left-5",
             "-bottom-5 -right-5",
           ].map((pos, i) => (
@@ -31,7 +30,7 @@ const TellerSign = () => {
             />
           ))}
 
-          <div className="h-full w-full border-amber-950 border-4 flex flex-col justify-center z-20">
+          <div className="h-full w-full border-amber-950 border-4 border-t-0 pt-4 flex flex-col justify-center z-20">
             <FortunesPaletteGraphic />
             <div className="h-1 w-full bg-amber-950 mt-1" />
             <div className="flex justify-around md:justify-center md:gap-4 font-bold md:text-xl w-full items-center h-20">
