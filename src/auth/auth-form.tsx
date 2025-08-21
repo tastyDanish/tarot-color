@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 type Mode = "login" | "signup";
 
 const AuthForm = () => {
-  const { loadReading, setIsFlipped } = useReadingStore();
+  const { loadReading } = useReadingStore();
   const { loadUser } = useUserStore();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -33,7 +33,6 @@ const AuthForm = () => {
 
       const userId = await loadUser();
       if (userId) {
-        setIsFlipped(null);
         await loadReading(userId);
       }
 
@@ -71,7 +70,7 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="max-w-sm mx-auto p-4 text-amber-100 mt-4">
+    <div className="max-w-sm mx-auto p-4 text-amber-100 mt-4  z-10">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-3">

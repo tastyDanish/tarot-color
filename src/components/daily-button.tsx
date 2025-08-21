@@ -34,49 +34,50 @@ const DailyButton = () => {
     }
   }, [hover, shakeControls]);
   return (
-    <button
-      onClick={() => navigate("/daily-single")}
-      onMouseEnter={() => setHover(true)}
-      className="group bg-orange-100 p-4 rounded-xl text-amber-950 h-70 flex flex-col items-center justify-around shadow-xl hover:shadow-lg transition cursor-pointer relative"
-      onMouseLeave={() => setHover(false)}>
+    <div>
       {reading && !reading.flipped && (
-        <div className="bg-orange-500 text-xl font-bold px-2 rounded-xl absolute -top-3 -left-4 z-10 text-gray-900">
+        <div className="bg-orange-500 text-xl font-bold px-2 rounded-xl absolute -top-3 -left-4 z-50 text-gray-900 opacity-100">
           NEW
         </div>
       )}
+      <button
+        onClick={() => navigate("/daily-single")}
+        onMouseEnter={() => setHover(true)}
+        className="group bg-orange-100 p-4 rounded-2xl max-w-64 text-amber-950 h-70 flex flex-col items-center justify-around shadow-xl hover:shadow-lg transition cursor-pointer relative overflow-hidden"
+        onMouseLeave={() => setHover(false)}>
+        {/* Decorative Stars */}
+        <div className="absolute text-2xl -rotate-45 -translate-x-20 -translate-y-24 opacity-70">
+          ★
+        </div>
+        <div className="absolute text-2xl rotate-45 translate-x-20 -translate-y-4 opacity-70">
+          ★
+        </div>
+        <div className="absolute text-xl rotate-45 translate-x-16 -translate-y-20 opacity-70">
+          ★
+        </div>
+        <div className="absolute text-3xl -rotate-45 -translate-x-16 -translate-y-10 opacity-70">
+          ★
+        </div>
 
-      {/* Decorative Stars */}
-      <div className="absolute text-2xl -rotate-45 -translate-x-20 -translate-y-24 opacity-70">
-        ★
-      </div>
-      <div className="absolute text-2xl rotate-45 translate-x-20 -translate-y-4 opacity-70">
-        ★
-      </div>
-      <div className="absolute text-xl rotate-45 translate-x-16 -translate-y-20 opacity-70">
-        ★
-      </div>
-      <div className="absolute text-3xl -rotate-45 -translate-x-16 -translate-y-10 opacity-70">
-        ★
-      </div>
+        <motion.div
+          className="pointer-events-none"
+          initial={{ y: 0 }}
+          animate={shakeControls} // applies shake animation
+        >
+          <LittleCard rotation="" />
+        </motion.div>
 
-      <motion.div
-        className="pointer-events-none"
-        initial={{ y: 0 }}
-        animate={shakeControls} // applies shake animation
-      >
-        <LittleCard rotation="" />
-      </motion.div>
+        <div className="h-[3px] w-9/10 rounded-xl bg-amber-950 " />
+        <div className="flex flex-col w-full items-start text-left">
+          <span className="font-extrabold text-xl">DAILY READING</span>
+          <span className="font-thin text-sm">
+            See what the fates have in store for you today
+          </span>
+        </div>
 
-      <div className="h-[3px] w-9/10 rounded-xl bg-amber-950 " />
-      <div className="flex flex-col w-full items-start text-left">
-        <span className="font-extrabold text-xl">DAILY READING</span>
-        <span className="font-thin text-sm">
-          See what the fates have in store for you today
-        </span>
-      </div>
-
-      <PaperTexture opacity={80} />
-    </button>
+        <PaperTexture opacity={80} />
+      </button>
+    </div>
   );
 };
 

@@ -95,7 +95,7 @@ const StarryNight = () => {
     return (
       <div
         id="starry-wrapper"
-        className="absolute inset-0 w-full h-full pointer-events-none">
+        className="absolute inset-0 w-full h-full pointer-events-none -z-50">
         <Particles
           id="tsparticles-starry-background"
           options={options}

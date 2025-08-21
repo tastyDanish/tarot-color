@@ -62,7 +62,7 @@ const FortunesPaletteGraphic = () => {
         past ✸ present ✸ future
       </text>
       <text
-        x="450"
+        x="430"
         y="130"
         rotate={45}
         opacity="0.7"
@@ -74,8 +74,8 @@ const FortunesPaletteGraphic = () => {
         ★
       </text>
       <text
-        x="480"
-        y="50"
+        x="410"
+        y="20"
         rotate={90}
         opacity="0.7"
         fill="currentColor"
@@ -86,7 +86,7 @@ const FortunesPaletteGraphic = () => {
         ★
       </text>
       <text
-        x="-50"
+        x="-30"
         y="130"
         opacity="0.7"
         rotate={45}
@@ -98,8 +98,8 @@ const FortunesPaletteGraphic = () => {
         ★
       </text>
       <text
-        x="-50"
-        y="80"
+        x="20"
+        y="50"
         rotate={-90}
         opacity="0.7"
         fill="currentColor"
