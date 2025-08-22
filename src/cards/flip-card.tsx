@@ -1,6 +1,6 @@
-import { motion } from "motion/react";
+import { animate, motion } from "motion/react";
 import type { TarotCard } from "./tarot-cards";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import CardBorder from "./card-border";
 import CardBack from "./card-back";
@@ -29,6 +29,33 @@ const FlipCard = ({
 
   const { setIsFlipped } = useReadingStore();
 
+  useEffect(() => {
+    if (isFlipped) {
+      const container = document.getElementById("scroll-container");
+      const target = document.getElementById("daily-reading");
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (container && target && !prefersReducedMotion) {
+        const containerRect = container.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+
+        const targetBottom = targetRect.bottom - containerRect.top;
+
+        const scrollTo = targetBottom - container.clientHeight;
+
+        animate(container.scrollTop, scrollTo, {
+          duration: 0.7,
+          ease: "easeInOut",
+          onUpdate: (v) => {
+            container.scrollTop = v;
+          },
+        });
+      }
+    }
+  }, [isFlipped]);
+
   const handleClick = () => {
     setIsFlipped({ flipped: true, userId: id, readingId });
     if (id == null) createAccountPush(1000);
@@ -37,14 +64,14 @@ const FlipCard = ({
   return (
     <button
       onClick={handleClick}
-      className="h-full"
+      className="h-fit"
       style={{
         perspective: "1000px",
         WebkitPerspective: "1000px",
         opacity: frontLoaded && backLoaded ? 1 : 0,
       }}>
       <motion.div
-        className="relative md:w-[340px] md:h-[600px] w-[300px] h:[480px] pb-16"
+        className="relative w-60 flex justify-end shadow-xl"
         style={{
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",
@@ -61,7 +88,7 @@ const FlipCard = ({
             src={card.image}
             draggable={false}
             className={cn(
-              "[clip-path:inset(2px)] z-10",
+              "[clip-path:inset(2px)] z-10 h-90",
               isReversed ? "rotate-180" : ""
             )}
             alt={card.name}

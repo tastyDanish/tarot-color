@@ -1,5 +1,4 @@
 // import { useState } from "react";
-import { capitalize } from "@/lib/string-utils";
 import { getContrastTextColor } from "@/lib/color-utils";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -8,52 +7,31 @@ type ColorCardProps = {
   color: string;
   word: string;
   isFlipped: boolean;
-  isVisible: boolean;
   index: number;
   isReversed: boolean;
 };
 
-const ColorCard = ({
-  color,
-  word,
-  isVisible,
-  isReversed,
-  index,
-  isFlipped,
-}: ColorCardProps) => {
+const ColorCard = ({ color, index, isFlipped }: ColorCardProps) => {
   const textColor = getContrastTextColor(color);
 
   return (
     <motion.div
       key={color}
-      className="flex flex-col items-start w-full text-border-white font-extrabold text-2xl rounded-md relative overflow-hidden"
-      initial={{ x: isFlipped ? -340 : 0 }}
-      animate={{ x: isVisible ? 0 : -340 }}
+      className="flex flex-col items-start w-full text-border-white font-extrabold text-2xl rounded-md relative overflow-hidden justify-around"
+      initial={{ x: -60 }}
+      animate={{ x: isFlipped ? 0 : -60 }}
       transition={{
         delay: isFlipped ? 0.7 + index * 0.3 : index * 0.3,
-        duration: 0.5,
+        duration: 0.3,
         ease: "easeOut",
       }}
       title={color}>
-      {isReversed && (
-        <div
-          style={{ backgroundColor: color }}
-          className={cn(
-            "h-12 rounded-b-md w-full z-20 relative flex items-center justify-end pr-4",
-            textColor
-          )}></div>
-      )}
-      <div className="px-4 text-amber-100 pt-1 whitespace-nowrap">
-        {capitalize(word?.trim()) ?? "uh oh broken"}
-      </div>
-      {!isReversed && (
-        <div
-          style={{ backgroundColor: color }}
-          className={cn(
-            "h-12 rounded-b-md w-full z-20 relative flex items-center justify-end pr-4",
-            textColor
-          )}></div>
-      )}
+      <div
+        style={{ backgroundColor: color }}
+        className={cn(
+          "h-14 rounded-b-md w-full z-20 relative flex items-center justify-end pr-4",
+          textColor
+        )}></div>
     </motion.div>
   );
 };

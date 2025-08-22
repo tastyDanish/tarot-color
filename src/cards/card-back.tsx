@@ -8,7 +8,7 @@ type CardBackProps = {
 const CardBack = ({ children }: CardBackProps) => {
   return (
     <div
-      className="absolute backface-hidden bg-orange-100 p-4 justify-center items-center rounded-xl overflow-hidden shadow-md"
+      className="absolute backface-hidden bg-orange-100 p-3 justify-center items-center rounded-xl overflow-hidden"
       style={{
         transform: "rotateY(180deg)",
         WebkitBackfaceVisibility: "hidden",
@@ -18,7 +18,7 @@ const CardBack = ({ children }: CardBackProps) => {
         <div className="absolute bg-orange-100 h-full w-1" />
         <div className="absolute bg-orange-100 h-30 w-30 rounded-full transform-x-30" />
         <div className="absolute border-orange-100 border-4 h-40 w-40 rounded-full" />
-        <div className="absolute border-orange-100 border-4 h-50 w-50 rounded-full" />
+        <div className="absolute border-orange-100 border-4 h-48 w-48 rounded-full" />
 
         {children}
       </div>

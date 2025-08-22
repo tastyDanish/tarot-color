@@ -34,7 +34,7 @@ const DailyButton = () => {
     }
   }, [hover, shakeControls]);
   return (
-    <div>
+    <div className="relative">
       {reading && !reading.flipped && (
         <div className="bg-orange-500 text-xl font-bold px-2 rounded-xl absolute -top-3 -left-4 z-50 text-gray-900 opacity-100">
           NEW

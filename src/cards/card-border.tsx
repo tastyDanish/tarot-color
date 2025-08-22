@@ -13,20 +13,20 @@ type CardBorderProps = {
 const textureStyle = {
   backgroundImage: "url('/paper-texture.jpg')",
   backgroundSize: "cover",
-  backgroundPosition: "30% 0%",
+  backgroundPosition: "0% 0%",
 };
 
 const CardBorder = ({ children, isFoil, size }: CardBorderProps) => {
   const getBorder = () => {
     if (size == "small") return "p-1 reounded";
     if (size == "medium") return "p-2 rounded-lg";
-    if (size == "large") return "p-4 rounded-xl";
+    if (size == "large") return "p-3 rounded-xl";
     return "p-2 rounded-l";
   };
   return (
     <div
       className={cn(
-        "absolute bg-stone-100 backface-hidden overflow-hidden shadow-md",
+        "absolute bg-stone-100 backface-hidden overflow-hidden rounded-xl border-0",
         getBorder()
       )}
       style={{ WebkitBackfaceVisibility: "hidden", WebkitPerspective: 0 }}>
