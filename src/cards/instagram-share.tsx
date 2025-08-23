@@ -15,8 +15,8 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
       className="flex flex-col items-center justify-start opacity-0 pointer-events-none fixed top-0 left-0 overflow-hidden"
       style={{
         aspectRatio: "9 / 16",
-        width: "1000px",
-        maxWidth: "100%",
+        width: "400px",
+        maxWidth: "fit-content",
       }}>
       <div className="flex flex-col flex-1 w-full h-full px-2 box-border justify-between">
         <div className="flex justify-center gap-4 w-full">
