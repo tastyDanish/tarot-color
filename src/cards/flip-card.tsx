@@ -64,14 +64,17 @@ const FlipCard = ({
   return (
     <button
       onClick={handleClick}
-      className="h-fit"
+      className="h-fit w-fit"
       style={{
         perspective: "1000px",
         WebkitPerspective: "1000px",
         opacity: frontLoaded && backLoaded ? 1 : 0,
       }}>
       <motion.div
-        className="relative w-60 flex justify-end shadow-xl"
+        className={cn(
+          "relative w-60 flex shadow-xl",
+          isFlipped ? "justify-start" : "justify-end"
+        )}
         style={{
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",

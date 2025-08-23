@@ -19,7 +19,7 @@ export const UseShare = () => {
   };
 
   const handleShare = async () => {
-    const element = document.getElementById("reading");
+    const element = document.getElementById("instagram-reading");
     if (!element) return;
 
     const method = await tryCopyToClipboard(element);

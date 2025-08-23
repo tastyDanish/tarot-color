@@ -15,7 +15,7 @@ const FoilAnimation = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       const newSparkle = {
-        id: idCounter++,
+        id: idCounter++ % 1000,
         left: Math.random() * 100 + "%",
         top: Math.random() * 100 + "%",
         rotate: Math.random() * 360,

@@ -1,5 +1,5 @@
 import DailyCard from "@/cards/daily-card";
-import InstagramShareCopy from "@/cards/instagram-share-copy";
+import InstagramShare from "@/cards/instagram-share";
 import ShareCard from "@/cards/share-card";
 import CrystalBall from "@/components/crystal-ball";
 import { useReadingStore } from "@/stores/use-reading-store";
@@ -29,11 +29,12 @@ const Single = () => {
         {!isLoading && reading && (
           <motion.div
             key="card"
+            className="w-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}>
             <ShareCard reading={reading} />
-            <InstagramShareCopy reading={reading} />
+            <InstagramShare reading={reading} />
             <DailyCard reading={reading} />
           </motion.div>
         )}

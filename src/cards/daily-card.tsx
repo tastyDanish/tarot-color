@@ -33,7 +33,11 @@ const DailyCard = ({ reading }: DailyCardProps) => {
 
       {reading.flipped !== undefined && (
         <>
-          <div className="flex z-10 h-100 mt-4">
+          <div
+            className={cn(
+              "flex z-10 h-100 mt-2 w-full justify-center",
+              reading.reversed === true ? "flex-row-reverse" : ""
+            )}>
             <FlipCard
               readingId={reading.id}
               isReversed={reading.reversed ?? true}
@@ -55,11 +59,11 @@ const DailyCard = ({ reading }: DailyCardProps) => {
             }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
             className={cn(
-              "flex w-full flex-wrap justify-center gap-2 pb-2 max-w-80",
+              "flex w-full flex-wrap justify-center gap-2 pb-2 max-w-100",
               reading.flipped === false ? "opacity-0" : "opacity-100"
             )}>
             {reading.words.map(({ word, color }) => (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 text-xl tracking-wide">
                 <div
                   className="h-4 w-4 rounded-full"
                   style={{ backgroundColor: color }}
