@@ -1,6 +1,6 @@
 import { domToPng } from "modern-screenshot";
 
-export const tryCopyToClipboard = async (element: HTMLElement) => {
+export const tryCopyToClipboardNew = async (element: HTMLElement) => {
   try {
     // 1. Grab the particles canvas directly
     const canvas = document.querySelector(
@@ -65,7 +65,7 @@ export const tryCopyToClipboard = async (element: HTMLElement) => {
   }
 };
 
-export const tryCopyToClipboardLegacy = async (element: HTMLElement) => {
+export const tryCopyToClipboard = async (element: HTMLElement) => {
   try {
     const item = new ClipboardItem({
       "image/png": (async () => {
