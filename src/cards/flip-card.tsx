@@ -103,7 +103,7 @@ const FlipCard = ({
           <img
             src={card.image}
             draggable={false}
-            className="[clip-path:inset(2px)] z-10 opacity-0 h-90"
+            className="[clip-path:inset(2px)] z-10 opacity-0 w-50"
             alt={card.name}
             onLoad={() => setBackLoaded(true)}
           />
