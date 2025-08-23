@@ -6,7 +6,7 @@ const CardCollection = () => {
   const { major, cups, pentacles, swords, wands } = useCollectionStore();
 
   return (
-    <section className="flex flex-col gap-6 w-full items-center">
+    <section className="flex flex-col gap-6 w-full items-center max-w-80 ">
       {major ? <CardGroup suit={major} /> : <CardLoader />}
       {cups ? <CardGroup suit={cups} /> : <CardLoader />}
       {pentacles ? <CardGroup suit={pentacles} /> : <CardLoader />}

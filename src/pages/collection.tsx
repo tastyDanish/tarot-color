@@ -32,7 +32,7 @@ const Collection = () => {
   };
 
   return (
-    <div className="flex flex-col px-4 pt-6 pb-12 bg-background text-foreground w-120">
+    <div className="flex flex-col px-4 pt-6 pb-12 bg-background text-foreground w-120 items-center">
       <Aura />
       {/* Header */}
       <header className="mb-6">
