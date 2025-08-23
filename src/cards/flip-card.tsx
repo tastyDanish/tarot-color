@@ -71,43 +71,47 @@ const FlipCard = ({
         opacity: frontLoaded && backLoaded ? 1 : 0,
       }}>
       <motion.div
-        className={cn(
-          "relative w-60 flex shadow-xl",
-          isFlipped ? "justify-start" : "justify-end"
-        )}
-        style={{
-          transformStyle: "preserve-3d",
-          WebkitTransformStyle: "preserve-3d",
-        }}
-        initial={false}
-        animate={{
-          rotateY: isFlipped ? 0 : 180,
-        }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}>
-        <CardBorder
-          isFoil={isFoil}
-          size="large">
-          <img
-            src={card.image}
-            draggable={false}
-            className={cn(
-              "[clip-path:inset(2px)] z-10 w-50",
-              isReversed ? "rotate-180" : ""
-            )}
-            alt={card.name}
-            onLoad={() => setFrontLoaded(true)}
-          />
-        </CardBorder>
+        initial={{ x: isFlipped ? 0 : isReversed ? -20 : 20 }}
+        animate={{ x: isFlipped ? 0 : isReversed ? -20 : 20 }}>
+        <motion.div
+          className={cn(
+            "relative w-60 flex shadow-xl",
+            isFlipped ? "justify-start" : "justify-end"
+          )}
+          style={{
+            transformStyle: "preserve-3d",
+            WebkitTransformStyle: "preserve-3d",
+          }}
+          initial={false}
+          animate={{
+            rotateY: isFlipped ? 0 : 180,
+          }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}>
+          <CardBorder
+            isFoil={isFoil}
+            size="large">
+            <img
+              src={card.image}
+              draggable={false}
+              className={cn(
+                "[clip-path:inset(2px)] z-10 w-50",
+                isReversed ? "rotate-180" : ""
+              )}
+              alt={card.name}
+              onLoad={() => setFrontLoaded(true)}
+            />
+          </CardBorder>
 
-        <CardBack>
-          <img
-            src={card.image}
-            draggable={false}
-            className="[clip-path:inset(2px)] z-10 opacity-0 w-50"
-            alt={card.name}
-            onLoad={() => setBackLoaded(true)}
-          />
-        </CardBack>
+          <CardBack>
+            <img
+              src={card.image}
+              draggable={false}
+              className="[clip-path:inset(2px)] z-10 opacity-0 w-50"
+              alt={card.name}
+              onLoad={() => setBackLoaded(true)}
+            />
+          </CardBack>
+        </motion.div>
       </motion.div>
     </button>
   );
