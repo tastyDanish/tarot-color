@@ -91,7 +91,7 @@ const FlipCard = ({
             src={card.image}
             draggable={false}
             className={cn(
-              "[clip-path:inset(2px)] z-10 h-90",
+              "[clip-path:inset(2px)] z-10 w-50",
               isReversed ? "rotate-180" : ""
             )}
             alt={card.name}
