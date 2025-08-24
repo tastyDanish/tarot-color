@@ -614,7 +614,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 1,
     image: "cards/the-hierophant.jpg",
     description:
-      "Tradition, Ritual, Initiation, Order, Doctrine, Code, Belief, Conviction, Structure, Mentor, Sanction, Custom, Instruction, Symbol, Hierarchy",
+      "Tradition, Ritual, Initiation, Order, Doctrine, Code, Belief, Conviction, Structure, Mentor, Sanction, Heritage, Instruction, Symbol, Hierarchy",
     reversed:
       "Rebellion, Challenge, Rigidity, Restrained, Isolation, Restriction, Skepticism, Questioning, Rebel, Innovate, Question, Experiment",
   },
