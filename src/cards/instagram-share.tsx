@@ -16,7 +16,7 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
       style={{
         aspectRatio: "9 / 16",
         width: "400px",
-        maxWidth: "fit-content",
+        minWidth: "400px",
       }}>
       <div className="flex flex-col flex-1 w-full h-full px-2 box-border justify-between">
         <div className="flex justify-center gap-4 w-full">
