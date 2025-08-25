@@ -17,7 +17,7 @@ const ColorSwatch = ({ words, isFlipped, isReversed }: ColorSwatchProps) => {
       transition={{ delay: 0.7 }}
       className={cn(
         "relative rounded-2xl  flex flex-col gap-4 h-98 w-30 text-2xl items-start justify-center overflow-hidden md:pl-4 md:-mt-4 -z-10",
-        isFlipped ? "opacity-100" : "opacity-0",
+        isFlipped ? "opacity-100" : "opacity-0 w-0",
         isReversed ? "-ml-16 translate-x-16" : "-mr-16 -translate-x-16"
       )}>
       {words?.map((word, i) => (
