@@ -25,7 +25,7 @@ const Home = () => {
             <div></div>
           ) : id === null ? (
             <button
-              className="bg-orange-100 py-4 rounded-md text-amber-950 flex flex-col items-center gap-2 justify-around shadow-md hover:shadow-lg transition cursor-pointer relative w-full"
+              className="bg-orange-100 py-4 rounded-md text-amber-950 flex flex-col items-center gap-2 justify-around shadow-md hover:shadow-lg transition cursor-pointer relative w-full overflow-hidden"
               onClick={() => navigate("/sign-in")}>
               <span className="font-semibold text-2xl">
                 SIGN IN / CREATE ACCOUNT
@@ -34,7 +34,7 @@ const Home = () => {
             </button>
           ) : (
             <button
-              className="bg-orange-100 py-4 rounded-md text-amber-950 flex flex-col items-center gap-2 justify-around shadow-md hover:shadow-lg transition cursor-pointer relative w-full"
+              className="bg-orange-100 py-4 rounded-md text-amber-950 flex flex-col items-center gap-2 justify-around shadow-md hover:shadow-lg transition cursor-pointer relative w-full overflow-hidden"
               onClick={() => navigate("/collection")}>
               <span className="font-semibold text-2xl">COLLECTION</span>
               <PaperTexture opacity={80} />
