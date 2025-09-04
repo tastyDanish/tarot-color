@@ -6,6 +6,7 @@ import SignIn from "./pages/sign-in";
 import Collection from "./pages/collection";
 import ForgotPassword from "./pages/forgot-password";
 import Single from "./pages/single";
+import Triple from "./pages/triple";
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
         <Route
           path="daily-single"
           element={<Single />}
+        />
+        <Route
+          path="triple"
+          element={<Triple />}
         />
       </Route>
     </Routes>

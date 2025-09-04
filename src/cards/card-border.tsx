@@ -26,7 +26,7 @@ const CardBorder = ({ children, isFoil, size }: CardBorderProps) => {
   return (
     <div
       className={cn(
-        "absolute bg-stone-100 backface-hidden overflow-hidden rounded-xl border-0",
+        "bg-stone-100 backface-hidden overflow-hidden rounded-xl border-0",
         getBorder()
       )}
       style={{ WebkitBackfaceVisibility: "hidden", WebkitPerspective: 0 }}>
