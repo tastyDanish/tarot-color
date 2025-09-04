@@ -6,6 +6,7 @@ import FlipCard from "./flip-card";
 import StreakCounter from "./streak-counter";
 import ShareButton from "@/share";
 import { cn } from "@/lib/utils";
+import { capitalize } from "@/lib/string-utils";
 
 type DailyCardProps = {
   reading: Reading;
@@ -68,7 +69,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
                   className="h-4 w-4 rounded-full"
                   style={{ backgroundColor: color }}
                 />
-                <span>{word}</span>
+                <span>{capitalize(word)}</span>
               </div>
             ))}
           </motion.div>
