@@ -694,7 +694,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 1,
     image: "cards/the-wheel-of-fortune.jpg",
     description:
-      "luck, happiness, joy, bliss, improvement, prosperity, bonus, blessing, benefits, graces, favors, goods, wealth, profits, lot, fate, destiny, adventure, entropy, probability",
+      "luck, happiness, joy, bliss, improvement, prosperity, bonus, blessing, benefits, graces, favors, goods, wealth, profits, fate, destiny, adventure, entropy, probability",
     reversed:
       "Setback, Resistance, Destiny, Loss, Instability, Blockage, Prepare, Observe, Watch, Persist, Reversal, Unpredictability",
   },
