@@ -186,7 +186,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Awakening, Reckoning, Renewal, Transformation, Clarity, Rebirth, Redemption, Decision, Realization, Release, Truth, Resolution, Decision, Forgiveness, Acceptance",
     reversed:
-      "Introspection, Review, Pause, Healing, Clarity, Reconnection, Emergence, Discovery, Integration, Healing",
+      "Introspection, Review, Pause, Clarity, Reconnection, Emergence, Discovery, Integration, Healing",
   },
   {
     name: "Justice",
