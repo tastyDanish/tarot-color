@@ -114,7 +114,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 5,
     image: "cards/five-of-pentacles.jpg",
     description:
-      "Hardship, Isolation, Scarcity, Vulnerability, Struggle, Survival, Need, Insecurity, Cold, Need, Crisis, Desperation, Lack, Testing",
+      "Hardship, Isolation, Scarcity, Vulnerability, Struggle, Survival, Insecurity, Cold, Need, Crisis, Desperation, Lack, Testing",
     reversed:
       "Recovery, Support, Resilience, Renewal, Community, Hope, Healing, Improvement, Shelter, Stability, Strength, Regeneration, Resourcefulness",
   },
