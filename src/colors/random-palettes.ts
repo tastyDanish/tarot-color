@@ -109,17 +109,17 @@ export const generatePalette = (): string[] => {
       chroma.hsl(
         jitterHue((baseHue + 60) % 360),
         randomSaturation(),
-        jitterLightness(0.5)
+        jitterLightness(0.5),
       ),
       chroma.hsl(
         jitterHue((baseHue + 180) % 360),
         randomSaturation(),
-        jitterLightness(0.5)
+        jitterLightness(0.5),
       ),
       chroma.hsl(
         jitterHue((baseHue + 240) % 360),
         randomSaturation(),
-        jitterLightness(0.5)
+        jitterLightness(0.5),
       ),
     ];
 
@@ -146,3 +146,9 @@ export const generatePalette = (): string[] => {
   // fallback
   return chroma.scale([baseColor, anchor]).mode("lab").colors(5);
 };
+
+export const deprivePalette = (palette: string[]) =>
+  palette.map((color) => {
+    const [l] = chroma(color).lab();
+    return chroma.lab(l, 0, 0).hex();
+  });

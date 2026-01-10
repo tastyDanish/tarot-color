@@ -3,6 +3,7 @@ import CardTitle from "./card-title";
 import FoilAnimation from "./foil-animation";
 import type { Reading } from "@/stores/use-reading-store";
 import StreakCounter from "./streak-counter";
+import { capitalize } from "@/lib/string-utils";
 
 type InstagramShareProps = {
   reading: Reading;
@@ -85,7 +86,7 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
                 className="h-4 w-4 rounded-full"
                 style={{ backgroundColor: color }}
               />
-              <span>{word}</span>
+              <span>{capitalize(word)}</span>
             </div>
           ))}
         </div>

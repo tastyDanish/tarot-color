@@ -29,6 +29,7 @@ export const mapDbReadingToReading = (
 		expiration: new Date(reading.expires_at),
 		foil: variations.includes("foil"),
 		reversed: variations.includes("reversed"),
+		deprived: variations.includes("deprived"),
 		streak,
 		flipped: reading.is_flipped ?? true,
 		id: reading.id,

@@ -114,7 +114,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 5,
     image: "cards/five-of-pentacles.jpg",
     description:
-      "Hardship, Isolation, Scarcity, Vulnerability, Struggle, Survival, Need, Insecurity, Cold, Need, Crisis, Desperation, Lack, Testing",
+      "Hardship, Isolation, Scarcity, Vulnerability, Struggle, Survival, Insecurity, Cold, Need, Crisis, Desperation, Lack, Testing",
     reversed:
       "Recovery, Support, Resilience, Renewal, Community, Hope, Healing, Improvement, Shelter, Stability, Strength, Regeneration, Resourcefulness",
   },
@@ -186,7 +186,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Awakening, Reckoning, Renewal, Transformation, Clarity, Rebirth, Redemption, Decision, Realization, Release, Truth, Resolution, Decision, Forgiveness, Acceptance",
     reversed:
-      "Introspection, Review, Pause, Healing, Clarity, Reconnection, Emergence, Discovery, Integration, Healing",
+      "Introspection, Review, Pause, Clarity, Reconnection, Emergence, Discovery, Integration, Healing",
   },
   {
     name: "Justice",
@@ -694,7 +694,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 1,
     image: "cards/the-wheel-of-fortune.jpg",
     description:
-      "luck, happiness, joy, bliss, improvement, prosperity, bonus, blessing, benefits, graces, favors, goods, wealth, profits, lot, fate, destiny, adventure, entropy, probability",
+      "luck, happiness, joy, bliss, improvement, prosperity, bonus, blessing, benefits, graces, favors, goods, wealth, profits, fate, destiny, adventure, entropy, probability",
     reversed:
       "Setback, Resistance, Destiny, Loss, Instability, Blockage, Prepare, Observe, Watch, Persist, Reversal, Unpredictability",
   },

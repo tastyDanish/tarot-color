@@ -1,5 +1,5 @@
 import { PALETTES } from "@/colors/palettes";
-import { generatePalette } from "@/colors/random-palettes";
+import { deprivePalette, generatePalette } from "@/colors/random-palettes";
 import {
 	getRandomItem,
 	getRandomSubSet,
@@ -12,10 +12,13 @@ export const generateReading = (expiration: Date): Reading => {
 	const card = getRandomItem(TAROT_CARDS);
 	const reversed = Math.random() <= 0.12;
 	const foil = Math.random() <= 0.07;
+	const deprived = Math.random() <= 0.03;
 
 	const palette = Math.random() > 0.2
 		? generatePalette()
 		: shuffleArray(getRandomItem(PALETTES));
+
+	const finalPalette = deprived ? deprivePalette(palette) : palette;
 
 	const wordsRaw = (reversed ? card.reversed : card.description)
 		.split(",")
@@ -24,7 +27,7 @@ export const generateReading = (expiration: Date): Reading => {
 
 	const words: WordColor[] = chosenWords.map((word, i) => ({
 		word,
-		color: palette[i % palette.length],
+		color: finalPalette[i % finalPalette.length],
 	}));
 
 	const reading: Reading = {
@@ -35,6 +38,7 @@ export const generateReading = (expiration: Date): Reading => {
 		reversed,
 		foil,
 		flipped: false,
+		deprived,
 	};
 
 	return reading;

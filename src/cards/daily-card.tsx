@@ -6,6 +6,7 @@ import FlipCard from "./flip-card";
 import StreakCounter from "./streak-counter";
 import ShareButton from "@/share";
 import { cn } from "@/lib/utils";
+import { capitalize } from "@/lib/string-utils";
 
 type DailyCardProps = {
   reading: Reading;
@@ -27,6 +28,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
             title={reading.card.name}
             isReversed={reading.reversed}
             isFoil={reading.foil ?? false}
+            isDeprived={reading.deprived ?? false}
           />
         </div>
       </motion.div>
@@ -44,6 +46,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
               isFlipped={reading.flipped}
               card={reading.card}
               isFoil={reading.foil ?? false}
+              isDeprived={reading.deprived ?? false}
             />
             <ColorSwatch
               isFlipped={reading.flipped}
@@ -68,7 +71,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
                   className="h-4 w-4 rounded-full"
                   style={{ backgroundColor: color }}
                 />
-                <span>{word}</span>
+                <span>{capitalize(word)}</span>
               </div>
             ))}
           </motion.div>
