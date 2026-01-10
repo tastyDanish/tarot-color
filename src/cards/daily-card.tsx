@@ -66,7 +66,9 @@ const DailyCard = ({ reading }: DailyCardProps) => {
               reading.flipped === false ? "opacity-0" : "opacity-100"
             )}>
             {reading.words.map(({ word, color }) => (
-              <div className="flex items-center gap-1 text-xl tracking-wide">
+              <div
+                className="flex items-center gap-1 text-xl tracking-wide"
+                key={word}>
                 <div
                   className="h-4 w-4 rounded-full"
                   style={{ backgroundColor: color }}
