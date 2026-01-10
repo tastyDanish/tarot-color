@@ -70,6 +70,7 @@ export const createReading = async (user_id: string, expiration: string) => {
 	const variations: string[] = [];
 	if (newReading.reversed) variations.push("reversed");
 	if (newReading.foil) variations.push("foil");
+	if (newReading.deprived) variations.push("deprived");
 
 	const readingToInsert = {
 		card_name: newReading.card.name,

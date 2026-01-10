@@ -14,6 +14,7 @@ type FlipCardProps = {
   isFlipped: boolean;
   isReversed: boolean;
   isFoil: boolean;
+  isDeprived: boolean;
 };
 
 const FlipCard = ({
@@ -22,6 +23,7 @@ const FlipCard = ({
   isFoil,
   isFlipped,
   readingId,
+  isDeprived,
 }: FlipCardProps) => {
   const [frontLoaded, setFrontLoaded] = useState(false);
   const [backLoaded, setBackLoaded] = useState(false);
@@ -92,7 +94,8 @@ const FlipCard = ({
             draggable={false}
             className={cn(
               "[clip-path:inset(2px)] z-10 w-50",
-              isReversed ? "rotate-180" : ""
+              isReversed ? "rotate-180" : "",
+              isDeprived ? "grayscale" : ""
             )}
             alt={card.name}
             onLoad={() => setFrontLoaded(true)}
