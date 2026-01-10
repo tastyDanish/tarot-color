@@ -28,6 +28,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
             title={reading.card.name}
             isReversed={reading.reversed}
             isFoil={reading.foil ?? false}
+            isDeprived={reading.deprived ?? false}
           />
         </div>
       </motion.div>
@@ -45,6 +46,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
               isFlipped={reading.flipped}
               card={reading.card}
               isFoil={reading.foil ?? false}
+              isDeprived={reading.deprived ?? false}
             />
             <ColorSwatch
               isFlipped={reading.flipped}

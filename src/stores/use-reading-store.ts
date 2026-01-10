@@ -18,6 +18,7 @@ export type Reading = {
 	foil?: boolean;
 	streak?: number;
 	flipped?: boolean;
+	deprived?: boolean;
 };
 
 const LOCAL_STORAGE_KEY = "divination-as-a-service-2";
@@ -31,6 +32,7 @@ const loadFromStorage = (): Reading | null => {
 		saved.expiration = new Date(saved.expiration);
 		saved.reversed = saved.reversed ?? false;
 		saved.flipped = saved.flipped ?? true;
+		saved.deprived = saved.deprived ?? false;
 		return saved;
 	} catch {
 		return null;
