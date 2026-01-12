@@ -27,10 +27,17 @@ const Triple = () => {
         </div>
         <div className="shrink-0 flex flex-col z-10 items-center">
           <span>Present</span>
-          <span>The Fool</span>
           <FakeCard />
-          <div className="flex flex-row gap-1 items-center">
-            <div className="h-4 w-4 rounded-full bg-red-500" /> Adventure
+          <div className="flex flex-col gap-1 items-center">
+            <span className="font-bold">The Hanged Man</span>
+            <div className="flex flex-row gap-2 items-center">
+              <div className="h-4 w-4 rounded-full bg-red-500" />{" "}
+              <span>Adventure</span>
+            </div>
+            <div className="flex flex-row gap-2 items-center">
+              <div className="h-4 w-4 rounded-full bg-red-500" />{" "}
+              <span>Adventure</span>
+            </div>
           </div>
         </div>
         <div className="translate-x-10 shrink-0 flex flex-col">
