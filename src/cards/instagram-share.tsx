@@ -25,6 +25,7 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
             title={reading.card.name}
             isReversed={reading.reversed}
             isFoil={reading.foil}
+            isDeprived={reading.deprived}
             isShare
           />
         </div>
@@ -42,7 +43,8 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
                   draggable={false}
                   className={cn(
                     "[clip-path:inset(2px)] z-10 h-100",
-                    reading.reversed === true ? "rotate-180" : ""
+                    reading.reversed === true ? "rotate-180" : "",
+                    reading.deprived ? "grayscale" : ""
                   )}
                   alt={reading.card.name}
                 />
