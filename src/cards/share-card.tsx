@@ -20,6 +20,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
           title={reading.card.name}
           isReversed={reading.reversed}
           isFoil={reading.foil}
+          isDeprived={reading.deprived}
           isShare
         />
         <StreakCounter count={reading.streak ?? 1} />
@@ -36,7 +37,8 @@ const ShareCard = ({ reading }: ShareCardProps) => {
                     draggable={false}
                     className={cn(
                       "[clip-path:inset(2px)] z-10",
-                      reading.reversed === true ? "rotate-180" : ""
+                      reading.reversed === true ? "rotate-180" : "",
+                      reading.deprived ? "grayscale" : ""
                     )}
                     alt={reading.card.name}
                   />
