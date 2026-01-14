@@ -476,7 +476,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Victory, Recognition, Success, Achievement, Triumph, Celebration, Confidence, Progress, Leadership, Honors, Praise, Milestone, Momentum, Validation",
     reversed:
-      "Doubt, Obstacles, Crticism, Discouragement, Momentum, Rejection, Persist",
+      "Doubt, Obstacles, Criticism, Discouragement, Momentum, Rejection, Persist",
   },
   {
     name: "Strength",
