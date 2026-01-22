@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import CopyToast from "./copy-toast";
 import { downloadImage } from "./download-image";
-import { tryCopyToClipboard } from "./copy-to-clipboard";
+import { tryCopyToClipboardNew } from "./copy-to-clipboard";
 import SaveToast from "./save-toast";
 
 export const UseShare = () => {
@@ -22,7 +22,7 @@ export const UseShare = () => {
     const element = document.getElementById("instagram-reading");
     if (!element) return;
 
-    const method = await tryCopyToClipboard(element);
+    const method = await tryCopyToClipboardNew(element);
 
     if (method == "clipboard") {
       setToastOpen(true);
