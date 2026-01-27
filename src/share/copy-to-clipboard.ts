@@ -1,17 +1,8 @@
 import { domToPng } from "modern-screenshot";
 
-const canWriteImagesToClipboard = () => {
-  return (
-    typeof ClipboardItem !== "undefined" &&
-    !!navigator.clipboard?.write
-  );
-};
-
 export const tryCopyToClipboardWithParticles = async (
   element: HTMLElement,
 ): Promise<boolean> => {
-  if (!canWriteImagesToClipboard()) return false;
-
   let canvas: HTMLCanvasElement | null = null;
 
   try {
@@ -73,8 +64,6 @@ export const tryCopyToClipboardWithParticles = async (
 export const tryCopyToClipboardPlain = async (
   element: HTMLElement,
 ): Promise<boolean> => {
-  if (!canWriteImagesToClipboard()) return false;
-
   try {
     const item = new ClipboardItem({
       "image/png": (async () => {
