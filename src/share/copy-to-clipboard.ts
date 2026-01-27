@@ -68,7 +68,7 @@ export const tryCopyToClipboardPlain = async (
     const item = new ClipboardItem({
       "image/png": (async () => {
         const dataUrl = await domToPng(element, {
-          backgroundColor: "#1f2937",
+          backgroundColor: "#121826",
           style: {
             opacity: "100%",
             padding: "10px",
@@ -81,7 +81,9 @@ export const tryCopyToClipboardPlain = async (
     });
     await navigator.clipboard.write([item]);
     return true;
-  } catch {
+  } catch (err) {
+    console.warn("Tier 2 clipboard failed", err);
+
     return false;
   }
 };

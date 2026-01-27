@@ -26,10 +26,10 @@ export const UseShare = () => {
     if (!element) return;
 
     // Tier 1: Clipboard with particles
-    if (await tryCopyToClipboardWithParticles(element)) {
-      toast(CopyToast, toastSettings);
-      return;
-    }
+    // if (await tryCopyToClipboardWithParticles(element)) {
+    //   toast(CopyToast, toastSettings);
+    //   return;
+    // }
 
     // Tier 2: Clipboard plain background
     if (await tryCopyToClipboardPlain(element)) {
