@@ -76,24 +76,23 @@ export const tryCopyToClipboardPlain = async (
   if (!canWriteImagesToClipboard()) return false;
 
   try {
-    const dataUrl = await domToPng(element, {
-      backgroundColor: "#121826",
-      style: {
-        opacity: "100%",
-        padding: "10px",
-        transform: "scale(1)",
-      },
+    const item = new ClipboardItem({
+      "image/png": (async () => {
+        const dataUrl = await domToPng(element, {
+          backgroundColor: "#1f2937",
+          style: {
+            opacity: "100%",
+            padding: "10px",
+            transform: "scale(1)",
+          },
+        });
+        const blob = await (await fetch(dataUrl)).blob();
+        return blob;
+      })(),
     });
-
-    const blob = await (await fetch(dataUrl)).blob();
-
-    await navigator.clipboard.write([
-      new ClipboardItem({ "image/png": blob }),
-    ]);
-
+    await navigator.clipboard.write([item]);
     return true;
-  } catch (err) {
-    console.warn("Tier 2 clipboard failed", err);
+  } catch {
     return false;
   }
 };
