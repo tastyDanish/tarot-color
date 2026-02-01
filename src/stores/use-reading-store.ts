@@ -65,7 +65,9 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 			if (userId) {
 				await fetch("/.netlify/functions/update-flipped", {
 					method: "POST",
-					headers: { "Content-Type": "application/json" },
+					headers: {
+						"Content-Type": "application/json",
+					},
 					body: JSON.stringify({
 						user_id: userId,
 						reading_id: readingId,
@@ -107,7 +109,9 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 		// Call Netlify function with userId and optional fallback
 		const res = await fetch("/.netlify/functions/get-reading", {
 			method: "POST",
-			headers: { "Content-Type": "application/json" },
+			headers: {
+				"Content-Type": "application/json",
+			},
 			body: JSON.stringify({
 				user_id: userId,
 				fallback_reading: localReading,

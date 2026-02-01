@@ -3,6 +3,7 @@ import { computeStreak, getOrder, getSuit } from "./utils";
 import { generateReading } from "../src/cards/readings";
 import { mapDbReadingToReading } from "../src/db/mappers";
 import { Reading } from "../src/stores/use-reading-store";
+import { getVariations } from "../src/lib/card-utils";
 
 const {
 	VITE_SUPABASE_URL,
@@ -67,10 +68,7 @@ const getCurrentStreak = async (user_id: string) => {
 
 export const createReading = async (user_id: string, expiration: string) => {
 	const newReading = generateReading(new Date(expiration));
-	const variations: string[] = [];
-	if (newReading.reversed) variations.push("reversed");
-	if (newReading.foil) variations.push("foil");
-	if (newReading.deprived) variations.push("deprived");
+	const variations: string[] = getVariations(newReading);
 
 	const readingToInsert = {
 		card_name: newReading.card.name,
