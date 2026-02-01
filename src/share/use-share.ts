@@ -2,10 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import CopyToast from "./copy-toast";
 import { downloadImage } from "./download-image";
-import {
-  tryCopyToClipboardPlain,
-  tryCopyToClipboardWithParticles,
-} from "./copy-to-clipboard";
+import { tryCopyToClipboardPlain } from "./copy-to-clipboard";
 import SaveToast from "./save-toast";
 
 export const UseShare = () => {
@@ -26,10 +23,10 @@ export const UseShare = () => {
     if (!element) return;
 
     // Tier 1: Clipboard with particles
-    if (await tryCopyToClipboardWithParticles(element)) {
-      toast(CopyToast, toastSettings);
-      return;
-    }
+    // if (await tryCopyToClipboardWithParticles(element)) {
+    //   toast(CopyToast, toastSettings);
+    //   return;
+    // }
 
     // Tier 2: Clipboard plain background
     if (await tryCopyToClipboardPlain(element)) {
