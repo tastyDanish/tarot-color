@@ -684,7 +684,7 @@ export const TAROT_CARDS: TarotCard[] = [
     order: 1,
     image: "cards/the-tower.jpg",
     description:
-      "Collapse, Upheaval, Disruption, Shock, Breakdown, Truth, Awakening, Revelation, Fracture, Shatter, Flashpoint, Catalyst, Exposure, Clarity, Rebuilding, Renewal, Change",
+      "Collapse, Upheaval, Disruption, Surprise, Breakdown, Truth, Awakening, Revelation, Fracture, Shatter, Flashpoint, Catalyst, Exposure, Clarity, Rebuilding, Renewal, Change",
     reversed:
       "Resistance, Denial, Collapse, Hesitation, Fragility, Concealment, Suppression, Embrace, Transform, Rebuild, Reflect",
   },
