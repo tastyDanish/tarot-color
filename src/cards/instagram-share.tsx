@@ -21,7 +21,9 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
       }}>
       <div className="flex flex-col flex-1 w-full h-full px-2 box-border justify-between">
         <div className="flex flex-col items-center justify-center gap-2 w-full">
-          <div className="text-green-100 text-xl">genuine goblin gortune</div>
+          <div className="text-green-100 text-xl whitespace-nowrap">
+            genuine goblin gortune
+          </div>
           <CardTitle
             title={reading.card.name}
             isReversed={reading.reversed}
