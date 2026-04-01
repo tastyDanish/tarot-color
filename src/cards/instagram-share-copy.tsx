@@ -92,7 +92,7 @@ const InstagramShareCopy = ({ reading }: InstagramShareProps) => {
         </div>
 
         <div className="text-sm text-white opacity-70 text-center whitespace-nowrap">
-          Daily fortune divined at fortunespalette.com
+          Divined by the goblins at fortunespalette.com
         </div>
       </div>
     </div>
