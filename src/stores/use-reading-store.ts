@@ -19,6 +19,7 @@ export type Reading = {
 	streak?: number;
 	flipped?: boolean;
 	deprived?: boolean;
+	alternateArt?: string | null;
 };
 
 const LOCAL_STORAGE_KEY = "divination-as-a-service-2";
@@ -123,7 +124,9 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 		}
 
 		const { reading, streak } = await res.json();
+		console.log("HERE IS FROM DB: ", reading);
 		const loadedReading: Reading = mapDbReadingToReading(reading, streak);
+		console.log("HERE IS LOADED READING: ", loadedReading);
 		saveToStorage({ ...loadedReading });
 
 		set({

@@ -4,6 +4,7 @@ import FoilAnimation from "./foil-animation";
 import type { Reading } from "@/stores/use-reading-store";
 import StreakCounter from "./streak-counter";
 import PaperTexture from "@/components/paper-texture";
+import { getArt } from "@/lib/string-utils";
 
 type InstagramShareProps = {
   reading: Reading;
@@ -55,7 +56,10 @@ const InstagramShareCopy = ({ reading }: InstagramShareProps) => {
                 <div className="bg-slate-950 p-1 rounded-md">
                   <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
                     <img
-                      src={reading.card.image}
+                      src={getArt({
+                        card: reading.card.image,
+                        art: reading.alternateArt ?? null,
+                      })}
                       draggable={false}
                       className={cn(
                         "[clip-path:inset(2px)] z-10",

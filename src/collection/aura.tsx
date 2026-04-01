@@ -1,4 +1,5 @@
 import CardBorder from "@/cards/card-border";
+import { getArt } from "@/lib/string-utils";
 import { useCollectionStore } from "@/stores/use-collection-store";
 import { motion } from "motion/react";
 import { useState } from "react";
@@ -21,7 +22,10 @@ const Aura = () => {
           <div className="w-[140px] h-[240px] overflow-hidden flex-shrink-0 relative">
             <CardBorder size="medium">
               <img
-                src={mostCommonCard?.image}
+                src={getArt({
+                  card: mostCommonCard?.image ?? null,
+                  art: "goblin",
+                })}
                 draggable={false}
                 className="[clip-path:inset(2px)] z-10"
                 alt={`your card ${mostCommonCard?.name}`}
@@ -35,7 +39,10 @@ const Aura = () => {
             <CardBorder size="medium">
               <div style={{ backgroundColor: auraColor ?? "#000000" }}>
                 <img
-                  src={mostCommonCard?.image}
+                  src={getArt({
+                    card: mostCommonCard?.image ?? null,
+                    art: "goblin",
+                  })}
                   draggable={false}
                   className="[clip-path:inset(2px)] z-10 opacity-0"
                   alt=""
