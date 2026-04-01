@@ -118,7 +118,7 @@ const FlipCard = ({
           />
         </CardBorder>
 
-        <CardBack>
+        <CardBack isReversed={isReversed}>
           <img
             src={getArt({ card: card.image, art: alternateArt })}
             draggable={false}
