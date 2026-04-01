@@ -152,3 +152,14 @@ export const deprivePalette = (palette: string[]) =>
     const [l] = chroma(color).lab();
     return chroma.lab(l, 0, 0).hex();
   });
+
+export const goblinPalette = (): string[] => {
+  const baseHue = jitterHue(120, 15); // green hue with some variance
+  return Array.from({ length: 5 }).map((_, i) => {
+    const t = i / 4;
+    const hue = jitterHue(baseHue, 12);
+    const sat = jitterSaturation(0.5 + 0.3 * (1 - t), 0.1);
+    const light = jitterLightness(0.25 + 0.4 * t, 0.08);
+    return chroma.hsl(hue, sat, light).hex();
+  });
+};

@@ -73,7 +73,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
               className="h-4 w-4 rounded-full"
               style={{ backgroundColor: color }}
             />
-            <span>{capitalize(word)}</span>
+            <span className="text-green-100">{capitalize(word)}</span>
           </div>
         ))}
       </motion.div>

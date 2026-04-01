@@ -43,7 +43,7 @@ const DailyButton = () => {
       <button
         onClick={() => navigate("/daily-single")}
         onMouseEnter={() => setHover(true)}
-        className="group bg-orange-100 p-4 rounded-2xl max-w-64 text-amber-950 h-70 flex flex-col items-center justify-around shadow-xl hover:shadow-lg transition cursor-pointer relative overflow-hidden"
+        className="group bg-orange-100 p-4 rounded-2xl max-w-64 text-green-900 h-70 flex flex-col items-center justify-around shadow-xl hover:shadow-lg transition cursor-pointer relative overflow-hidden"
         onMouseLeave={() => setHover(false)}>
         {/* Decorative Stars */}
         <div className="absolute text-2xl -rotate-45 -translate-x-20 -translate-y-24 opacity-70">
@@ -67,11 +67,11 @@ const DailyButton = () => {
           <LittleCard rotation="" />
         </motion.div>
 
-        <div className="h-[3px] w-9/10 rounded-xl bg-amber-950 " />
+        <div className="h-[3px] w-9/10 rounded-xl bg-green-900 " />
         <div className="flex flex-col w-full items-start text-left">
-          <span className="font-extrabold text-xl">DAILY READING</span>
+          <span className="font-extrabold text-xl">DAILY GORTUNE</span>
           <span className="font-thin text-sm">
-            See what the fates have in store for you today
+            The goblins have rummaged your fate
           </span>
         </div>
 
