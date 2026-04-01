@@ -7,6 +7,7 @@ type Size = "small" | "medium" | "large";
 type CardBorderProps = {
   size: Size;
   isFoil?: boolean;
+  isReversed?: boolean;
   children: ReactNode;
 };
 
@@ -16,7 +17,12 @@ const textureStyle = {
   backgroundPosition: "0% 0%",
 };
 
-const CardBorder = ({ children, isFoil, size }: CardBorderProps) => {
+const CardBorder = ({
+  children,
+  isReversed,
+  isFoil,
+  size,
+}: CardBorderProps) => {
   const getBorder = () => {
     if (size == "small") return "p-1 reounded";
     if (size == "medium") return "p-2 rounded-lg";
@@ -27,7 +33,8 @@ const CardBorder = ({ children, isFoil, size }: CardBorderProps) => {
     <div
       className={cn(
         "absolute bg-stone-100 backface-hidden overflow-hidden rounded-xl border-0",
-        getBorder()
+        getBorder(),
+        isReversed ? "left-0" : "right-0"
       )}
       style={{ WebkitBackfaceVisibility: "hidden", WebkitPerspective: 0 }}>
       <div className={cn("bg-slate-950 rounded-md p-1")}>
@@ -37,8 +44,8 @@ const CardBorder = ({ children, isFoil, size }: CardBorderProps) => {
             size == "small"
               ? "rounded"
               : size == "medium"
-              ? "rounded"
-              : "rounded-2xl"
+                ? "rounded"
+                : "rounded-2xl"
           )}>
           <div className="z-10">{children}</div>
         </div>

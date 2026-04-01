@@ -35,7 +35,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
 
       <div
         className={cn(
-          "flex z-10 h-100 mt-2 w-full justify-center",
+          "flex z-10 h-100 mt-2 justify-center",
           reading.reversed === true ? "flex-row-reverse" : "",
           reading.flipped === undefined ? "invisible" : ""
         )}>
