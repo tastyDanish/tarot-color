@@ -87,10 +87,7 @@ const FlipCard = ({
         opacity: frontLoaded ? 1 : 0,
       }}>
       <motion.div
-        className={cn(
-          "relative w-60 flex shadow-xl",
-          isFlipped ? "justify-start" : "justify-end"
-        )}
+        className={cn("relative w-60 flex shadow-xl")}
         style={{
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",
@@ -101,6 +98,7 @@ const FlipCard = ({
         }}
         transition={{ duration: 0.8, ease: "easeInOut" }}>
         <CardBorder
+          isReversed={isReversed}
           isFoil={isFoil}
           size="large">
           <img
