@@ -14,7 +14,7 @@ export const mapDbReadingToReading = (
 	return {
 		card: {
 			name: reading.card_name,
-			image: reading.alternate_art ?? reading.card_image,
+			image: reading.card_image,
 			description: "",
 			reversed: "",
 			suit: reading.card_suit as
@@ -33,5 +33,6 @@ export const mapDbReadingToReading = (
 		streak,
 		flipped: reading.is_flipped ?? true,
 		id: reading.id,
+		alternateArt: reading.alternate_art,
 	};
 };

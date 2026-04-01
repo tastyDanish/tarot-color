@@ -7,6 +7,7 @@ import CardBack from "./card-back";
 import { useReadingStore } from "@/stores/use-reading-store";
 import { createAccountPush } from "./create-account-push";
 import { useUserStore } from "@/stores/user-user-store";
+import { getArt } from "@/lib/string-utils";
 
 type FlipCardProps = {
   readingId: string;
@@ -15,6 +16,7 @@ type FlipCardProps = {
   isReversed: boolean;
   isFoil: boolean;
   isDeprived: boolean;
+  alternateArt: string | null;
 };
 
 const FlipCard = ({
@@ -24,9 +26,9 @@ const FlipCard = ({
   isFlipped,
   readingId,
   isDeprived,
+  alternateArt,
 }: FlipCardProps) => {
   const [frontLoaded, setFrontLoaded] = useState(false);
-  const [backLoaded, setBackLoaded] = useState(false);
   const { id } = useUserStore();
 
   const { setIsFlipped } = useReadingStore();
@@ -63,6 +65,18 @@ const FlipCard = ({
     if (id == null) createAccountPush(1000);
   };
 
+  useEffect(() => {
+    const img = new Image();
+    const src = getArt({ card: card.image, art: alternateArt });
+    if (!src) return;
+    img.src = src;
+    if (img.complete) {
+      setFrontLoaded(true);
+    } else {
+      img.onload = () => setFrontLoaded(true);
+    }
+  }, [card.image, alternateArt]);
+
   return (
     <button
       onClick={handleClick}
@@ -70,13 +84,10 @@ const FlipCard = ({
       style={{
         perspective: "1000px",
         WebkitPerspective: "1000px",
-        opacity: frontLoaded && backLoaded ? 1 : 0,
+        opacity: frontLoaded ? 1 : 0,
       }}>
       <motion.div
-        className={cn(
-          "relative w-60 flex shadow-xl",
-          isFlipped ? "justify-start" : "justify-end"
-        )}
+        className={cn("relative w-60 flex shadow-xl")}
         style={{
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",
@@ -87,28 +98,35 @@ const FlipCard = ({
         }}
         transition={{ duration: 0.8, ease: "easeInOut" }}>
         <CardBorder
+          isReversed={isReversed}
           isFoil={isFoil}
           size="large">
           <img
-            src={card.image}
+            src={getArt({ card: card.image, art: alternateArt })}
+            style={{
+              transform: "translateZ(0)",
+              WebkitTransform: "translateZ(0)",
+            }}
             draggable={false}
             className={cn(
-              "[clip-path:inset(2px)] z-10 w-50",
+              "z-10 w-48",
               isReversed ? "rotate-180" : "",
-              isDeprived ? "grayscale" : ""
+              isDeprived ? "grayscale" : "",
+              alternateArt ? "" : "[clip-path:inset(2px)]"
             )}
             alt={card.name}
-            onLoad={() => setFrontLoaded(true)}
           />
         </CardBorder>
 
         <CardBack>
           <img
-            src={card.image}
+            src={getArt({ card: card.image, art: alternateArt })}
             draggable={false}
-            className="[clip-path:inset(2px)] z-10 opacity-0 w-50"
+            className={cn(
+              "z-10 opacity-0 w-48",
+              alternateArt ? "" : "[clip-path:inset(2px)]"
+            )}
             alt={card.name}
-            onLoad={() => setBackLoaded(true)}
           />
         </CardBack>
       </motion.div>

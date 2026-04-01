@@ -33,52 +33,50 @@ const DailyCard = ({ reading }: DailyCardProps) => {
         </div>
       </motion.div>
 
-      {reading.flipped !== undefined && (
-        <>
+      <div
+        className={cn(
+          "flex z-10 h-100 mt-2 justify-center",
+          reading.reversed === true ? "flex-row-reverse" : "",
+          reading.flipped === undefined ? "invisible" : ""
+        )}>
+        <FlipCard
+          readingId={reading.id}
+          isReversed={reading.reversed ?? true}
+          isFlipped={reading.flipped ?? false}
+          card={reading.card}
+          isFoil={reading.foil ?? false}
+          isDeprived={reading.deprived ?? false}
+          alternateArt={reading.alternateArt ?? null}
+        />
+        <ColorSwatch
+          isFlipped={reading.flipped ?? false}
+          image={reading?.card.image}
+          words={reading?.words}
+          isReversed={reading?.reversed ?? false}
+        />
+      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: reading.flipped ? 1 : 0,
+        }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+        className={cn(
+          "flex w-full flex-wrap justify-center gap-2 pb-2 max-w-100",
+          reading.flipped === false ? "opacity-0" : "opacity-100"
+        )}>
+        {reading.words.map(({ word, color }) => (
           <div
-            className={cn(
-              "flex z-10 h-100 mt-2 w-full justify-center",
-              reading.reversed === true ? "flex-row-reverse" : ""
-            )}>
-            <FlipCard
-              readingId={reading.id}
-              isReversed={reading.reversed ?? true}
-              isFlipped={reading.flipped}
-              card={reading.card}
-              isFoil={reading.foil ?? false}
-              isDeprived={reading.deprived ?? false}
+            className="flex items-center gap-1 text-xl tracking-wide"
+            key={word}>
+            <div
+              className="h-4 w-4 rounded-full"
+              style={{ backgroundColor: color }}
             />
-            <ColorSwatch
-              isFlipped={reading.flipped}
-              image={reading?.card.image}
-              words={reading?.words}
-              isReversed={reading?.reversed ?? false}
-            />
+            <span>{capitalize(word)}</span>
           </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: reading.flipped ? 1 : 0,
-            }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-            className={cn(
-              "flex w-full flex-wrap justify-center gap-2 pb-2 max-w-100",
-              reading.flipped === false ? "opacity-0" : "opacity-100"
-            )}>
-            {reading.words.map(({ word, color }) => (
-              <div
-                className="flex items-center gap-1 text-xl tracking-wide"
-                key={word}>
-                <div
-                  className="h-4 w-4 rounded-full"
-                  style={{ backgroundColor: color }}
-                />
-                <span>{capitalize(word)}</span>
-              </div>
-            ))}
-          </motion.div>
-        </>
-      )}
+        ))}
+      </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{

@@ -79,7 +79,7 @@ export const createReading = async (user_id: string, expiration: string) => {
 		card_order: newReading.card.order,
 		words: newReading.words,
 		variations,
-		alternate_art: null,
+		alternate_art: newReading.alternateArt,
 		user_id,
 		created_at: new Date().toISOString(),
 		expires_at: newReading.expiration.toISOString(),
