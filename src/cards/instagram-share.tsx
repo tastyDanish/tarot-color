@@ -21,9 +21,6 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
       }}>
       <div className="flex flex-col flex-1 w-full h-full px-2 box-border justify-between">
         <div className="flex flex-col items-center justify-center gap-2 w-full">
-          <div className="text-green-100 text-xl whitespace-nowrap">
-            genuine goblin gortune
-          </div>
           <CardTitle
             title={reading.card.name}
             isReversed={reading.reversed}
@@ -94,7 +91,7 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
                 className="h-4 w-4 rounded-full"
                 style={{ backgroundColor: color }}
               />
-              <span className="text-green-100">{capitalize(word)}</span>
+              <span>{capitalize(word)}</span>
             </div>
           ))}
         </div>
@@ -103,7 +100,7 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
         </div>
 
         <div className="text-sm text-white opacity-70 text-center pt-2 whitespace-nowrap">
-          Divined by the goblins at fortunespalette.com
+          Divined at fortunespalette.com
         </div>
       </div>
     </div>

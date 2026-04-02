@@ -70,7 +70,7 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="max-w-sm mx-auto p-4 text-green-100 mt-4  z-10">
+    <div className="max-w-sm mx-auto p-4 text-amber-100 mt-4  z-10">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-3">

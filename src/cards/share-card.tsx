@@ -66,7 +66,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
                     className="h-12 rounded-b-md w-full z-20 relative"
                   />
                 )}
-                <div className="px-4  text-green-100 whitespace-nowrap">
+                <div className="px-4  text-amber-100 whitespace-nowrap">
                   {capitalize(word.word?.trim()) ?? "uh oh broken"}
                 </div>
                 {!reading.reversed && (
@@ -81,7 +81,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
         </div>
       </div>
       <div className="text-sm text-white opacity-70 text-center pt-2 whitespace-nowrap">
-        Divined by the goblins at fortunespalette.com
+        Divined at fortunespalette.com
       </div>
     </div>
   );

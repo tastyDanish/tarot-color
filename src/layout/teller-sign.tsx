@@ -1,9 +1,8 @@
-// import FortunesPaletteGraphic from "./fortunes-palette-graphic";
+import FortunesPaletteGraphic from "./fortunes-palette-graphic";
 import { useUserStore } from "@/stores/user-user-store";
 import { useEffect } from "react";
 import PaperTexture from "@/components/paper-texture";
 import { Link } from "react-router-dom";
-import GoblinPaletteGraphic from "./goblin-palette-graphic";
 
 const TellerSign = () => {
   const { loadUser } = useUserStore();
@@ -27,8 +26,7 @@ const TellerSign = () => {
           ))}
 
           <div className="h-full w-full border-amber-950 border-4 border-t-0 pt-2 flex flex-col justify-center z-20 pb-2">
-            {/* <FortunesPaletteGraphic /> */}
-            <GoblinPaletteGraphic />
+            <FortunesPaletteGraphic />
           </div>
         </div>
 

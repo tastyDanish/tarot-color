@@ -10,9 +10,9 @@ const TripleButton = () => {
       <button
         onClick={() => navigate("/daily-triple")}
         disabled={true}
-        className="bg-orange-100 w-full max-w-64 py-6 px-4 rounded-xl text-green-900 flex flex-col h-70 items-center justify-around gap-2 shadow-xl opacity-100 cursor-not-allowed  relative overflow-hidden">
+        className="bg-orange-100 w-full max-w-64 py-6 px-4 rounded-xl text-amber-900 flex flex-col h-70 items-center justify-around gap-2 shadow-xl opacity-100 cursor-not-allowed  relative overflow-hidden">
         {/* Three cards */}
-        <div className="absolute text-2xl font-bold text-green-900 z-50 mt-40">
+        <div className="absolute text-2xl font-bold text-amber-900 z-50 mt-40">
           COMING SOON
         </div>
         <div className="flex -mx-4">
