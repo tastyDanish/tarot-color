@@ -32,7 +32,7 @@ const CardTitle = ({
             "text-3xl font-thin",
             isShare ? "whitespace-nowrap" : ""
           )}>
-          {title.replace("The", "Da")}
+          {title}
         </div>
         <div className="flex gap-2 justify-center">
           {isFoil && <div className="font-thin text-md">FOIL</div>}
