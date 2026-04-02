@@ -62,7 +62,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
         }}
         transition={{ duration: 1.2, ease: "easeInOut" }}
         className={cn(
-          "flex w-full flex-wrap justify-center gap-2 pb-2 max-w-100",
+          "flex w-full flex-wrap justify-center gap-2 pb-2 max-w-100 pl-1 pr-1",
           reading.flipped === false ? "opacity-0" : "opacity-100"
         )}>
         {reading.words.map(({ word, color }) => (
@@ -73,7 +73,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
               className="h-4 w-4 rounded-full"
               style={{ backgroundColor: color }}
             />
-            <span className="text-green-100">{capitalize(word)}</span>
+            <span>{capitalize(word)}</span>
           </div>
         ))}
       </motion.div>
