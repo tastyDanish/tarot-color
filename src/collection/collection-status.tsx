@@ -27,11 +27,14 @@ export const CollectionStatus = () => {
       <div className="border-b-2 border-amber-950/50 px-3 pb-2 mx-1">
         <CollectionBar
           title={"Total Collection"}
+          hideBar
           seen={seenCards.length}
           total={allCards.length}
         />
       </div>
-      <span className="text-sm pt-2">Select a suit for details</span>
+      <span className="text-sm pt-2 flex flex-col items-center">
+        Select a suit for details
+      </span>
       {VALID_SUITS.map((suit) => {
         const collection = cards?.get(suit);
         return collection ? (
@@ -41,7 +44,7 @@ export const CollectionStatus = () => {
             title={suit}
             seen={collection.count}
             total={collection.total}
-            classNames="pl-8 pt-2 pb-2 pr-2"
+            classNames="px-6 py-2"
           />
         ) : null;
       })}
