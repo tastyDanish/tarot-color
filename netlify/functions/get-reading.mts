@@ -12,7 +12,6 @@ export default async (req: Request, context: Context) => {
 		}
 
 		const body = await req.json();
-		console.log("this is body: ", body);
 		const { user_id, fallback_reading, expiration, current_time } = body;
 
 		if (!user_id) {
