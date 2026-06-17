@@ -16,12 +16,12 @@ const TellerSign = () => {
       <Link
         to="/"
         aria-label="Go back to homepage"
-        className="relative w-[300px] h-[130px] md:w-120 md:h-[200px] bg-orange-100 text-amber-950 px-3 pb-3 md:px-4 md:pb-4 rounded-b-xl md:rounded-b-2xl overflow-hidden z-20 shadow-md -mt-4">
-        <div className="relative h-full overflow-hidden">
+        className="relative w-75 h-32.5 md:w-120 md:h-50 bg-orange-100 text-amber-950 px-3 pb-3 md:px-4 md:pb-4 rounded-b-xl md:rounded-b-2xl overflow-hidden z-20 shadow-md -mt-4">
+        <div className="relative h-full overflow-hidden w-full border-0">
           {["-bottom-5 -left-5", "-bottom-5 -right-5"].map((pos, i) => (
             <div
               key={i}
-              className={`absolute h-10 w-10 md:h-12 md:w-12 bg-orange-100 rounded-full ${pos} border-amber-950 border-4`}
+              className={`absolute z-20 h-10 w-10 md:h-12 md:w-12 bg-orange-100 rounded-full ${pos} border-amber-950 border-4`}
             />
           ))}
 
@@ -29,7 +29,6 @@ const TellerSign = () => {
             <FortunesPaletteGraphic />
           </div>
         </div>
-
         <PaperTexture opacity={80} />
       </Link>
     </div>

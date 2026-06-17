@@ -87,7 +87,10 @@ const FlipCard = ({
         opacity: frontLoaded ? 1 : 0,
       }}>
       <motion.div
-        className={cn("relative w-60 flex shadow-xl")}
+        className={cn(
+          "relative w-60 flex shadow-xl",
+          isReversed ? "justify-start" : "justify-end"
+        )}
         style={{
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",
@@ -109,7 +112,7 @@ const FlipCard = ({
             }}
             draggable={false}
             className={cn(
-              "z-10 w-48",
+              "z-10 h-[360px]",
               isReversed ? "rotate-180" : "",
               isDeprived ? "grayscale" : "",
               alternateArt ? "" : "[clip-path:inset(2px)]"

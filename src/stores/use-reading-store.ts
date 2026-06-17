@@ -124,9 +124,7 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 		}
 
 		const { reading, streak } = await res.json();
-		console.log("HERE IS FROM DB: ", reading);
 		const loadedReading: Reading = mapDbReadingToReading(reading, streak);
-		console.log("HERE IS LOADED READING: ", loadedReading);
 		saveToStorage({ ...loadedReading });
 
 		set({

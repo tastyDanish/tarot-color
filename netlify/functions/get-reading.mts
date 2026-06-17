@@ -1,28 +1,23 @@
-import { Handler } from "@netlify/functions";
-import "dotenv/config";
+import type { Config, Context } from "@netlify/functions";
 import {
 	createReading,
 	getExistingReading,
 	saveFallbackReading,
 } from "../data";
 
-const handler: Handler = async (event) => {
+export default async (req: Request, context: Context) => {
 	try {
-		if (event.httpMethod !== "POST") {
-			return {
-				statusCode: 405,
-				body: "Method Not Allowed",
-			};
+		if (req.method !== "POST") {
+			return new Response("Method not allowed", { status: 405 });
 		}
 
-		const body = JSON.parse(event.body || "{}");
+		const body = await req.json();
+		console.log("this is body: ", body);
 		const { user_id, fallback_reading, expiration, current_time } = body;
 
 		if (!user_id) {
-			return {
-				statusCode: 400,
-				body: JSON.stringify({ error: "Missing user_id" }),
-			};
+			console.log("no user_id?");
+			return new Response("missing user id", { status: 400 });
 		}
 
 		const result = await getExistingReading(user_id, current_time);
@@ -48,5 +43,3 @@ const handler: Handler = async (event) => {
 		};
 	}
 };
-
-export { handler };

@@ -8,7 +8,8 @@ export const getArt = (
 ) => {
   if (!card) return undefined;
   if (art) {
-    return card.replace("cards", art).replace("jpg", "png");
+    const path = card.replace("cards", art).replace("jpg", "png");
+    return path.startsWith("/") ? path : `/${path}`;
   }
-  return card;
+  return card.startsWith("/") ? card : `/${card}`;
 };

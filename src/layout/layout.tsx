@@ -18,12 +18,12 @@ export default function Layout() {
 
   return (
     <div
-      className="h-dvh overflow-y-scroll flex flex-col"
+      className="h-dvh overflow-y-scroll flex flex-col overflow-x-hidden"
       id="scroll-container">
       <StarryNight />
       <TellerSign />
 
-      <main className="text-amber-100 flex-grow flex flex-col items-center w-full">
+      <main className="text-amber-100 grow flex flex-col items-center w-full">
         <Outlet />
         <ToastContainer
           limit={1}

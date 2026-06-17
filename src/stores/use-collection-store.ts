@@ -5,16 +5,26 @@ import { mapDbReadingToReading } from "@/db/mappers";
 import { generateSuitCollection } from "./generate-suit-collection";
 import { groupColors } from "@/lib/color-utils";
 
+export type TarotCardStats = {
+	name: string;
+	image: string;
+	collected: boolean;
+	seen: number;
+	foil: number;
+	deprived: number;
+	reversed: number;
+	order: number;
+	words: string[];
+};
+
 export type TarotSuit = {
 	name: string;
 	total: number;
 	count: number;
-	cards: {
-		name: string;
-		image: string;
-		collected: boolean;
-	}[];
+	cards: TarotCardStats[];
 };
+
+export const VALID_SUITS = ["Major", "Cups", "Swords", "Wands", "Pentacles"];
 
 type MostCommonCard = {
 	name: string;
@@ -26,11 +36,8 @@ type CollectionState = {
 	readings: Reading[] | null;
 	loading: boolean;
 	error: string | null;
-	major: TarotSuit | null;
-	pentacles: TarotSuit | null;
-	cups: TarotSuit | null;
-	swords: TarotSuit | null;
-	wands: TarotSuit | null;
+	cards: Map<string, TarotSuit> | null;
+	allCards: TarotCardStats[] | null;
 	mostCommonCard: MostCommonCard | null;
 	auraColor: string | null;
 
@@ -130,13 +137,10 @@ export const useCollectionStore = create<CollectionState>((set) => ({
 	readings: null,
 	loading: false,
 	error: null,
-	major: null,
-	pentacles: null,
-	cups: null,
-	swords: null,
-	wands: null,
+	cards: null,
 	mostCommonCard: null,
 	auraColor: null,
+	allCards: null,
 
 	loadReadings: async (userId) => {
 		set({ loading: true, error: null });
@@ -154,24 +158,23 @@ export const useCollectionStore = create<CollectionState>((set) => ({
 
 		const readings = data.map(mapDbReadingToReading);
 
-		const major = generateSuitCollection("Major", readings);
-		const cups = generateSuitCollection("Cups", readings);
-		const pentacles = generateSuitCollection("Pentacles", readings);
-		const swords = generateSuitCollection("Swords", readings);
-		const wands = generateSuitCollection("Wands", readings);
+		const cards = new Map<string, TarotSuit>();
+
+		VALID_SUITS.forEach((suit) => {
+			cards.set(suit, generateSuitCollection(suit, readings));
+		});
+
+		const allCards = [...cards.values()].flatMap((v) => v.cards);
 		const mostCommonCard = findMostCommonCard(readings);
 		const auraColor = getAuraColor(readings);
 
 		set({
 			readings,
 			loading: false,
-			major,
-			cups,
-			pentacles,
-			swords,
-			wands,
+			cards,
 			mostCommonCard,
 			auraColor,
+			allCards,
 		});
 	},
 
@@ -179,11 +182,7 @@ export const useCollectionStore = create<CollectionState>((set) => ({
 		set({
 			readings: null,
 			error: null,
-			major: null,
-			cups: null,
-			pentacles: null,
-			swords: null,
-			wands: null,
+			cards: null,
 			mostCommonCard: null,
 			auraColor: null,
 		}),
