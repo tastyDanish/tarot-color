@@ -116,7 +116,7 @@ export const saveFallbackReading = async (
 		card_order: getOrder(actualReading),
 		card_suit: getSuit(actualReading),
 		variations,
-		alternate_art: null,
+		alternate_art: fallback_reading.alternateArt,
 		user_id,
 		created_at: new Date().toISOString(),
 		expires_at: new Date(fallback_reading.expiration).toISOString(),
