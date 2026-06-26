@@ -48,7 +48,7 @@ const CardBorder = ({
         )}>
         <div
           className={cn(
-            "bg-slate-950 rounded-md p-1 w-full h-full flex items-center justify-center"
+            "relative z-20 bg-slate-950 rounded-md p-1 w-full h-full flex items-center justify-center"
           )}>
           <div
             className={cn(
@@ -63,7 +63,7 @@ const CardBorder = ({
           </div>
         </div>
         <PaperTexture
-          opacity={80}
+          opacity={60}
           zLevel="z-10"
         />
         {isFoil && <FoilAnimation />}
