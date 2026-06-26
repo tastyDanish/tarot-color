@@ -51,7 +51,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "Death",
     suit: "Major",
-    order: 1,
+    order: 13,
     image: "cards/death.jpg",
     description:
       "Transformation, Ending, Release, Rebirth, Shedding, Closure, Transition, Metamorphosis, Threshold, Cycle, Change, Unraveling, Renewal",
@@ -181,7 +181,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "Judgement",
     suit: "Major",
-    order: 1,
+    order: 20,
     image: "cards/judgement.jpg",
     description:
       "Awakening, Reckoning, Renewal, Transformation, Clarity, Rebirth, Redemption, Decision, Realization, Release, Truth, Resolution, Decision, Forgiveness, Acceptance",
@@ -191,7 +191,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "Justice",
     suit: "Major",
-    order: 1,
+    order: 11,
     image: "cards/justice.jpg",
     description:
       "Balance, Fairness, Truth, Integrity, Ethics, Responsibility, Judgement, Honesty, Transparency, Law, Equilibrium, Clarity, Accountability",
@@ -481,7 +481,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "Strength",
     suit: "Major",
-    order: 1,
+    order: 8,
     image: "cards/strength.jpg",
     description:
       "Resilience, Courage, Perseverance, Patience, Determination, Endurance, Confidence, Bravery, Fortitude, Willpower, Steadfastness, Compassion, Balance, Calm",
@@ -491,7 +491,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "Temperance",
     suit: "Major",
-    order: 1,
+    order: 14,
     image: "cards/temperance.jpg",
     description:
       "Balance, Harmony, Moderation, Patience, Restraint, Adaptability, Calm, Integration, Healing, Flow, Compromise, Blending, Mindfulness, Cooperation, Synthesis, Diplomacy",
@@ -541,7 +541,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Chariot",
     suit: "Major",
-    order: 1,
+    order: 7,
     image: "cards/the-chariot.jpg",
     description:
       "Determination, Willpower, Drive, Focus, Control, Victory, Triumph, Ambition, Progress, Momentum, Confidence, Mastery, Direction, Achievement, Resolve, Purpose, Movement",
@@ -551,7 +551,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Devil",
     suit: "Major",
-    order: 1,
+    order: 15,
     image: "cards/the-devil.jpg",
     description:
       "Temptation, Contract, Obsession, Desire, Bond, Vice, Power, Dependency, Control, Facade, Enticement, Manipulation, Illusion, Cost, Leverage, Pact, Seduction, Chains, Indulgence",
@@ -561,7 +561,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Emperor",
     suit: "Major",
-    order: 1,
+    order: 4,
     image: "cards/the-emperor.jpg",
     description:
       "Leadership, Authority, Structure, Foundation, Stability, Responsibility, Security, Confidence, Guidance, Order, Support, Reliability, Governance, Control, Discipline, Framework, Backbone",
@@ -571,7 +571,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Empress",
     suit: "Major",
-    order: 1,
+    order: 3,
     image: "cards/the-empress.jpg",
     description:
       "Creativity, Growth, Abundance, Nature, Intuition, Mystery, Secrets, Veil, Embrace, Transformation, Depth, Beauty, Harmony",
@@ -581,7 +581,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Fool",
     suit: "Major",
-    order: 1,
+    order: 0,
     image: "cards/the-fool.jpg",
     description:
       "Spontaneity, Adventure, Curiosity, Innocence, Naivety, Enthusiam, Playfulness, Freedom, Unpredictability, Openness, Recklessness, Wonder, Boldness, Experimentation, Passion, Unconventional",
@@ -591,7 +591,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Hanged Man",
     suit: "Major",
-    order: 1,
+    order: 12,
     image: "cards/the-hanged-man.jpg",
     description:
       "Reflection, Suspension, Surrender, Insight, Stillness, Acceptance, Contemplation, Waiting, Resilience, Deliberation, Observation, Forethought",
@@ -601,7 +601,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Hermit",
     suit: "Major",
-    order: 1,
+    order: 9,
     image: "cards/the-hermit.jpg",
     description:
       "Solitude, Reflection, Introspection, Mindfulness, Meditation, Wisdom, Clarity, Focus, Retreat, Contemplation, Insight",
@@ -611,7 +611,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Hierophant",
     suit: "Major",
-    order: 1,
+    order: 5,
     image: "cards/the-hierophant.jpg",
     description:
       "Tradition, Ritual, Initiation, Order, Doctrine, Code, Belief, Conviction, Structure, Mentor, Sanction, Heritage, Instruction, Symbol, Hierarchy",
@@ -621,7 +621,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The High Priestess",
     suit: "Major",
-    order: 1,
+    order: 2,
     image: "cards/the-high-priestess.jpg",
     description:
       "Intuition, Mystery, Secrets, Subconcious, Reflection, Dreams, Receptivity, Meditation, Trust, Hidden, Insight, Silence, Wisdom, Veil, Awareness, Enigma, Knowledge",
@@ -631,7 +631,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Lovers",
     suit: "Major",
-    order: 1,
+    order: 6,
     image: "cards/the-lovers.jpg",
     description:
       "Connection, Union, Choice, Harmony, Attraction, Bond, Affinity, Trust, Balance, Commitment, Synergy, Understanding, Collaboration, Affinity, Duality, Integration",
@@ -651,7 +651,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Moon",
     suit: "Major",
-    order: 1,
+    order: 18,
     image: "cards/the-moon.jpg",
     description:
       "Illusion, Dream, Mystery, Instinct, Subconscious, Enigma, Delirium, Whispers, Symbol, Refraction, Myth, Intuition, Secrets, Pull, Cycle, Myth, Mirage, Fog",
@@ -661,7 +661,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Star",
     suit: "Major",
-    order: 1,
+    order: 17,
     image: "cards/the-star.jpg",
     description:
       "Hope, Inspiration, Guidance, Healing, Renewal, Grace, Serenity, Clarity, Blessing, Vision, Light, Dream, Peace, Flow, Calm, Radiance, Stillness, Trust",
@@ -671,7 +671,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Sun",
     suit: "Major",
-    order: 1,
+    order: 14,
     image: "cards/the-sun.jpg",
     description:
       "Brightness, Clarity, Growth, Revelation, Energy, Warmth, Illumination, Insight, Vitality, Optimism, Enlightenment, Joy, Hope, Discovery, Confidence",
@@ -681,7 +681,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Tower",
     suit: "Major",
-    order: 1,
+    order: 16,
     image: "cards/the-tower.jpg",
     description:
       "Collapse, Upheaval, Disruption, Surprise, Breakdown, Truth, Awakening, Revelation, Fracture, Shatter, Flashpoint, Catalyst, Exposure, Clarity, Rebuilding, Renewal, Change",
@@ -691,7 +691,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The Wheel Of Fortune",
     suit: "Major",
-    order: 1,
+    order: 10,
     image: "cards/the-wheel-of-fortune.jpg",
     description:
       "luck, happiness, joy, bliss, improvement, prosperity, bonus, blessing, benefits, graces, favors, goods, wealth, profits, fate, destiny, adventure, entropy, probability",
@@ -701,7 +701,7 @@ export const TAROT_CARDS: TarotCard[] = [
   {
     name: "The World",
     suit: "Major",
-    order: 1,
+    order: 21,
     image: "cards/the-world.jpg",
     description:
       "Journey, Voyage, Pilgrimage, Travel, migration, Exploration, Transition, Movement, Rotation, Circulation, Progress, Change, Flow, Adventure, Passage, Discovery, Expansion",

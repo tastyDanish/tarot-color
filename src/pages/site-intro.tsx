@@ -18,7 +18,7 @@ const SiteIntrouction = () => {
     <motion.header
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="text-center w-full flex flex-col gap-3 pt-4 pb-2 px-4 md:px-0 body-font text-amber-100">
+      className="text-center w-full flex flex-col gap-3 pt-4 pb-2 px-4 md:px-0 body-font text-slate-300">
       <h1 className="font-bold">{intro}</h1>
     </motion.header>
   );

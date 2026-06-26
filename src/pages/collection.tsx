@@ -1,30 +1,15 @@
-import Aura from "@/collection/aura";
-import CardCollection from "@/collection/card-collection";
-import { useCollectionStore } from "@/stores/use-collection-store";
+// import { CollectionStatus } from "@/collection/collection-status";
+import { CollectionStatus } from "@/collection/collection-status";
+import StarSpinner from "@/collection/constellation-stars/star-spinner";
+import GetReadings from "@/collection/get-readings";
 import { useUserStore } from "@/stores/user-user-store";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Collection = () => {
   const { signOut, email } = useUserStore();
   const navigate = useNavigate();
 
-  const { id } = useUserStore();
-  const { loadReadings } = useCollectionStore();
-
-  useEffect(() => {
-    if (!id) return;
-
-    const fetchReadings = async () => {
-      try {
-        await loadReadings(id);
-      } catch (err) {
-        console.error("Failed to load readings:", err);
-      }
-    };
-
-    fetchReadings();
-  }, [id, loadReadings]);
+  GetReadings();
 
   const handleSignOut = async () => {
     await signOut();
@@ -32,29 +17,25 @@ const Collection = () => {
   };
 
   return (
-    <div className="flex flex-col px-4 pt-6 pb-12 bg-background text-foreground w-120 items-center text-amber-200">
-      <Aura />
+    <div className="flex flex-col px-4 pt-2 pb-12 w-80 md:w-120 items-center text-slate-300">
+      {/* <Aura /> */}
       {/* Header */}
-      <header className="mb-6">
-        <h1 className="text-2xl font-bold text-center">Your Collection</h1>
-        <p className="text-sm text-muted-foreground text-center">
-          A glimpse into the arcana you've gathered
+      <header className="mb-2 mt-4">
+        <p className="text-sm text-slate-400 text-center">
+          Your unique set of divinations cast upon the stars.
         </p>
       </header>
 
-      {/* Collection Grid */}
-      <CardCollection />
+      <StarSpinner />
+      <CollectionStatus />
 
       {/* Sign Out Button */}
       <footer className="mt-10 text-center">
         <h1 className="text-2xl font-bold text-center">Your Account</h1>
         <div className="w-full flex md:justify-center pt-4 md:gap-4 md:flex-row flex-col">
           <div className="flex flex-col items-center">
-            <div className="mb-4 w-[300px] flex flex-col items-start">
-              <label className="block text-sm text-amber-100 mb-1">Email</label>
-              <div className="p-2 border rounded bg-gray-900 w-[300px]">
-                {email}
-              </div>
+            <div className="mb-4 w-75 flex flex-col items-start">
+              <div className="p-2 border rounded bg-gray-900 w-75">{email}</div>
             </div>
             <button
               onClick={handleSignOut}

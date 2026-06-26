@@ -29,23 +29,14 @@ export const getExistingReading = async (
 
 	if (error) {
 		console.log("ERROR - existing: ", error.message);
-		return {
-			statusCode: 500,
-			body: JSON.stringify({ error: "Error querying readings" }),
-		};
+		return new Response("Error querying readings", { status: 500 });
 	}
 
 	if (existing && new Date(existing.expires_at) > new Date(current_time)) {
 		const streak = await getCurrentStreak(user_id);
-
-		return {
-			statusCode: 200,
-			body: JSON.stringify({
-				reading: existing,
-				streak,
-				source: "db",
-			}),
-		};
+		return new Response(
+			JSON.stringify({ reading: existing, streak, source: "db" }),
+		);
 	}
 
 	return null;
@@ -65,7 +56,10 @@ const getCurrentStreak = async (user_id: string) => {
 	}
 };
 
-export const createReading = async (user_id: string, expiration: string) => {
+export const createReading = async (
+	user_id: string,
+	expiration: string,
+) => {
 	const newReading = generateReading(new Date(expiration));
 	const variations: string[] = [];
 	if (newReading.reversed) variations.push("reversed");
@@ -92,22 +86,16 @@ export const createReading = async (user_id: string, expiration: string) => {
 
 	if (insertError) {
 		console.log("ERROR - newReading: ", insertError.message);
-		return {
-			statusCode: 500,
-			body: JSON.stringify({ error: "Failed to save generated reading" }),
-		};
+		return new Response("Failed to save generated reading", { status: 500 });
 	}
 
 	const streak = await getCurrentStreak(user_id);
 
-	return {
-		statusCode: 200,
-		body: JSON.stringify({
-			reading: insertedReading,
-			streak,
-			source: "generated",
-		}),
-	};
+	return new Response(JSON.stringify({
+		reading: insertedReading,
+		streak,
+		source: "generated",
+	}));
 };
 
 export const saveFallbackReading = async (
@@ -128,7 +116,7 @@ export const saveFallbackReading = async (
 		card_order: getOrder(actualReading),
 		card_suit: getSuit(actualReading),
 		variations,
-		alternate_art: null,
+		alternate_art: fallback_reading.alternateArt,
 		user_id,
 		created_at: new Date().toISOString(),
 		expires_at: new Date(fallback_reading.expiration).toISOString(),
@@ -141,21 +129,15 @@ export const saveFallbackReading = async (
 
 	if (insertErr) {
 		console.log("ERROR - fallback: ", insertErr.message);
-
-		return {
-			statusCode: 500,
-			body: JSON.stringify({ error: "Failed to save fallback reading" }),
-		};
+		return new Response("Failed to save fallback reading", { status: 500 });
 	}
 
 	const streak = await getCurrentStreak(user_id);
-
-	return {
-		statusCode: 200,
-		body: JSON.stringify({
+	return new Response(
+		JSON.stringify({
 			reading: mapDbReadingToReading(insertedReading, streak),
 			streak,
 			source: "fallback",
 		}),
-	};
+	);
 };

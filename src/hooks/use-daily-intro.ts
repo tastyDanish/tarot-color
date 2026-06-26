@@ -1,4 +1,4 @@
-import { choose } from "@/lib/utils";
+import { choose } from "@/lib/random-utils";
 
 const LOCAL_INTRO_KEY = "fortuneIntro";
 
