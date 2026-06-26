@@ -112,7 +112,7 @@ const FlipCard = ({
             }}
             draggable={false}
             className={cn(
-              "z-20 h-[360px]",
+              "z-50 h-[360px]",
               isReversed ? "rotate-180" : "",
               isDeprived ? "grayscale" : "",
               alternateArt ? "" : "[clip-path:inset(2px)]"
@@ -126,7 +126,7 @@ const FlipCard = ({
             src={getArt({ card: card.image, art: alternateArt })}
             draggable={false}
             className={cn(
-              "z-20 opacity-0 w-48",
+              "z-50 opacity-0 w-48",
               alternateArt ? "" : "[clip-path:inset(2px)]"
             )}
             alt={card.name}
