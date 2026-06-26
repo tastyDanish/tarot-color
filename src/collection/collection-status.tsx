@@ -3,6 +3,7 @@ import { CollectionBar } from "./collection-bar";
 import { useNavigate } from "react-router-dom";
 import GetReadings from "./get-readings";
 import PaperTexture from "@/components/paper-texture";
+import { TarotCsvExport } from "./tarot-csv-export";
 
 export const CollectionStatus = () => {
   const navigate = useNavigate();
@@ -48,6 +49,8 @@ export const CollectionStatus = () => {
           />
         ) : null;
       })}
+
+      <TarotCsvExport cards={allCards} />
 
       <PaperTexture opacity={80} />
     </div>
