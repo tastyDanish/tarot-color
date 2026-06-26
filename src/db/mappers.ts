@@ -3,6 +3,13 @@ import type { Database } from "@/lib/database.types";
 
 type ReadingRow = Database["public"]["Tables"]["readings"]["Row"];
 
+export type CardSuits =
+	| "Major"
+	| "Cups"
+	| "Wands"
+	| "Swords"
+	| "Pentacles";
+
 export const mapDbReadingToReading = (
 	reading: ReadingRow,
 	streak: number = 1,
@@ -14,15 +21,10 @@ export const mapDbReadingToReading = (
 	return {
 		card: {
 			name: reading.card_name,
-			image: reading.alternate_art ?? reading.card_image,
+			image: reading.card_image,
 			description: "",
 			reversed: "",
-			suit: reading.card_suit as
-				| "Major"
-				| "Cups"
-				| "Wands"
-				| "Swords"
-				| "Pentacles",
+			suit: reading.card_suit as CardSuits,
 			order: reading.card_order,
 		},
 		words: reading.words as { word: string; color: string }[],
@@ -33,5 +35,6 @@ export const mapDbReadingToReading = (
 		streak,
 		flipped: reading.is_flipped ?? true,
 		id: reading.id,
+		alternateArt: reading.alternate_art,
 	};
 };

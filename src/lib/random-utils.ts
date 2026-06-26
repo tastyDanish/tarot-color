@@ -17,3 +17,14 @@ export function getRandomSubSet<T>(items: T[], size: number): T[] {
   const shuffled = shuffleArray(items);
   return shuffled.slice(0, Math.min(size, items.length));
 }
+
+export function choose<T>(myList: T[]) {
+  if (myList.length === 0) return null;
+
+  const random = Math.floor(Math.random() * myList.length);
+  if (random < myList.length) {
+    return myList[random];
+  } else {
+    return myList[0];
+  }
+}

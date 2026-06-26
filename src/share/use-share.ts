@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import CopyToast from "./copy-toast";
 import { downloadImage } from "./download-image";
-import { tryCopyToClipboard } from "./copy-to-clipboard";
+import { tryCopyToClipboardPlain } from "./copy-to-clipboard";
 import SaveToast from "./save-toast";
 
 export const UseShare = () => {
@@ -22,16 +22,22 @@ export const UseShare = () => {
     const element = document.getElementById("instagram-reading");
     if (!element) return;
 
-    const method = await tryCopyToClipboard(element);
+    // Tier 1: Clipboard with particles
+    // if (await tryCopyToClipboardWithParticles(element)) {
+    //   toast(CopyToast, toastSettings);
+    //   return;
+    // }
 
-    if (method == "clipboard") {
-      setToastOpen(true);
+    // Tier 2: Clipboard plain background
+    if (await tryCopyToClipboardPlain(element)) {
       toast(CopyToast, toastSettings);
-    } else {
-      const result = await downloadImage(element);
-      if (result == "download") {
-        toast(SaveToast, toastSettings);
-      }
+      return;
+    }
+
+    // Tier 3: Download fallback
+    const result = await downloadImage(element);
+    if (result === "download") {
+      toast(SaveToast, toastSettings);
     }
   };
 

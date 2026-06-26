@@ -39,6 +39,7 @@ export const generateReading = (expiration: Date): Reading => {
 		foil,
 		flipped: false,
 		deprived,
+		alternateArt: "goblin",
 	};
 
 	return reading;

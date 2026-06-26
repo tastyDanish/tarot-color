@@ -1,14 +1,19 @@
 import PaperTexture from "@/components/paper-texture";
+import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 type CardBackProps = {
+  isReversed?: boolean;
   children: ReactNode;
 };
 
-const CardBack = ({ children }: CardBackProps) => {
+const CardBack = ({ children, isReversed }: CardBackProps) => {
   return (
     <div
-      className="absolute backface-hidden bg-orange-100 p-3 justify-center items-center rounded-xl overflow-hidden"
+      className={cn(
+        "absolute backface-hidden bg-orange-100 p-4 justify-center items-center rounded-xl overflow-hidden",
+        isReversed ? "left-0" : "right-0"
+      )}
       style={{
         transform: "rotateY(180deg)",
         WebkitBackfaceVisibility: "hidden",

@@ -99,8 +99,8 @@ const AuthForm = () => {
               ? "Signing in..."
               : "Signing up..."
             : mode === "login"
-            ? "SIGN IN"
-            : "SIGN UP"}
+              ? "SIGN IN"
+              : "SIGN UP"}
         </button>
       </form>
 

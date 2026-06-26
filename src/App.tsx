@@ -7,6 +7,7 @@ import Collection from "./pages/collection";
 import ForgotPassword from "./pages/forgot-password";
 import Single from "./pages/single";
 import Triple from "./pages/triple";
+import Suit from "./pages/suit";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
         <Route
           path="collection"
           element={<Collection />}
+        />
+        <Route
+          path="collection/:suit"
+          element={<Suit />}
         />
         <Route
           path="forgot-password"

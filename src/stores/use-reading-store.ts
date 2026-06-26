@@ -19,6 +19,7 @@ export type Reading = {
 	streak?: number;
 	flipped?: boolean;
 	deprived?: boolean;
+	alternateArt?: string | null;
 };
 
 const LOCAL_STORAGE_KEY = "divination-as-a-service-2";
