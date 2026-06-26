@@ -626,7 +626,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Intuition, Mystery, Secrets, Subconcious, Reflection, Dreams, Receptivity, Meditation, Trust, Hidden, Insight, Silence, Wisdom, Veil, Awareness, Enigma, Knowledge",
     reversed:
-      "Blocked, Deception, Distruct, Ignorance, Repression, Denial, Reveal, Question, Listen, Seek, Confront",
+      "Blocked, Deception, Distrust, Ignorance, Repression, Denial, Reveal, Question, Listen, Seek, Confront",
   },
   {
     name: "The Lovers",
