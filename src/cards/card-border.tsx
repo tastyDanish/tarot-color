@@ -62,7 +62,7 @@ const CardBorder = ({
             <div className="z-10">{children}</div>
           </div>
         </div>
-        <PaperTexture opacity={60} />
+        <PaperTexture opacity={40} />
         {isFoil && <FoilAnimation />}
       </div>
     </div>
