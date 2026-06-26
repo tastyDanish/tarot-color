@@ -1,15 +1,12 @@
 import CardBorder from "@/cards/card-border";
-import { cn } from "@/lib/utils";
 
 const FakeCard = () => {
   return (
-    <CardBorder
-      isFoil={false}
-      size="large">
+    <CardBorder size="large">
       <img
-        src="cards/the-hanged-man.jpg"
+        src="goblin/the-hanged-man.png"
         draggable={false}
-        className={cn("[clip-path:inset(2px)] z-10 w-50 shrink-0")}
+        className="z-20"
         alt="card"
       />
     </CardBorder>
@@ -18,32 +15,46 @@ const FakeCard = () => {
 
 const Triple = () => {
   return (
-    <div className="w-full overflow-hidden">
-      <div className="max-w-screen flex justify-center">
-        <div className=" -translate-x-10 shrink-0 flex flex-col">
-          <span className="opacity-0">Past</span>
-          <span className="opacity-0">The Fool</span>
-          <FakeCard />
-        </div>
-        <div className="shrink-0 flex flex-col z-10 items-center">
-          <span>Present</span>
-          <FakeCard />
-          <div className="flex flex-col gap-1 items-center">
-            <span className="font-bold">The Hanged Man</span>
-            <div className="flex flex-row gap-2 items-center">
-              <div className="h-4 w-4 rounded-full bg-red-500" />{" "}
-              <span>Adventure</span>
-            </div>
-            <div className="flex flex-row gap-2 items-center">
-              <div className="h-4 w-4 rounded-full bg-red-500" />{" "}
-              <span>Adventure</span>
-            </div>
+    <div className="relative w-full overflow-hidden pt-8">
+      <div className="max-w-screen flex justify-center gap-10">
+        <div className="h-70 shrink-0 flex flex-col items-center translate-y-6">
+          <span className="opacity-0 text-2xl font-medium">PRESENT</span>
+          <span className="opacity-0 font-bold">The Fool</span>
+          <div className="w-52 h-fit flex justify-center z-10 items-center mt-6 mb-8">
+            <div className="absolute bg-red-500 h-94 w-40 -my-4" />
+            <FakeCard />
+          </div>
+          <div className="flex flex-row gap-2 items-center opacity-0">
+            <span>Adventure</span>
+            <div>•</div>
+            <span>Adventure</span>
           </div>
         </div>
-        <div className="translate-x-10 shrink-0 flex flex-col">
-          <span className="opacity-0">Future</span>
-          <span className="opacity-0">The Fool</span>
-          <FakeCard />
+        <div className="shrink-0 flex flex-col z-10 items-center">
+          <span className="text-2xl font-medium">PRESENT</span>
+          <span className="font-bold">The Hanged Man</span>
+          <div className="w-52 h-fit flex justify-center z-10 items-center mt-6 mb-8">
+            <div className="absolute bg-red-500 h-94 w-40 -my-4" />
+            <FakeCard />
+          </div>
+          <div className="flex flex-row gap-2 items-center">
+            <span>Adventure</span>
+            <div>•</div>
+            <span>Momentum</span>
+          </div>
+        </div>
+        <div className="shrink-0 flex flex-col items-center translate-y-6">
+          <span className="opacity-0 text-2xl font-medium">Future</span>
+          <span className="opacity-0 font-bold">The Fool</span>
+          <div className="w-52 h-fit flex justify-center z-10 items-center mt-6 mb-8">
+            <div className="absolute bg-red-500 h-94 w-40 -my-4" />
+            <FakeCard />
+          </div>
+          <div className="flex flex-row gap-2 items-center opacity-0">
+            <span>Adventure</span>
+            <div>•</div>
+            <span>Adventure</span>
+          </div>
         </div>
       </div>
     </div>
