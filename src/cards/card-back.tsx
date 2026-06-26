@@ -28,7 +28,10 @@ const CardBack = ({ children, isReversed }: CardBackProps) => {
         {children}
       </div>
 
-      <PaperTexture opacity={80} />
+      <PaperTexture
+        opacity={80}
+        zLevel="z-10"
+      />
     </div>
   );
 };
