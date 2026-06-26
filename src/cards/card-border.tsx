@@ -48,7 +48,7 @@ const CardBorder = ({
         )}>
         <div
           className={cn(
-            "relative z-20 bg-slate-950 rounded-md p-1 w-full h-full flex items-center justify-center"
+            "relative z-20 bg-slate-950/80 rounded-md p-1 w-full h-full flex items-center justify-center"
           )}>
           <div
             className={cn(
