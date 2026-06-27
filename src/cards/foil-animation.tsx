@@ -34,7 +34,7 @@ const FoilAnimation = () => {
   return (
     <>
       <motion.div
-        className="absolute -top-1/2 left-[-50%] w-3/4 h-[150%] bg-gradient-to-r from-amber-200/0 via-amber-200/80 to-amber-200/0 blur-sm opacity-40 rotate-[25deg] pointer-events-none z-20"
+        className="absolute -top-1/2 left-[-50%] w-3/4 h-[150%] bg-linear-to-r from-amber-300/0 via-amber-300/80 to-amber-200/0 blur-sm opacity-40 rotate-[25deg] pointer-events-none z-20"
         animate={{ x: ["-200%", "300%"] }}
         transition={{
           repeatDelay: 2,

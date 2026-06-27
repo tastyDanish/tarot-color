@@ -35,9 +35,12 @@ const CardBorder = ({
   return (
     <div
       className={cn(
-        "relative bg-stone-100 rounded-xl w-full h-full overflow-hidden backface-hidden shadow-xl  border border-amber-950/25 border-t-amber-50/25 border-l-amber-50/25",
+        "relative rounded-xl w-full h-full overflow-hidden backface-hidden shadow-xl  border ",
         getBorderRounded(),
-        isReversed ? "left-0" : "right-0"
+        isReversed ? "left-0" : "right-0",
+        isFoil
+          ? "bg-amber-200 border-amber-950/25 border-t-amber-100/25 border-l-amber-100/25"
+          : "bg-stone-100 border-amber-950/25 border-t-amber-50/25 border-l-amber-50/25"
       )}
       style={{ WebkitBackfaceVisibility: "hidden", WebkitPerspective: 0 }}>
       <div
