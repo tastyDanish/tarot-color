@@ -67,7 +67,7 @@ const DailyButton = () => {
           <LittleCard rotation="" />
         </motion.div>
 
-        <div className="h-[3px] w-9/10 rounded-xl bg-amber-900 " />
+        <div className="h-0.75 w-9/10 rounded-xl bg-amber-900 " />
         <div className="flex flex-col w-full items-start text-left">
           <span className="font-extrabold text-xl">DAILY FORTUNE</span>
           <span className="font-thin text-sm">

@@ -15,7 +15,9 @@ const Home = () => {
       <div className="max-w-120 flex flex-col gap-4 pt-0 md:pt-2">
         <SiteIntrouction />
         <div className="flex w-full justify-between md:flex-row flex-col gap-4 items-center">
-          <ConditionalSwipe>
+          <ConditionalSwipe
+            classnames="h-80"
+            showProgress>
             <DailyButton />
             <TripleButton />
           </ConditionalSwipe>

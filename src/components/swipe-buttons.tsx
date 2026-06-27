@@ -1,11 +1,18 @@
 import { type ReactNode, Children, useState } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface SwipeButtonsProps {
+  classnames?: string;
+  showProgress?: boolean;
   children: ReactNode;
 }
 
-const SwipeButtons = ({ children }: SwipeButtonsProps) => {
+const SwipeButtons = ({
+  children,
+  showProgress,
+  classnames,
+}: SwipeButtonsProps) => {
   const stack = Children.toArray(children);
   const [viewIndex, setViewIndex] = useState<number>(0);
 
@@ -18,9 +25,13 @@ const SwipeButtons = ({ children }: SwipeButtonsProps) => {
   };
 
   return (
-    <div className="relative w-full max-w-xl mx-auto overflow-hidden">
+    <div className="relative w-full max-w-screen mx-auto overflow-hidden">
       {/* Progress bar */}
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+      <div
+        className={cn(
+          "top-2 left-1/2 -translate-x-1/2 flex gap-1 z-10",
+          showProgress ? "absolute" : "hidden"
+        )}>
         {stack.map((_, i) => (
           <div
             key={i}
@@ -32,7 +43,8 @@ const SwipeButtons = ({ children }: SwipeButtonsProps) => {
       </div>
 
       {/* Card track */}
-      <div className="relative flex justify-center items-center h-80">
+      <div
+        className={cn("relative flex justify-center items-center", classnames)}>
         {stack.map((child, i) => {
           // how far this card is from the current index
           const offset = i - viewIndex;
@@ -41,7 +53,7 @@ const SwipeButtons = ({ children }: SwipeButtonsProps) => {
           let style = {
             zIndex: 0,
             scale: 0.8,
-            x: offset * 200, // spacing between cards
+            x: offset * 220, // spacing between cards
             opacity: Math.abs(offset) > 1 ? 0 : 0.6,
           };
 
@@ -53,9 +65,10 @@ const SwipeButtons = ({ children }: SwipeButtonsProps) => {
             <motion.div
               key={i}
               className="absolute w-3/4 flex items-center justify-center"
+              initial={style}
               animate={style}
               transition={{ duration: 0.2 }}
-              drag={offset === 0 ? "x" : false} // only allow dragging current card
+              drag={offset === 0 ? "x" : false}
               dragConstraints={{ left: 0, right: 0 }}
               onDragEnd={(_, info) => {
                 if (info.offset.x < -100) handleSwipe("left");
