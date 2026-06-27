@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import type { TarotCard } from "@/cards/tarot-cards";
-import { generateReading } from "@/cards/readings";
+import { generateDailySingle } from "@/cards/readings";
 import { mapDbReadingToReading } from "@/db/mappers";
 import { getNextMidnight } from "@/lib/time-utils";
 
@@ -92,7 +92,7 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 				set({ reading, isLoading: false });
 				return;
 			} else {
-				const reading = generateReading(expiration);
+				const reading = generateDailySingle(expiration);
 				saveToStorage({
 					...reading,
 					streak: (localReading?.streak ?? 0) + 1,

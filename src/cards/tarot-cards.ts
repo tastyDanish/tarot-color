@@ -326,7 +326,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Imagination, Creativity, Curiosity, Emotion, Wonder, Inspiration, Dreaminess, Affection, Surprise, Intuition, Sentiment, Tenderness, Message, Openness",
     reversed:
-      "Blockage, Stagnation, Insecurity, Resistance, Confusion, Restart, Avoidance, Reawakening, New Beginning, Self-Doubt, Overthinking",
+      "Blockage, Stagnation, Insecurity, Resistance, Confusion, Avoidance, Reawakening, New Beginning, Self-Doubt, Overthinking",
   },
   {
     name: "Page Of Pentacles",
