@@ -1,5 +1,4 @@
 import useIsSmallScreen from "@/lib/use-is-small-screen";
-import useIsTouchDevice from "@/lib/use-is-touch";
 import { type ReactNode } from "react";
 import SwipeButtons from "./swipe-buttons";
 
@@ -14,10 +13,9 @@ export function ConditionalSwipe({
   showProgress,
   classnames,
 }: ConditionalSwipeProps) {
-  const isTouch = useIsTouchDevice();
   const isSmall = useIsSmallScreen();
 
-  if (isTouch && isSmall) {
+  if (isSmall) {
     return (
       <SwipeButtons
         classnames={classnames}

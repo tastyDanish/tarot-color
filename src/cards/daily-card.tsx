@@ -7,11 +7,15 @@ import StreakCounter from "./streak-counter";
 import ShareButton from "@/share";
 import { cn } from "@/lib/utils";
 import { capitalize } from "@/lib/string-utils";
+import { useReadingStore } from "@/stores/use-reading-store";
+import { useUserStore } from "@/stores/user-user-store";
 
 type DailyCardProps = {
   reading: Reading;
 };
 const DailyCard = ({ reading }: DailyCardProps) => {
+  const { id } = useUserStore();
+  const { setIsFlipped } = useReadingStore();
   return (
     <div
       className="relative flex flex-col items-center opacity-100 w-full pb-4"
@@ -40,13 +44,15 @@ const DailyCard = ({ reading }: DailyCardProps) => {
           reading.flipped === undefined ? "invisible" : ""
         )}>
         <FlipCard
-          readingId={reading.id}
           isReversed={reading.reversed ?? true}
           isFlipped={reading.flipped ?? false}
           card={reading.card}
           isFoil={reading.foil ?? false}
           isDeprived={reading.deprived ?? false}
           alternateArt={reading.alternateArt ?? null}
+          setIsFlipped={() =>
+            setIsFlipped({ flipped: true, userId: id, readingId: reading.id })
+          }
         />
         <ColorSwatch
           isFlipped={reading.flipped ?? false}

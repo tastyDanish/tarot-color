@@ -4,19 +4,28 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import CardBorder from "./card-border";
 import CardBack from "./card-back";
-import { useReadingStore } from "@/stores/use-reading-store";
 import { createAccountPush } from "./create-account-push";
 import { useUserStore } from "@/stores/user-user-store";
 import { getArt } from "@/lib/string-utils";
 
+type CardSize = "medium" | "large";
+
 type FlipCardProps = {
-  readingId: string;
   card: TarotCard;
   isFlipped: boolean;
   isReversed: boolean;
   isFoil: boolean;
   isDeprived: boolean;
   alternateArt: string | null;
+  setIsFlipped: () => void;
+  size?: CardSize;
+  borderOverride?: CardSize;
+};
+
+// Swap these for the real values once confirmed against CardBorder's own size variants
+const SIZE_CLASSES: Record<CardSize, string> = {
+  large: "h-90 w-50",
+  medium: "h-80 w-45",
 };
 
 const FlipCard = ({
@@ -24,14 +33,16 @@ const FlipCard = ({
   isReversed,
   isFoil,
   isFlipped,
-  readingId,
   isDeprived,
   alternateArt,
+  setIsFlipped,
+  size = "large",
+  borderOverride,
 }: FlipCardProps) => {
   const [frontLoaded, setFrontLoaded] = useState(false);
   const { id } = useUserStore();
 
-  const { setIsFlipped } = useReadingStore();
+  const art = getArt({ card: card.image, art: alternateArt });
 
   useEffect(() => {
     if (isFlipped) {
@@ -61,36 +72,32 @@ const FlipCard = ({
   }, [isFlipped]);
 
   const handleClick = () => {
-    setIsFlipped({ flipped: true, userId: id, readingId });
+    setIsFlipped();
     if (id == null) createAccountPush(1000);
   };
 
   useEffect(() => {
+    if (!art) return;
     const img = new Image();
-    const src = getArt({ card: card.image, art: alternateArt });
-    if (!src) return;
-    img.src = src;
+    img.src = art;
     if (img.complete) {
       setFrontLoaded(true);
     } else {
       img.onload = () => setFrontLoaded(true);
     }
-  }, [card.image, alternateArt]);
+  }, [art]);
 
   return (
     <button
       onClick={handleClick}
-      className="h-fit w-fit"
+      className="h-fit w-fit flex justify-center"
       style={{
         perspective: "1000px",
         WebkitPerspective: "1000px",
         opacity: frontLoaded ? 1 : 0,
       }}>
       <motion.div
-        className={cn(
-          "relative w-60 flex shadow-xl",
-          isReversed ? "justify-start" : "justify-end"
-        )}
+        className={cn("relative flex shadow-xl justify-center")}
         style={{
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",
@@ -103,16 +110,17 @@ const FlipCard = ({
         <CardBorder
           isReversed={isReversed}
           isFoil={isFoil}
-          size="large">
+          size={borderOverride ? borderOverride : size}>
           <img
-            src={getArt({ card: card.image, art: alternateArt })}
+            src={art}
             style={{
               transform: "translateZ(0)",
               WebkitTransform: "translateZ(0)",
             }}
             draggable={false}
             className={cn(
-              "z-50 h-90",
+              SIZE_CLASSES[size],
+              "z-50",
               isReversed ? "rotate-180" : "",
               isDeprived ? "grayscale" : "",
               alternateArt ? "" : "[clip-path:inset(2px)]"
@@ -121,17 +129,10 @@ const FlipCard = ({
           />
         </CardBorder>
 
-        <CardBack isReversed={isReversed}>
-          <img
-            src={getArt({ card: card.image, art: alternateArt })}
-            draggable={false}
-            className={cn(
-              "z-50 opacity-0 w-48",
-              alternateArt ? "" : "[clip-path:inset(2px)]"
-            )}
-            alt={card.name}
-          />
-        </CardBack>
+        <CardBack
+          isReversed={isReversed}
+          size={size}
+        />
       </motion.div>
     </button>
   );

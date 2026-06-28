@@ -1,13 +1,19 @@
 import PaperTexture from "@/components/paper-texture";
 import { cn } from "@/lib/utils";
-import type { ReactNode } from "react";
+
+type CardSize = "medium" | "large";
 
 type CardBackProps = {
   isReversed?: boolean;
-  children: ReactNode;
+  size?: CardSize;
 };
 
-const CardBack = ({ children, isReversed }: CardBackProps) => {
+const SIZE_CLASSES: Record<CardSize, string> = {
+  large: "h-90 w-50",
+  medium: "h-80 w-45",
+};
+
+const CardBack = ({ isReversed, size = "large" }: CardBackProps) => {
   return (
     <div
       className={cn(
@@ -19,13 +25,14 @@ const CardBack = ({ children, isReversed }: CardBackProps) => {
         WebkitBackfaceVisibility: "hidden",
         WebkitPerspective: 0,
       }}>
-      <div className="relative overflow-hidden  flex justify-center items-center rounded-xl bg-amber-950">
+      <div className="relative overflow-hidden flex justify-center items-center rounded-xl bg-amber-950">
         <div className="absolute bg-orange-100 h-full w-1" />
         <div className="absolute bg-orange-100 h-30 w-30 rounded-full transform-x-30" />
         <div className="absolute border-orange-100 border-4 h-40 w-40 rounded-full" />
         <div className="absolute border-orange-100 border-4 h-48 w-48 rounded-full" />
 
-        {children}
+        {/* Spacer to match front card art dimensions — never visible, just sizes this face */}
+        <div className={cn(SIZE_CLASSES[size], "invisible")} />
       </div>
 
       <PaperTexture

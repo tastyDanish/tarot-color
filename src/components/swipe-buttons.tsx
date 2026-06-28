@@ -8,6 +8,9 @@ interface SwipeButtonsProps {
   children: ReactNode;
 }
 
+const CARD_SPACING = 220; // keep in sync with the x offset below
+const NAV_WIDTH = 310; // how much of the side card's sliver is tappable (~half the spacing)
+
 const SwipeButtons = ({
   children,
   showProgress,
@@ -23,6 +26,9 @@ const SwipeButtons = ({
       return prev;
     });
   };
+
+  const canGoPrev = viewIndex > 0;
+  const canGoNext = viewIndex < stack.length - 1;
 
   return (
     <div className="relative w-full max-w-screen mx-auto overflow-hidden">
@@ -45,27 +51,54 @@ const SwipeButtons = ({
       {/* Card track */}
       <div
         className={cn("relative flex justify-center items-center", classnames)}>
+        {/* Invisible nav targets — sit below the center card's z-index,
+            positioned over the visible slivers of the side cards. */}
+        <button
+          type="button"
+          disabled={!canGoPrev}
+          aria-label="Previous card"
+          className="absolute h-full z-20"
+          style={{
+            left: `calc(50% - ${CARD_SPACING}px - ${NAV_WIDTH / 2}px)`,
+            width: NAV_WIDTH,
+          }}
+          onClick={() => handleSwipe("right")}
+        />
+
+        <button
+          type="button"
+          disabled={!canGoNext}
+          aria-label="Next card"
+          className="absolute h-full z-20"
+          style={{
+            left: `calc(50% + ${CARD_SPACING}px - ${NAV_WIDTH / 2}px)`,
+            width: NAV_WIDTH,
+          }}
+          onClick={() => handleSwipe("left")}
+        />
+
         {stack.map((child, i) => {
           // how far this card is from the current index
           const offset = i - viewIndex;
 
           // position / scaling for left (-1), center (0), right (+1), others hidden
           let style = {
-            zIndex: 0,
             scale: 0.8,
-            x: offset * 220, // spacing between cards
+            x: offset * CARD_SPACING,
             opacity: Math.abs(offset) > 1 ? 0 : 0.6,
           };
 
           if (offset === 0) {
-            style = { zIndex: 1, scale: 1, x: 0, opacity: 1 };
+            style = { scale: 1, x: 0, opacity: 1 };
           }
 
           return (
             <motion.div
               key={i}
-              className="absolute w-3/4 flex items-center justify-center"
-              initial={style}
+              className={cn(
+                "absolute w-fit flex items-center justify-center",
+                i === viewIndex ? "z-40" : ""
+              )}
               animate={style}
               transition={{ duration: 0.2 }}
               drag={offset === 0 ? "x" : false}
@@ -73,6 +106,9 @@ const SwipeButtons = ({
               onDragEnd={(_, info) => {
                 if (info.offset.x < -100) handleSwipe("left");
                 else if (info.offset.x > 100) handleSwipe("right");
+              }}
+              style={{
+                ...style,
               }}>
               {child}
             </motion.div>

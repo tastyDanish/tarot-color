@@ -13,13 +13,13 @@ import {
 import { TAROT_CARDS, type TarotCard } from "./tarot-cards";
 import type { Reading, WordColor } from "@/stores/use-reading-store";
 
-export type ReadingCard = {
+export type DrawnCard = {
 	card: TarotCard;
 	reversed: boolean;
 	foil: boolean;
 	deprived: boolean;
 };
-const getReadingCard = (card?: TarotCard): ReadingCard => ({
+const getReadingCard = (card?: TarotCard): DrawnCard => ({
 	card: card ? card : getRandomItem(TAROT_CARDS),
 	reversed: Math.random() <= 0.12,
 	foil: Math.random() <= 0.07,
@@ -80,9 +80,9 @@ export const generateDailySingle = (expiration: Date): Reading => {
 	};
 };
 
-type ReadingPhase = {
+export type ReadingPhase = {
 	title: string;
-	card: ReadingCard;
+	drawn: DrawnCard;
 	words: string[];
 	color: string;
 };
@@ -92,29 +92,21 @@ type TripleReading = {
 	readingPhases: ReadingPhase[];
 };
 
-export const generateMulti = (count: number): TripleReading => {
-	const colors = generatePalette(3);
-	if (colors.length !== count) {
-		throw new Error("Color count does not match draw count");
-	}
-
-	const titles = ["Past", "Present", "Future"];
-	if (titles.length !== count) {
-		throw new Error("Color count does not match draw count");
-	}
+export const generateMulti = (titles: string[]): TripleReading => {
+	const colors = generatePalette(titles.length);
 
 	const usedWords = new Set<string>();
 
-	const phases = getRandomItemArray(TAROT_CARDS, count).map((c, i) => {
-		const reading = getReadingCard(c);
+	const phases = getRandomItemArray(TAROT_CARDS, titles.length).map((c, i) => {
+		const drawn = getReadingCard(c);
 
 		const color = colors[i];
 
 		return {
 			title: titles[i],
-			card: reading,
-			words: getWords(reading.card, reading.reversed, 2, usedWords),
-			color: reading.deprived ? depriveColor(color) : color,
+			drawn,
+			words: getWords(drawn.card, drawn.reversed, 2, usedWords),
+			color: drawn.deprived ? depriveColor(color) : color,
 		};
 	});
 
