@@ -29,7 +29,13 @@ const ShareCard = ({ reading }: ShareCardProps) => {
       <div className="flex flex-row pt-4 z-10 px-8">
         <div className=" flex justify-center gap-4">
           <div className="relative h-[580px] w-[340px]">
-            <div className="absolute bg-stone-100 p-4 rounded-xl backface-hidden overflow-hidden shadow-md">
+            <div
+              className={cn(
+                "absolute p-4 rounded-xl backface-hidden overflow-hidden shadow-md",
+                reading.foil
+                  ? "bg-amber-200 border-amber-950/25 border-t-amber-100/25 border-l-amber-100/25"
+                  : "bg-stone-100 border-amber-950/25 border-t-amber-50/25 border-l-amber-50/25"
+              )}>
               <div className="bg-slate-950 p-1 rounded-md">
                 <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
                   <img
@@ -39,7 +45,7 @@ const ShareCard = ({ reading }: ShareCardProps) => {
                     })}
                     draggable={false}
                     className={cn(
-                      "[clip-path:inset(2px)] z-10",
+                      "z-50",
                       reading.reversed === true ? "rotate-180" : "",
                       reading.deprived ? "grayscale" : ""
                     )}

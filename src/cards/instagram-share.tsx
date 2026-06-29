@@ -4,6 +4,7 @@ import FoilAnimation from "./foil-animation";
 import type { Reading } from "@/stores/use-reading-store";
 import StreakCounter from "./streak-counter";
 import { capitalize, getArt } from "@/lib/string-utils";
+import PaperTexture from "@/components/paper-texture";
 
 type InstagramShareProps = {
   reading: Reading;
@@ -35,8 +36,14 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
             "flex z-10 px-2 justify-center w-full",
             reading.reversed ? "flex-row-reverse" : "flex-row"
           )}>
-          <div className="relative bg-stone-100 p-3 rounded-xl backface-hidden overflow-hidden shadow-md h-fit z-20">
-            <div className="bg-slate-950 p-1 rounded-md">
+          <div
+            className={cn(
+              "relative  p-3 rounded-xl backface-hidden overflow-hidden shadow-xl border h-fit z-20",
+              reading.foil
+                ? "bg-amber-200 border-amber-950/25 border-t-amber-100/25 border-l-amber-100/25"
+                : "bg-stone-100 border-amber-950/25 border-t-amber-50/25 border-l-amber-50/25"
+            )}>
+            <div className="bg-slate-950/80 p-1 rounded-md">
               <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
                 <img
                   src={getArt({
@@ -45,20 +52,16 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
                   })}
                   draggable={false}
                   className={cn(
-                    "[clip-path:inset(2px)] z-10 h-100",
+                    "z-20 h-100",
                     reading.reversed === true ? "rotate-180" : "",
                     reading.deprived ? "grayscale" : ""
                   )}
                   alt={reading.card.name}
                 />
               </div>
-              <div
-                className="absolute inset-0 opacity-40 pointer-events-none"
-                style={{
-                  backgroundImage: "url('/paper-texture.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "30% 0%",
-                }}
+              <PaperTexture
+                opacity={60}
+                zLevel="z-10"
               />
               {reading.foil && <FoilAnimation />}
             </div>

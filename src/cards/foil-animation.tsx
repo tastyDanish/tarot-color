@@ -34,7 +34,7 @@ const FoilAnimation = () => {
   return (
     <>
       <motion.div
-        className="absolute -top-1/2 left-[-50%] w-3/4 h-[150%] bg-linear-to-r from-amber-300/0 via-amber-300/80 to-amber-200/0 blur-sm opacity-40 rotate-[25deg] pointer-events-none z-20"
+        className="absolute -top-1/2 left-[-50%] w-3/4 h-[150%] bg-linear-to-r from-amber-300/0 via-amber-300/80 to-amber-200/0 blur-sm opacity-40 rotate-[25deg] pointer-events-none z-50"
         animate={{ x: ["-200%", "300%"] }}
         transition={{
           repeatDelay: 2,
@@ -57,7 +57,7 @@ const FoilAnimation = () => {
             animate={{ opacity: 1, scale: 1.5, y: -10 }}
             exit={{ opacity: 0, scale: 0.5 }}
             transition={{ duration: 1 }}
-            className="absolute text-white text-lg pointer-events-none z-20"
+            className="absolute text-white text-lg pointer-events-none z-50"
             style={{
               left: sparkle.left,
               top: sparkle.top,
