@@ -35,13 +35,7 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
             "flex z-10 px-2 justify-center w-full",
             reading.reversed ? "flex-row-reverse" : "flex-row"
           )}>
-          <div
-            className={
-              (cn(
-                "relative p-3 rounded-xl backface-hidden overflow-hidden shadow-md h-fit z-20"
-              ),
-              reading.foil ? "bg-amber-200" : "bg-stone-100")
-            }>
+          <div className="relative bg-stone-100 p-3 rounded-xl backface-hidden overflow-hidden shadow-md h-fit z-20">
             <div className="bg-slate-950 p-1 rounded-md">
               <div className="overflow-hidden  flex justify-center items-center rounded-2xl">
                 <img
