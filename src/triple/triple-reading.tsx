@@ -11,6 +11,7 @@ type TripleReadingProps = {
 
 export const TripleReading = ({ phase }: TripleReadingProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
+
   const TASSEL_COUNT = 8;
 
   const hasModifier =
@@ -50,29 +51,7 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
       className={`h-fit shrink-0 flex flex-col items-center`}>
       <span className={`text-2xl font-bold`}>{phase.title.toUpperCase()}</span>
       <div className="bg-amber-100/50 w-45 h-0.5 my-2 rounded-md" />
-      <motion.div
-        className="flex flex-col"
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: isFlipped ? 1 : 0,
-        }}
-        transition={{ duration: 1.2, ease: "easeInOut" }}>
-        <div className={cn("text-2xl font-thin whitespace-nowrap")}>
-          {phase.drawn.card.name}
-        </div>
-        <div className={cn("flex gap-2 justify-center h-6")}>
-          {!hasModifier && (
-            <div className="bg-amber-100/50 w-45 h-0.5 my-2 rounded-md" />
-          )}
-          {phase.drawn.foil && <div className="font-thin text-md">FOIL</div>}
-          {phase.drawn.reversed && (
-            <div className="font-thin text-md">REVERSED</div>
-          )}
-          {phase.drawn.deprived && (
-            <div className="font-thin text-md">DEPRIVED</div>
-          )}
-        </div>
-      </motion.div>
+
       <div className="h-fit flex justify-center z-10 items-center mt-6 mb-10">
         <div className="absolute flex flex-col items-center translate-y-2 z-0">
           <motion.div
@@ -80,7 +59,7 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
             animate={{ y: isFlipped ? 0 : 100, opacity: isFlipped ? 1 : 0 }}
             transition={{
               type: "spring",
-              damping: 13,
+              damping: 14,
               stiffness: 140,
               delay: 0.6,
             }}
@@ -90,7 +69,12 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
           <motion.div
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: isFlipped ? 0 : -100, opacity: isFlipped ? 1 : 0 }}
-            transition={{ delay: 0.8, ease: "easeInOut" }}>
+            transition={{
+              type: "spring",
+              damping: 18,
+              stiffness: 180,
+              delay: 0.8,
+            }}>
             <div
               className="h-40 w-40 border-x border-amber-200/40"
               style={{ backgroundColor: phase.color }}
@@ -119,8 +103,31 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
           alternateArt={"goblin"}
           setIsFlipped={() => setIsFlipped(true)}
         />
-        {/* <Card card={phase.card} /> */}
       </div>
+
+      <motion.div
+        className="flex flex-col pt-2"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: isFlipped ? 1 : 0,
+        }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}>
+        <span className={cn("text-2xl font-thin whitespace-nowrap")}>
+          {phase.drawn.card.name}
+        </span>
+        <div className={cn("flex gap-2 justify-center h-6")}>
+          {!hasModifier && (
+            <div className="bg-amber-100/50 w-45 h-0.5 my-2 rounded-md self-center" />
+          )}
+          {phase.drawn.foil && <div className="font-thin text-md">FOIL</div>}
+          {phase.drawn.reversed && (
+            <div className="font-thin text-md">REVERSED</div>
+          )}
+          {phase.drawn.deprived && (
+            <div className="font-thin text-md">DEPRIVED</div>
+          )}
+        </div>
+      </motion.div>
       <motion.div
         className={`flex flex-row gap-2 items-center`}
         initial={{ opacity: 0 }}

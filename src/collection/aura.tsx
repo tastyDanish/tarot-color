@@ -26,7 +26,7 @@ const Aura = () => {
           />
         </div>
         <div className="flex flex-col">
-          <div className="w-36 overflow-hidden flex-shrink-0 relative">
+          <div className="w-36 overflow-hidden shrink-0 relative">
             <CardBorder size="medium">
               <div style={{ backgroundColor: auraColor ?? "#000000" }}>
                 <img

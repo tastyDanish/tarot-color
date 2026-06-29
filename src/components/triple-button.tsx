@@ -24,7 +24,7 @@ const TripleButton = () => {
           <LittleCard rotation="z-10" />
           <LittleCard rotation="rotate-10 z-20 -translate-x-8 translate-y-1" />
         </div>
-        <div className="h-[3px] w-8/10 rounded-xl bg-amber-950 ml-8 mt-4 opacity-0" />
+        <div className="h-0.75 w-8/10 rounded-xl bg-amber-950 ml-8 mt-4 opacity-0" />
         <div className="flex flex-col w-full items-start opacity-100">
           <span className="font-semibold text-xl">Triple Reading</span>
           <span className="font-thin text-sm">

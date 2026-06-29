@@ -21,6 +21,9 @@ export type DrawnCard = {
 };
 const getReadingCard = (card?: TarotCard): DrawnCard => ({
 	card: card ? card : getRandomItem(TAROT_CARDS),
+	// reversed: Math.random() <= 1,
+	// foil: Math.random() <= 1,
+	// deprived: Math.random() <= 1,
 	reversed: Math.random() <= 0.12,
 	foil: Math.random() <= 0.07,
 	deprived: Math.random() <= 0.03,
