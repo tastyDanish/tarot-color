@@ -56,7 +56,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Transformation, Ending, Release, Rebirth, Shedding, Closure, Transition, Metamorphosis, Threshold, Cycle, Change, Unraveling, Renewal",
     reversed:
-      "Relief, Mercy, Lightness, Acceptance, Easing, Closure, Grace, Breakthrough, Unbinding, Recovery, Turning Point, Peace, Forgiveness, Softness, Renewal, Integration",
+      "Stagnation, Repeating, Decay, Resistance, Dependence, Relief, Mercy, Lightness, Acceptance, Easing, Closure, Grace, Breakthrough, Beginning",
   },
   {
     name: "Eight Of Cups",
@@ -666,7 +666,7 @@ export const TAROT_CARDS: TarotCard[] = [
     description:
       "Hope, Inspiration, Guidance, Healing, Renewal, Grace, Serenity, Clarity, Blessing, Vision, Light, Dream, Peace, Flow, Calm, Radiance, Stillness, Trust",
     reversed:
-      "Acceptance, Closure, Peace, Reflection, Gratitude, Serenity, Understanding, Integration",
+      "Despair, Pessimism, Drought, Imbalance, Negativity, Despondant, Hopelessness, Lost, Disconnected, Chaotic, Discontent, Boredom",
   },
   {
     name: "The Sun",
