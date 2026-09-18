@@ -3,11 +3,41 @@ import CardTitle from "./card-title";
 import FoilAnimation from "./foil-animation";
 import type { Reading } from "@/stores/use-reading-store";
 import StreakCounter from "./streak-counter";
-import { capitalize, getArt } from "@/lib/string-utils";
+import { getArt } from "@/lib/string-utils";
 import PaperTexture from "@/components/paper-texture";
+import DailyWords from "./daily-words";
 
 type InstagramShareProps = {
   reading: Reading;
+};
+
+const FancyThing = ({ top }: { top?: boolean }) => {
+  return (
+    <div
+      className={cn(
+        "w-100 flex justify-center overflow-hidden relative opacity-80",
+        top ? "pt-4" : "pb-4"
+      )}>
+      <div className="bg-orange-100 w-9/10 h-3 relative">
+        <PaperTexture
+          opacity={60}
+          zLevel="z-10"
+        />
+        <div
+          className={cn(
+            "absolute -left-4 bg-[#121826] h-8 w-8 rounded-full z-20",
+            top ? "bottom-1" : "top-1"
+          )}
+        />
+        <div
+          className={cn(
+            "absolute -right-4 bg-[#121826] h-8 w-8 rounded-full z-20",
+            top ? "bottom-1" : "top-1"
+          )}
+        />
+      </div>
+    </div>
+  );
 };
 
 const InstagramShare = ({ reading }: InstagramShareProps) => {
@@ -20,8 +50,9 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
         width: "400px",
         minWidth: "400px",
       }}>
-      <div className="flex flex-col flex-1 w-full h-full px-2 box-border justify-between">
-        <div className="flex flex-col items-center justify-center gap-2 w-full">
+      <FancyThing top />
+      <div className="flex flex-col flex-1 w-full h-full px-2 pt-4 box-border justify-between">
+        <div className="flex flex-col items-center justify-center gap-2 w-full pb-2">
           <CardTitle
             title={reading.card.name}
             isReversed={reading.reversed}
@@ -79,32 +110,22 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
                 title={word.color}>
                 <div
                   style={{ backgroundColor: word.color }}
-                  className="h-16 rounded-b-md w-20 relative"
+                  className="h-16 rounded-b-md w-20 relative ring-1 ring-inset ring-white/25"
                 />
               </div>
             ))}
           </div>
         </div>
-        <div className="flex w-full flex-wrap justify-center gap-2 pb-2">
-          {reading.words.map(({ word, color }) => (
-            <div
-              key={word}
-              className="flex items-center gap-2 text-xl tracking-wide">
-              <div
-                className="h-4 w-4 rounded-full"
-                style={{ backgroundColor: color }}
-              />
-              <span>{capitalize(word)}</span>
-            </div>
-          ))}
+        <div className="flex w-full flex-wrap justify-center gap-2 py-2">
+          <DailyWords words={reading.words.map((w) => w.word)} />
         </div>
         <div className="w-full flex justify-center">
           <StreakCounter count={reading.streak ?? 1} />
         </div>
-
         <div className="text-sm text-white opacity-70 text-center pt-2 whitespace-nowrap">
           Divined at fortunespalette.com
         </div>
+        <FancyThing />
       </div>
     </div>
   );

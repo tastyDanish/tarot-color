@@ -112,7 +112,7 @@ const FlipCard = ({
             }}
             draggable={false}
             className={cn(
-              "z-50 h-[360px]",
+              "z-50 h-90",
               isReversed ? "rotate-180" : "",
               isDeprived ? "grayscale" : "",
               alternateArt ? "" : "[clip-path:inset(2px)]"
@@ -121,7 +121,7 @@ const FlipCard = ({
           />
         </CardBorder>
 
-        <CardBack isReversed={isReversed}>
+        <CardBack>
           <img
             src={getArt({ card: card.image, art: alternateArt })}
             draggable={false}

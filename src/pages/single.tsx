@@ -1,6 +1,5 @@
 import DailyCard from "@/cards/daily-card";
 import InstagramShare from "@/cards/instagram-share";
-import ShareCard from "@/cards/share-card";
 import CrystalBall from "@/components/crystal-ball";
 import { useReadingStore } from "@/stores/use-reading-store";
 import { AnimatePresence, motion } from "motion/react";
@@ -33,7 +32,6 @@ const Single = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}>
-            <ShareCard reading={reading} />
             <InstagramShare reading={reading} />
             <DailyCard reading={reading} />
           </motion.div>
