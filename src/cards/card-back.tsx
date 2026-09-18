@@ -3,35 +3,32 @@ import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
 type CardBackProps = {
-  isReversed?: boolean;
   children: ReactNode;
 };
 
-const CardBack = ({ children, isReversed }: CardBackProps) => {
+const CardBack = ({ children }: CardBackProps) => {
   return (
     <div
       className={cn(
-        "absolute backface-hidden bg-orange-100 p-4 justify-center items-center rounded-xl overflow-hidden",
-        isReversed ? "left-0" : "right-0"
+        "absolute inset-0 backface-hidden border border-t-amber-100/40 border-l-amber-100/20 border-b-slate-800/40 border-r-slate-800/20 rounded-xl overflow-hidden"
       )}
       style={{
         transform: "rotateY(180deg)",
         WebkitBackfaceVisibility: "hidden",
         WebkitPerspective: 0,
       }}>
-      <div className="relative overflow-hidden  flex justify-center items-center rounded-xl bg-amber-950">
-        <div className="absolute bg-orange-100 h-full w-1" />
-        <div className="absolute bg-orange-100 h-30 w-30 rounded-full transform-x-30" />
-        <div className="absolute border-orange-100 border-4 h-40 w-40 rounded-full" />
-        <div className="absolute border-orange-100 border-4 h-48 w-48 rounded-full" />
+      <div className="bg bg-[#211829] p-3 overflow-hidden w-full h-full rounded-xl">
+        <div
+          className="relative overflow-hidden flex justify-center items-center rounded-xl bg-amber-950 bg-cover bg-center w-full h-full"
+          style={{ backgroundImage: "url(/goblin-card-back.png)" }}>
+          {children}
+        </div>
 
-        {children}
+        <PaperTexture
+          opacity={40}
+          zLevel="z-10"
+        />
       </div>
-
-      <PaperTexture
-        opacity={80}
-        zLevel="z-10"
-      />
     </div>
   );
 };

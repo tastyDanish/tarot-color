@@ -16,7 +16,7 @@ const ColorSwatch = ({ words, isFlipped, isReversed }: ColorSwatchProps) => {
       animate={{ opacity: isFlipped ? 1 : 0 }}
       transition={{ delay: 0.7 }}
       className={cn(
-        "relative flex flex-col gap-4 h-98 text-2xl items-start justify-center overflow-hidden md:pl-0 md:-mt-4 -z-10 transition-all",
+        "relative flex flex-col gap-4 h-98 text-2xl items-start justify-center overflow-hidden md:pl-0 -z-10 transition-all",
         isFlipped ? "w-14" : "w-0 opacity-0"
       )}>
       {words?.map((word, i) => (
@@ -36,9 +36,10 @@ const ColorSwatch = ({ words, isFlipped, isReversed }: ColorSwatchProps) => {
           <div
             style={{ backgroundColor: word.color }}
             className={cn(
-              "h-14 w-full rounded-md z-20 relative flex items-center justify-end pr-4",
+              "h-14 w-full rounded-md z-20 relative flex items-center justify-end pr-4 ring-1 ring-inset ring-white/25",
               isReversed ? "rounded-r-none" : "rounded-l-none"
-            )}></div>
+            )}
+          />
         </motion.div>
       ))}
     </motion.div>
