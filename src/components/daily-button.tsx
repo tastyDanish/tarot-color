@@ -36,7 +36,7 @@ const DailyButton = () => {
   return (
     <div className="relative">
       {reading && !reading.flipped && (
-        <div className="bg-orange-500 text-xl font-bold px-2 rounded-xl absolute -top-3 -left-4 z-50 text-gray-900 opacity-100">
+        <div className="absolute -top-3 -left-4 z-50 inline-flex items-center justify-center rounded-full bg-orange-400 px-2.5 pt-1 pb-2 text-lg font-bold uppercase leading-none tracking-wider text-gray-900 shadow-md">
           NEW
         </div>
       )}
@@ -69,8 +69,8 @@ const DailyButton = () => {
 
         <div className="h-[3px] w-9/10 rounded-xl bg-amber-900 " />
         <div className="flex flex-col w-full items-start text-left">
-          <span className="font-extrabold text-xl">DAILY FORTUNE</span>
-          <span className="font-thin text-sm">
+          <span className="font-bold text-xl">DAILY FORTUNE</span>
+          <span className=" text-sm">
             See what the fates have in store for you today
           </span>
         </div>

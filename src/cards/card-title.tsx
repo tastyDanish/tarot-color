@@ -29,15 +29,15 @@ const CardTitle = ({
       <div className="flex flex-col">
         <div
           className={cn(
-            "text-3xl font-thin",
+            "text-3xl font-bold",
             isShare ? "whitespace-nowrap" : ""
           )}>
           {title}
         </div>
         <div className="flex gap-2 justify-center">
-          {isFoil && <div className="font-thin text-md">FOIL</div>}
-          {isReversed && <div className="font-thin text-md">REVERSED</div>}
-          {isDeprived && <div className="font-thin text-md">DEPRIVED</div>}
+          {isFoil && <div className="text-md">FOIL</div>}
+          {isReversed && <div className="text-md">REVERSED</div>}
+          {isDeprived && <div className="text-md">DEPRIVED</div>}
         </div>
       </div>
 

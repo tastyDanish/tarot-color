@@ -9,7 +9,7 @@ const Single = () => {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="flex flex-col items-center pt-4 pb-2">
+      <div className="flex flex-col items-center pt-4 pb-6">
         <p className="text-slate-300 text-xl">Your reading for today is</p>
       </div>
 
