@@ -1,6 +1,5 @@
 import DailyCard from "@/cards/daily-card";
 import InstagramShare from "@/cards/instagram-share";
-import ShareCard from "@/cards/share-card";
 import CrystalBall from "@/components/crystal-ball";
 import { useReadingStore } from "@/stores/use-reading-store";
 import { AnimatePresence, motion } from "motion/react";
@@ -10,7 +9,7 @@ const Single = () => {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="flex flex-col items-center pt-4 pb-2">
+      <div className="flex flex-col items-center pt-4 pb-6">
         <p className="text-slate-300 text-xl">Your reading for today is</p>
       </div>
 
@@ -33,7 +32,6 @@ const Single = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}>
-            <ShareCard reading={reading} />
             <InstagramShare reading={reading} />
             <DailyCard reading={reading} />
           </motion.div>

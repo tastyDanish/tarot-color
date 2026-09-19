@@ -22,7 +22,6 @@ type FlipCardProps = {
   borderOverride?: CardSize;
 };
 
-// Swap these for the real values once confirmed against CardBorder's own size variants
 const SIZE_CLASSES: Record<CardSize, string> = {
   large: "h-90 w-50",
   medium: "h-80 w-45",
@@ -45,30 +44,33 @@ const FlipCard = ({
   const art = getArt({ card: card.image, art: alternateArt });
 
   useEffect(() => {
-    if (isFlipped) {
-      const container = document.getElementById("scroll-container");
-      const target = document.getElementById("daily-reading");
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
+    if (!isFlipped) return;
 
-      if (container && target && !prefersReducedMotion) {
-        const containerRect = container.getBoundingClientRect();
-        const targetRect = target.getBoundingClientRect();
+    const container = document.getElementById("scroll-container");
+    const target = document.getElementById("daily-title");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-        const targetBottom = targetRect.bottom - containerRect.top;
+    if (!container || !target || prefersReducedMotion) return;
 
-        const scrollTo = targetBottom - container.clientHeight;
+    const containerRect = container.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
 
-        animate(container.scrollTop, scrollTo, {
-          duration: 0.7,
-          ease: "easeInOut",
-          onUpdate: (v) => {
-            container.scrollTop = v;
-          },
-        });
-      }
-    }
+    const targetTop = targetRect.top - containerRect.top + container.scrollTop;
+
+    const maxScroll = container.scrollHeight - container.clientHeight;
+    const scrollTo = Math.min(targetTop, maxScroll);
+
+    const controls = animate(container.scrollTop, scrollTo, {
+      duration: 0.7,
+      ease: "easeInOut",
+      onUpdate: (v) => {
+        container.scrollTop = v;
+      },
+    });
+
+    return () => controls.stop();
   }, [isFlipped]);
 
   const handleClick = () => {
@@ -128,11 +130,7 @@ const FlipCard = ({
             alt={card.name}
           />
         </CardBorder>
-
-        <CardBack
-          isReversed={isReversed}
-          size={size}
-        />
+        <CardBack size={size} />
       </motion.div>
     </button>
   );

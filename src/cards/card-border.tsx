@@ -32,6 +32,13 @@ const CardBorder = ({
     return "p-2";
   };
 
+  const getBlackBorderPadding = () => {
+    if (size == "small") return "p-1";
+    if (size == "medium") return "p-1";
+    if (size == "large") return "p-1.5";
+    return "p-1";
+  };
+
   return (
     <div
       className={cn(
@@ -51,7 +58,8 @@ const CardBorder = ({
         )}>
         <div
           className={cn(
-            "relative z-20 bg-slate-950/80 rounded-md p-1 w-full h-full flex items-center justify-center"
+            "relative z-20 bg-slate-900/80 rounded-md w-fit h-fit flex items-center justify-center",
+            getBlackBorderPadding()
           )}>
           <div
             className={cn(

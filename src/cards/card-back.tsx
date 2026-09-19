@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 type CardSize = "medium" | "large";
 
 type CardBackProps = {
-  isReversed?: boolean;
   size?: CardSize;
 };
 
@@ -13,32 +12,30 @@ const SIZE_CLASSES: Record<CardSize, string> = {
   medium: "h-80 w-45",
 };
 
-const CardBack = ({ isReversed, size = "large" }: CardBackProps) => {
+const CardBack = ({ size = "large" }: CardBackProps) => {
   return (
     <div
       className={cn(
-        "absolute backface-hidden bg-orange-100 p-4 justify-center items-center rounded-xl overflow-hidden",
-        isReversed ? "left-0" : "right-0"
+        "absolute inset-0 backface-hidden border border-t-amber-100/40 border-l-amber-100/20 border-b-amber-100/20 border-r-amber-100/20 rounded-xl overflow-hidden"
       )}
       style={{
         transform: "rotateY(180deg)",
         WebkitBackfaceVisibility: "hidden",
         WebkitPerspective: 0,
       }}>
-      <div className="relative overflow-hidden flex justify-center items-center rounded-xl bg-amber-950">
-        <div className="absolute bg-orange-100 h-full w-1" />
-        <div className="absolute bg-orange-100 h-30 w-30 rounded-full transform-x-30" />
-        <div className="absolute border-orange-100 border-4 h-40 w-40 rounded-full" />
-        <div className="absolute border-orange-100 border-4 h-48 w-48 rounded-full" />
+      <div className="bg bg-[#211829] p-3 overflow-hidden w-full h-full rounded-xl flex justify-center items-center">
+        <div
+          className={cn(
+            "relative overflow-hidden flex justify-center items-center rounded-xl bg-amber-950 bg-cover bg-center",
+            SIZE_CLASSES[size]
+          )}
+          style={{ backgroundImage: "url(/goblin-card-back.png)" }}></div>
 
-        {/* Spacer to match front card art dimensions — never visible, just sizes this face */}
-        <div className={cn(SIZE_CLASSES[size], "invisible")} />
+        <PaperTexture
+          opacity={40}
+          zLevel="z-10"
+        />
       </div>
-
-      <PaperTexture
-        opacity={80}
-        zLevel="z-10"
-      />
     </div>
   );
 };

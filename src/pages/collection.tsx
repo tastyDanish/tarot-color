@@ -2,11 +2,14 @@
 import { CollectionStatus } from "@/collection/collection-status";
 import StarSpinner from "@/collection/constellation-stars/star-spinner";
 import GetReadings from "@/collection/get-readings";
+import { useCollectionStore } from "@/stores/use-collection-store";
 import { useUserStore } from "@/stores/user-user-store";
 import { useNavigate } from "react-router-dom";
 
 const Collection = () => {
   const { signOut, email } = useUserStore();
+  const id = GetReadings();
+  const { allCards } = useCollectionStore();
   const navigate = useNavigate();
 
   GetReadings();
@@ -15,6 +18,8 @@ const Collection = () => {
     await signOut();
     navigate("/");
   };
+
+  if (!id || !allCards) return null;
 
   return (
     <div className="flex flex-col px-4 pt-2 pb-12 w-80 md:w-120 items-center text-slate-300">

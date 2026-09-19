@@ -14,8 +14,8 @@ const options: ISourceOptions = {
     height: "100vh",
   },
   background: {
-    color: { value: "#1f2937" },
-    image: "linear-gradient(to bottom, #1f2937, #0b0f19)",
+    color: { value: "#202D42" },
+    image: "linear-gradient(to bottom, #202D42, #141417)",
   },
   interactivity: {
     events: {
@@ -25,10 +25,12 @@ const options: ISourceOptions = {
   },
   particles: {
     number: { value: 500, density: { enable: true } },
-    color: { value: ["#ffffff", "#93c5fd", "#bfdbfe"] },
+    color: {
+      value: ["#ffffff", "#93c5fd", "#bfdbfe", "#FEEEBF", "#FAD66E", "#EBCFFA"],
+    },
     shape: { type: "circle" },
     opacity: {
-      value: { min: 0.1, max: 0.4 },
+      value: { min: 0.1, max: 0.6 },
       animation: { enable: true, speed: 0.2, sync: false },
     },
     size: {

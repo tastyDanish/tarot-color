@@ -1,6 +1,6 @@
 import { domToPng } from "modern-screenshot";
 
-export const downloadImage = async (element: HTMLElement) => {
+export const downloadImageBackup = async (element: HTMLElement) => {
   try {
     // 1. Grab tsparticles canvas
     const particlesCanvas = document.querySelector(
@@ -71,10 +71,10 @@ export const downloadImage = async (element: HTMLElement) => {
   }
 };
 
-export const downloadImageBackup = async (element: HTMLElement) => {
+export const downloadImage = async (element: HTMLElement) => {
   try {
     const dataUrl = await domToPng(element, {
-      backgroundColor: "#1f2937",
+      backgroundColor: "#121826",
       style: {
         opacity: "100%",
         padding: "10px",
