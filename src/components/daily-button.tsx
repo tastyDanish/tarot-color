@@ -36,7 +36,7 @@ const DailyButton = () => {
   return (
     <div className="relative">
       {reading && !reading.flipped && (
-        <div className="absolute -top-3 -left-4 z-50 inline-flex items-center justify-center rounded-full bg-orange-500 px-2.5 pt-1 pb-2 text-lg font-bold uppercase leading-none tracking-wider text-gray-900 shadow-md">
+        <div className="absolute -top-3 -left-4 z-50 inline-flex items-center justify-center rounded-full bg-orange-400 px-2.5 pt-1 pb-2 text-lg font-bold uppercase leading-none tracking-wider text-gray-900 shadow-md">
           NEW
         </div>
       )}
