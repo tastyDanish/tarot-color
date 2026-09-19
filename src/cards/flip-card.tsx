@@ -34,30 +34,33 @@ const FlipCard = ({
   const { setIsFlipped } = useReadingStore();
 
   useEffect(() => {
-    if (isFlipped) {
-      const container = document.getElementById("scroll-container");
-      const target = document.getElementById("daily-reading");
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
+    if (!isFlipped) return;
 
-      if (container && target && !prefersReducedMotion) {
-        const containerRect = container.getBoundingClientRect();
-        const targetRect = target.getBoundingClientRect();
+    const container = document.getElementById("scroll-container");
+    const target = document.getElementById("daily-title");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-        const targetBottom = targetRect.bottom - containerRect.top;
+    if (!container || !target || prefersReducedMotion) return;
 
-        const scrollTo = targetBottom - container.clientHeight;
+    const containerRect = container.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
 
-        animate(container.scrollTop, scrollTo, {
-          duration: 0.7,
-          ease: "easeInOut",
-          onUpdate: (v) => {
-            container.scrollTop = v;
-          },
-        });
-      }
-    }
+    const targetTop = targetRect.top - containerRect.top + container.scrollTop;
+
+    const maxScroll = container.scrollHeight - container.clientHeight;
+    const scrollTo = Math.min(targetTop, maxScroll);
+
+    const controls = animate(container.scrollTop, scrollTo, {
+      duration: 0.7,
+      ease: "easeInOut",
+      onUpdate: (v) => {
+        container.scrollTop = v;
+      },
+    });
+
+    return () => controls.stop();
   }, [isFlipped]);
 
   const handleClick = () => {
@@ -121,17 +124,7 @@ const FlipCard = ({
           />
         </CardBorder>
 
-        <CardBack>
-          <img
-            src={getArt({ card: card.image, art: alternateArt })}
-            draggable={false}
-            className={cn(
-              "z-50 opacity-0 w-48",
-              alternateArt ? "" : "[clip-path:inset(2px)]"
-            )}
-            alt={card.name}
-          />
-        </CardBack>
+        <CardBack />
       </motion.div>
     </button>
   );

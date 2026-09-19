@@ -7,14 +7,17 @@ import StreakCounter from "./streak-counter";
 import ShareButton from "@/share";
 import { cn } from "@/lib/utils";
 import DailyWords from "./daily-words";
+import GoToCollection from "@/collection/go-to-collection";
+import { useUserStore } from "@/stores/user-user-store";
 
 type DailyCardProps = {
   reading: Reading;
 };
 const DailyCard = ({ reading }: DailyCardProps) => {
+  const { loading, id } = useUserStore();
   return (
     <div
-      className="relative flex flex-col items-center opacity-100 w-full pb-4"
+      className="relative flex flex-col items-center opacity-100 w-full justify-between"
       id="daily-reading">
       <motion.div
         className="flex flex-col items-center z-10"
@@ -23,7 +26,9 @@ const DailyCard = ({ reading }: DailyCardProps) => {
           opacity: reading.flipped ? 1 : 0,
         }}
         transition={{ duration: 1.2, ease: "easeInOut" }}>
-        <div className="flex w-full flex-row items-center gap-4 md:gap-8 justify-around pb-2 pr-2 md:pr-0">
+        <div
+          className="flex w-full flex-row items-center gap-4 md:gap-8 justify-around pb-2 pr-2 md:pr-0"
+          id="daily-title">
           <CardTitle
             title={reading.card.name}
             isReversed={reading.reversed}
@@ -62,7 +67,7 @@ const DailyCard = ({ reading }: DailyCardProps) => {
         }}
         transition={{ duration: 1.2, ease: "easeInOut" }}
         className={cn(
-          "flex flex-wrap justify-center gap-2 pt-4 pb-2 w-75 pl-1 pr-1",
+          "flex flex-wrap justify-center gap-2 pt-2 pb-4 w-75 pl-1 pr-1",
           reading.flipped === false ? "opacity-0" : "opacity-100"
         )}>
         <DailyWords words={reading.words.map((w) => w.word)} />
@@ -74,14 +79,18 @@ const DailyCard = ({ reading }: DailyCardProps) => {
         }}
         transition={{ duration: 1.2, ease: "easeInOut" }}
         className={cn(
-          "flex gap-4 items-center py-2",
+          "flex flex-col gap-2 justify-center pt-2",
+          id === null ? "pb-8" : "",
           reading.flipped === false ? "opacity-0" : "opacity-100"
         )}>
-        <StreakCounter
-          count={reading.streak ?? 1}
-          smallText
-        />
-        <ShareButton />
+        <div className="flex gap-4 items-center w-full justify-center">
+          <StreakCounter
+            count={reading.streak ?? 1}
+            smallText
+          />
+          <ShareButton />
+        </div>
+        {!loading && id !== null && <GoToCollection />}
       </motion.div>
     </div>
   );

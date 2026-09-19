@@ -69,8 +69,8 @@ const DailyButton = () => {
 
         <div className="h-[3px] w-9/10 rounded-xl bg-amber-900 " />
         <div className="flex flex-col w-full items-start text-left">
-          <span className="font-extrabold text-xl">DAILY FORTUNE</span>
-          <span className="font-thin text-sm">
+          <span className="font-bold text-xl">DAILY FORTUNE</span>
+          <span className=" text-sm">
             See what the fates have in store for you today
           </span>
         </div>
