@@ -46,7 +46,7 @@ const CardCounter = ({ card, isStar }: CardCounterProps) => {
   return (
     <div
       key={card.name}
-      className="relative flex h-98 md:h-74 flex-col w-80 md:w-120 bg-orange-100 text-amber-950 rounded-md shadow-md border-amber-950 border-0 p-2 gap-2">
+      className="relative flex h-98 md:h-74 flex-col w-80 md:w-120 bg-orange-100 text-amber-950 rounded-md shadow-md border-amber-950 border-0 p-2 gap-2 overflow-hidden">
       <div className="border-4 border-amber-950/60 overflow-hidden h-full">
         <div className="flex flex-col md:flex-row h-full">
           <div className="flex flex-row">
