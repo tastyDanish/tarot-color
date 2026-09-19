@@ -38,7 +38,7 @@ export const CollectionList = ({ cards, starSet }: CollectionListProps) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="bg-orange-100 text-amber-950 p-3 relative rounded-t-xl w-80 md:w-120 flex flex-col gap-4">
+      <div className="bg-orange-100 text-amber-950 p-3 relative rounded-t-xl w-80 md:w-120 flex flex-col gap-4 overflow-hidden">
         {/* Filter row */}
         <div className="flex flex-row items-center gap-3">
           <span className="shrink-0 text-sm">FILTER</span>
