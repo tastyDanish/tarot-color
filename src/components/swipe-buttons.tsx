@@ -31,7 +31,7 @@ const SwipeButtons = ({
   const canGoNext = viewIndex < stack.length - 1;
 
   return (
-    <div className="relative w-full max-w-screen mx-auto overflow-hidden">
+    <div className="relative w-full max-w-screen mx-auto">
       {/* Progress bar */}
       <div
         className={cn(
@@ -78,37 +78,33 @@ const SwipeButtons = ({
         />
 
         {stack.map((child, i) => {
-          // how far this card is from the current index
           const offset = i - viewIndex;
 
-          // position / scaling for left (-1), center (0), right (+1), others hidden
-          let style = {
-            scale: 0.8,
-            x: offset * CARD_SPACING,
-            opacity: Math.abs(offset) > 1 ? 0 : 0.6,
-          };
-
-          if (offset === 0) {
-            style = { scale: 1, x: 0, opacity: 1 };
-          }
+          const animateTo =
+            offset === 0
+              ? { scale: 1, x: 0, opacity: 1 }
+              : {
+                  scale: 0.8,
+                  x: offset * CARD_SPACING,
+                  opacity: Math.abs(offset) > 1 ? 0 : 0.6,
+                };
 
           return (
             <motion.div
               key={i}
               className={cn(
                 "absolute w-fit flex items-center justify-center",
-                i === viewIndex ? "z-40" : ""
+                offset === 0 && "z-40"
               )}
-              animate={style}
-              transition={{ duration: 0.2 }}
+              initial={false}
+              animate={animateTo}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
               drag={offset === 0 ? "x" : false}
               dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
               onDragEnd={(_, info) => {
                 if (info.offset.x < -100) handleSwipe("left");
                 else if (info.offset.x > 100) handleSwipe("right");
-              }}
-              style={{
-                ...style,
               }}>
               {child}
             </motion.div>
