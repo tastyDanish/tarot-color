@@ -11,35 +11,6 @@ type InstagramShareProps = {
   reading: Reading;
 };
 
-const FancyThing = ({ top }: { top?: boolean }) => {
-  return (
-    <div
-      className={cn(
-        "w-100 flex justify-center overflow-hidden relative opacity-80",
-        top ? "pt-4" : "pb-4"
-      )}>
-      <div className="bg-orange-100 w-9/10 h-3 relative">
-        <PaperTexture
-          opacity={60}
-          zLevel="z-10"
-        />
-        <div
-          className={cn(
-            "absolute -left-4 bg-[#121826] h-8 w-8 rounded-full z-20",
-            top ? "bottom-1" : "top-1"
-          )}
-        />
-        <div
-          className={cn(
-            "absolute -right-4 bg-[#121826] h-8 w-8 rounded-full z-20",
-            top ? "bottom-1" : "top-1"
-          )}
-        />
-      </div>
-    </div>
-  );
-};
-
 const InstagramShare = ({ reading }: InstagramShareProps) => {
   return (
     <div
@@ -50,8 +21,10 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
         width: "400px",
         minWidth: "400px",
       }}>
-      <FancyThing top />
-      <div className="flex flex-col flex-1 w-full h-full px-2 pt-4 box-border justify-between">
+      <div className="w-full flex justify-center text-slate-100">
+        <span>Your reading for today is</span>
+      </div>
+      <div className="flex flex-col flex-1 w-full h-full p-2 box-border justify-between">
         <div className="flex flex-col items-center justify-center gap-2 w-full pb-2">
           <CardTitle
             title={reading.card.name}
@@ -125,7 +98,6 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
         <div className="text-sm text-white opacity-70 text-center pt-2 whitespace-nowrap">
           Divined at fortunespalette.com
         </div>
-        <FancyThing />
       </div>
     </div>
   );
