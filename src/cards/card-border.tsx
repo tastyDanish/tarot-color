@@ -9,6 +9,7 @@ type CardBorderProps = {
   size: Size;
   isFoil?: boolean;
   isReversed?: boolean;
+  staticGradient?: boolean;
   children: ReactNode;
 };
 
@@ -16,6 +17,7 @@ const CardBorder = ({
   children,
   isReversed,
   isFoil,
+  staticGradient = false,
   size,
 }: CardBorderProps) => {
   const getBorderRounded = () => {
@@ -77,7 +79,12 @@ const CardBorder = ({
           opacity={isFoil ? 40 : 60}
           zLevel="z-10"
         />
-        {isFoil && <FoilAnimation />}
+        {isFoil && (
+          <FoilAnimation
+            size={size}
+            staticGradient={staticGradient}
+          />
+        )}
       </div>
     </div>
   );

@@ -67,6 +67,7 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
             style={{ backgroundColor: phase.color }}
           />
           <motion.div
+            className="relative"
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: isFlipped ? 0 : -100, opacity: isFlipped ? 1 : 0 }}
             transition={{
@@ -79,13 +80,17 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
               className="h-40 w-40 border-x border-amber-200/40"
               style={{ backgroundColor: phase.color }}
             />
+            <div
+              className="h-2 w-39 absolute left-0.5 bottom-2 z-10"
+              style={{ backgroundColor: phase.color }}
+            />
 
             {/* bottom tassels */}
             <div className="flex justify-between w-full">
               {Array.from({ length: TASSEL_COUNT }).map((_, i) => (
                 <div
                   key={`bottom-${i}`}
-                  className="w-3 h-3 z-10 border-x border-amber-200/40 border-b"
+                  className="w-3 h-3 border-x border-amber-200/40 border-b -z-10"
                   style={{ backgroundColor: phase.color }}
                 />
               ))}

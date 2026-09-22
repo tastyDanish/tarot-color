@@ -7,8 +7,7 @@ import CardBack from "./card-back";
 import { createAccountPush } from "./create-account-push";
 import { useUserStore } from "@/stores/user-user-store";
 import { getArt } from "@/lib/string-utils";
-
-type CardSize = "medium" | "large";
+import { type CardSize, SIZE_CLASSES } from "./types";
 
 type FlipCardProps = {
   card: TarotCard;
@@ -20,11 +19,6 @@ type FlipCardProps = {
   setIsFlipped: () => void;
   size?: CardSize;
   borderOverride?: CardSize;
-};
-
-const SIZE_CLASSES: Record<CardSize, string> = {
-  large: "h-90 w-50",
-  medium: "h-80 w-45",
 };
 
 const FlipCard = ({

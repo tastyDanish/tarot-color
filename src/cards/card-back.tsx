@@ -1,15 +1,9 @@
 import PaperTexture from "@/components/paper-texture";
 import { cn } from "@/lib/utils";
-
-type CardSize = "medium" | "large";
+import { type CardSize, SIZE_CLASSES } from "./types";
 
 type CardBackProps = {
   size?: CardSize;
-};
-
-const SIZE_CLASSES: Record<CardSize, string> = {
-  large: "h-90 w-50",
-  medium: "h-80 w-45",
 };
 
 const CardBack = ({ size = "large" }: CardBackProps) => {

@@ -1,72 +1,116 @@
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import type { CardSize } from "./types";
 
-let idCounter = 0;
-type Sparkle = {
-  id: number;
-  left: string;
-  top: string;
-  rotate: number;
+type Sparkle = { id: number; left: number; top: number; rotate: number };
+
+type SparkleConfig = {
+  interval: number;
+  max: number;
+  fontSize: number;
+  drift: number;
+  blur: string;
 };
 
-const FoilAnimation = () => {
+const CONFIG: Record<
+  CardSize,
+  {
+    interval: number;
+    max: number;
+    fontSize: number;
+    drift: number;
+    blur: string;
+  }
+> = {
+  small: { interval: 400, max: 6, fontSize: 12, drift: 4, blur: "blur-[1px]" },
+  medium: {
+    interval: 250,
+    max: 12,
+    fontSize: 16,
+    drift: 7,
+    blur: "blur-[2px]",
+  },
+  large: { interval: 100, max: 24, fontSize: 20, drift: 10, blur: "blur-sm" },
+} as Record<CardSize, SparkleConfig>;
+
+type FoilAnimationProps = {
+  size?: CardSize;
+  staticGradient?: boolean;
+};
+
+const FoilAnimation = ({
+  size = "large",
+  staticGradient = false,
+}: FoilAnimationProps) => {
+  const { interval, max, fontSize, drift, blur } = CONFIG[size];
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
+  const [staticLeft] = useState(() => 12.5 + (Math.random() * 2 - 1) * 80);
+  const idRef = useRef(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const newSparkle = {
-        id: idCounter++ % 1000,
-        left: Math.random() * 100 + "%",
-        top: Math.random() * 100 + "%",
-        rotate: Math.random() * 360,
-      };
+    const timer = setInterval(() => {
+      setSparkles((prev) =>
+        prev.length >= max
+          ? prev
+          : [
+              ...prev,
+              {
+                id: idRef.current++,
+                left: 8 + Math.random() * 84,
+                top: 8 + Math.random() * 84,
+                rotate: Math.random() * 360,
+              },
+            ]
+      );
+    }, interval);
+    return () => clearInterval(timer);
+  }, [interval, max]);
 
-      setSparkles((prev) => [...prev, newSparkle]);
+  const remove = (id: number) =>
+    setSparkles((prev) => prev.filter((s) => s.id !== id));
 
-      // Remove it after animation
-      setTimeout(() => {
-        setSparkles((prev) => prev.filter((s) => s.id !== newSparkle.id));
-      }, 1200);
-    }, 100);
+  const gradientBase = `absolute -top-1/2 w-3/4 h-[200%] bg-linear-to-r from-amber-300/0 via-amber-300/80 to-amber-200/0 ${blur} opacity-40 rotate-25 pointer-events-none z-50 will-change-transform`;
 
-    return () => clearInterval(interval);
-  }, []);
   return (
     <>
-      <motion.div
-        className="absolute -top-1/2 left-[-50%] w-3/4 h-[150%] bg-linear-to-r from-amber-300/0 via-amber-300/80 to-amber-200/0 blur-sm opacity-40 rotate-25 pointer-events-none z-50"
-        animate={{ x: ["-200%", "300%"] }}
-        transition={{
-          repeatDelay: 2,
-          repeat: Infinity,
-          duration: 2,
-          ease: "easeInOut",
-        }}
-      />
-      {/* Sparkles */}
-      <AnimatePresence>
-        {sparkles.map((sparkle) => (
-          <motion.div
-            key={sparkle.id}
-            initial={{
-              opacity: 0,
-              scale: 0.3,
-              y: 10,
-              rotate: sparkle.rotate,
+      {staticGradient ? (
+        <div
+          className={gradientBase}
+          style={{ left: `${staticLeft}%` }}
+        />
+      ) : (
+        <motion.div
+          className={`absolute -top-1/2 left-[-50%] w-3/4 h-[150%] bg-linear-to-r from-amber-300/0 via-amber-300/80 to-amber-200/0 ${blur} opacity-40 rotate-25 pointer-events-none z-50 will-change-transform`}
+          animate={{ x: ["-200%", "300%"] }}
+          transition={{
+            repeatDelay: 2,
+            repeat: Infinity,
+            duration: 2,
+            ease: "easeInOut",
+          }}
+        />
+      )}
+
+      {sparkles.map((s) => (
+        <span
+          key={s.id}
+          className="absolute pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2"
+          style={{ left: `${s.left}%`, top: `${s.top}%` }}>
+          <motion.span
+            className="block leading-none will-change-transform"
+            style={{ fontSize }}
+            initial={{ opacity: 0, scale: 0.3, y: drift, rotate: s.rotate }}
+            animate={{
+              opacity: [0, 1, 0],
+              scale: [0.3, 1.2, 0.5],
+              y: -drift,
             }}
-            animate={{ opacity: 1, scale: 1.5, y: -10 }}
-            exit={{ opacity: 0, scale: 0.5 }}
-            transition={{ duration: 1 }}
-            className="absolute text-white text-lg pointer-events-none z-50"
-            style={{
-              left: sparkle.left,
-              top: sparkle.top,
-              transform: `rotate(${sparkle.rotate}deg)`,
-            }}>
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            onAnimationComplete={() => remove(s.id)}>
             ✨
-          </motion.div>
-        ))}
-      </AnimatePresence>
+          </motion.span>
+        </span>
+      ))}
     </>
   );
 };
