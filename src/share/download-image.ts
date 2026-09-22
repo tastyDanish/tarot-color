@@ -1,4 +1,5 @@
 import { domToPng } from "modern-screenshot";
+import { getRandomBackgroundStyle } from "./copy-to-clipboard";
 
 export const downloadImageBackup = async (element: HTMLElement) => {
   try {
@@ -73,12 +74,15 @@ export const downloadImageBackup = async (element: HTMLElement) => {
 
 export const downloadImage = async (element: HTMLElement) => {
   try {
+    const elementWidth = element.getBoundingClientRect().width;
+    const bgStyle = await getRandomBackgroundStyle(elementWidth);
+
     const dataUrl = await domToPng(element, {
-      backgroundColor: "#121826",
       style: {
         opacity: "100%",
         padding: "10px",
         transform: "scale(1)",
+        ...bgStyle,
       },
     });
 
