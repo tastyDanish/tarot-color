@@ -22,22 +22,16 @@ export const UseShare = () => {
     const element = document.getElementById("instagram-reading");
     if (!element) return;
 
-    // Tier 1: Clipboard with particles
-    // if (await tryCopyToClipboardWithParticles(element)) {
-    //   toast(CopyToast, toastSettings);
-    //   return;
-    // }
+    const toastId = toast(CopyToast, toastSettings);
 
-    // Tier 2: Clipboard plain background
-    if (await tryCopyToClipboardPlain(element)) {
-      toast(CopyToast, toastSettings);
-      return;
-    }
+    const copied = await tryCopyToClipboardPlain(element);
+    if (copied) return;
 
-    // Tier 3: Download fallback
     const result = await downloadImage(element);
     if (result === "download") {
-      toast(SaveToast, toastSettings);
+      toast.update(toastId, { render: SaveToast, ...toastSettings });
+    } else {
+      toast.dismiss(toastId);
     }
   };
 
