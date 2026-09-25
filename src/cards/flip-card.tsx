@@ -21,6 +21,8 @@ type FlipCardProps = {
   borderOverride?: CardSize;
 };
 
+const FRONT_LOAD_TIMEOUT_MS = 4000;
+
 const FlipCard = ({
   card,
   isReversed,
@@ -32,7 +34,10 @@ const FlipCard = ({
   size = "large",
   borderOverride,
 }: FlipCardProps) => {
+  // Tracks whether the front art is ready to show. Only gates the front
+  // <img>'s own opacity now — never the button/card-back visibility.
   const [frontLoaded, setFrontLoaded] = useState(false);
+  const [frontErrored, setFrontErrored] = useState(false);
   const { id } = useUserStore();
 
   const art = getArt({ card: card.image, art: alternateArt });
@@ -74,13 +79,38 @@ const FlipCard = ({
 
   useEffect(() => {
     if (!art) return;
+
+    setFrontLoaded(false);
+    setFrontErrored(false);
+
     const img = new Image();
     img.src = art;
+
     if (img.complete) {
       setFrontLoaded(true);
-    } else {
-      img.onload = () => setFrontLoaded(true);
+      return;
     }
+
+    img.onload = () => setFrontLoaded(true);
+    img.onerror = () => {
+      // Don't leave the front permanently blank on a failed load —
+      // fall back so the flip at least resolves to something.
+      setFrontErrored(true);
+      setFrontLoaded(true);
+    };
+
+    // Belt-and-suspenders: if neither onload nor onerror fires in a
+    // reasonable window (flaky network, browser oddities), stop waiting.
+    const timeout = setTimeout(
+      () => setFrontLoaded(true),
+      FRONT_LOAD_TIMEOUT_MS
+    );
+
+    return () => {
+      clearTimeout(timeout);
+      img.onload = null;
+      img.onerror = null;
+    };
   }, [art]);
 
   return (
@@ -90,7 +120,6 @@ const FlipCard = ({
       style={{
         perspective: "1000px",
         WebkitPerspective: "1000px",
-        opacity: frontLoaded ? 1 : 0,
       }}>
       <motion.div
         className={cn("relative flex shadow-xl justify-center")}
@@ -107,22 +136,26 @@ const FlipCard = ({
           isReversed={isReversed}
           isFoil={isFoil}
           size={borderOverride ? borderOverride : size}>
-          <img
-            src={art}
-            style={{
-              transform: "translateZ(0)",
-              WebkitTransform: "translateZ(0)",
-            }}
-            draggable={false}
-            className={cn(
-              SIZE_CLASSES[size],
-              "z-50",
-              isReversed ? "rotate-180" : "",
-              isDeprived ? "grayscale" : "",
-              alternateArt ? "" : "[clip-path:inset(2px)]"
-            )}
-            alt={card.name}
-          />
+          {!frontErrored && (
+            <img
+              src={art}
+              style={{
+                transform: "translateZ(0)",
+                WebkitTransform: "translateZ(0)",
+                opacity: frontLoaded ? 1 : 0,
+                transition: "opacity 0.3s ease-in-out",
+              }}
+              draggable={false}
+              className={cn(
+                SIZE_CLASSES[size],
+                "z-50",
+                isReversed ? "rotate-180" : "",
+                isDeprived ? "grayscale" : "",
+                alternateArt ? "" : "[clip-path:inset(2px)]"
+              )}
+              alt={card.name}
+            />
+          )}
         </CardBorder>
         <CardBack size={size} />
       </motion.div>
