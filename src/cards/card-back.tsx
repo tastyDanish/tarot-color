@@ -1,12 +1,33 @@
 import PaperTexture from "@/components/paper-texture";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 import { type CardSize, SIZE_CLASSES } from "./types";
 
 type CardBackProps = {
   size?: CardSize;
 };
 
+const CARD_BACK_SRC = "/goblin-card-back.png";
+
 const CardBack = ({ size = "large" }: CardBackProps) => {
+  const [artLoaded, setArtLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = CARD_BACK_SRC;
+
+    if (img.complete) {
+      setArtLoaded(true);
+      return;
+    }
+
+    img.onload = () => setArtLoaded(true);
+
+    return () => {
+      img.onload = null;
+    };
+  }, []);
+
   return (
     <div
       className={cn(
@@ -24,9 +45,11 @@ const CardBack = ({ size = "large" }: CardBackProps) => {
             SIZE_CLASSES[size]
           )}
           style={{
-            backgroundImage: `url(/.netlify/images?url=${encodeURIComponent("/goblin-card-back.png")}&fm=webp&q=80)`,
-          }}
-        />
+            backgroundImage: `url(${CARD_BACK_SRC})`,
+            opacity: artLoaded ? 1 : 0,
+            transition: "opacity 0.4s ease-in-out",
+          }}></div>
+
         <PaperTexture
           opacity={40}
           zLevel="z-10"
