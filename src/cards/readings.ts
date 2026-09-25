@@ -1,46 +1,120 @@
 import { PALETTES } from "@/colors/palettes";
-import { deprivePalette, generatePalette } from "@/colors/random-palettes";
+import {
+	depriveColor,
+	deprivePalette,
+	generatePalette,
+} from "@/colors/random-palettes";
 import {
 	getRandomItem,
+	getRandomItemArray,
 	getRandomSubSet,
 	shuffleArray,
 } from "@/lib/random-utils";
-import { TAROT_CARDS } from "./tarot-cards";
+import { TAROT_CARDS, type TarotCard } from "./tarot-cards";
 import type { Reading, WordColor } from "@/stores/use-reading-store";
 
-export const generateReading = (expiration: Date): Reading => {
-	const card = getRandomItem(TAROT_CARDS);
-	const reversed = Math.random() <= 0.12;
-	const foil = Math.random() <= 0.07;
-	const deprived = Math.random() <= 0.03;
+export type DrawnCard = {
+	card: TarotCard;
+	reversed: boolean;
+	foil: boolean;
+	deprived: boolean;
+};
+const getReadingCard = (card?: TarotCard): DrawnCard => ({
+	card: card ? card : getRandomItem(TAROT_CARDS),
+	// reversed: Math.random() <= 1,
+	// foil: Math.random() <= 1,
+	// deprived: Math.random() <= 1,
+	reversed: Math.random() <= 0.12,
+	foil: Math.random() <= 0.07,
+	deprived: Math.random() <= 0.03,
+});
+
+const getWords = (
+	card: TarotCard,
+	reversed: boolean,
+	count: number,
+	usedWords?: Set<string>,
+) => {
+	const wordsRaw = (reversed ? card.reversed : card.description)
+		.split(",")
+		.map((w) => w.trim());
+
+	const available = usedWords
+		? wordsRaw.filter((w) => !usedWords.has(w))
+		: wordsRaw;
+
+	const pool = available.length >= count ? available : wordsRaw;
+
+	const chosen = getRandomSubSet(pool, count);
+
+	if (usedWords) {
+		chosen.forEach((w) => usedWords.add(w));
+	}
+
+	return chosen;
+};
+
+export const generateDailySingle = (expiration: Date): Reading => {
+	const reading = getReadingCard();
 
 	const palette = Math.random() > 0.2
 		? generatePalette()
 		: shuffleArray(getRandomItem(PALETTES));
 
-	const finalPalette = deprived ? deprivePalette(palette) : palette;
+	const finalPalette = reading.deprived ? deprivePalette(palette) : palette;
 
-	const wordsRaw = (reversed ? card.reversed : card.description)
-		.split(",")
-		.map((w) => w.trim());
-	const chosenWords = getRandomSubSet(wordsRaw, 5);
+	const chosenWords = getWords(reading.card, reading.reversed, 5);
 
 	const words: WordColor[] = chosenWords.map((word, i) => ({
 		word,
 		color: finalPalette[i % finalPalette.length],
 	}));
 
-	const reading: Reading = {
+	return {
 		id: "client-side",
-		card,
+		card: reading.card,
 		words,
 		expiration,
-		reversed,
-		foil,
+		reversed: reading.reversed,
+		foil: reading.foil,
 		flipped: false,
-		deprived,
+		deprived: reading.deprived,
 		alternateArt: "goblin",
 	};
+};
 
-	return reading;
+export type ReadingPhase = {
+	title: string;
+	drawn: DrawnCard;
+	words: string[];
+	color: string;
+};
+
+type TripleReading = {
+	id: string;
+	readingPhases: ReadingPhase[];
+};
+
+export const generateMulti = (titles: string[]): TripleReading => {
+	const colors = generatePalette(titles.length);
+
+	const usedWords = new Set<string>();
+
+	const phases = getRandomItemArray(TAROT_CARDS, titles.length).map((c, i) => {
+		const drawn = getReadingCard(c);
+
+		const color = colors[i];
+
+		return {
+			title: titles[i],
+			drawn,
+			words: getWords(drawn.card, drawn.reversed, 2, usedWords),
+			color: drawn.deprived ? depriveColor(color) : color,
+		};
+	});
+
+	return {
+		id: "client-side",
+		readingPhases: phases,
+	};
 };

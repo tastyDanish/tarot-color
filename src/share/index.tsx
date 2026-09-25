@@ -11,14 +11,14 @@ const ShareButton = () => {
       <button
         disabled={toastOpen || isLoading}
         onClick={handleShare}
-        className="inline-flex items-center gap-2 px-3 py-2 bg-orange-100 text-slate-900 rounded-sm shadow-md border border-slate-800 transition hover:scale-105 text-md w-fit">
+        className="inline-flex items-center gap-2 px-3 py-2 bg-orange-100 text-slate-900 rounded-sm shadow-md border border-slate-800 transition hover:scale-105 text-md w-fit cursor-pointer">
         <Copy className="w-4 h-4 sm:w-5 sm:h-5" />
         <span className="pb-1 relative w-12.5 h-[1em] font-medium flex items-center justify-center">
           COPY
         </span>
       </button>
       <button
-        className="inline-flex items-center px-2 bg-orange-100 text-slate-900 rounded-sm shadow-md border border-slate-800 transition hover:scale-105 text-md w-fit"
+        className="inline-flex items-center px-2 bg-orange-100 text-slate-900 rounded-sm shadow-md border border-slate-800 transition hover:scale-105 text-md w-fit cursor-pointer"
         disabled={toastOpen || isLoading}
         onClick={handleDownload}>
         <Download />

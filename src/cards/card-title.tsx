@@ -22,7 +22,7 @@ const CardTitle = ({
       )}>
       <div
         className={cn(
-          "h-3 w-0 bg-amber-200 [clip-path:polygon(80%_20%,_0%_50%,_80%_80%,_100%_50%)]",
+          "h-3 w-0 bg-amber-200 [clip-path:polygon(80%_20%,0%_50%,80%_80%,100%_50%)]",
           isShare ? "w-0" : "md:w-20"
         )}
       />
@@ -43,7 +43,7 @@ const CardTitle = ({
 
       <div
         className={cn(
-          "h-3 w-0 bg-amber-200 [clip-path:polygon(20%_20%,_100%_50%,_20%_80%,_0%_50%)]",
+          "h-3 w-0 bg-amber-200 [clip-path:polygon(20%_20%,100%_50%,20%_80%,0%_50%)]",
           isShare ? "w-0" : "md:w-20"
         )}
       />

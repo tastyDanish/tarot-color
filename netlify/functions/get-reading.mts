@@ -4,6 +4,7 @@ import {
 	getExistingReading,
 	saveFallbackReading,
 } from "../data";
+import { errorResponse } from "../data-triple";
 
 export default async (req: Request, context: Context) => {
 	try {
@@ -31,14 +32,6 @@ export default async (req: Request, context: Context) => {
 
 		return await createReading(user_id, expiration);
 	} catch (err) {
-		if (err instanceof Error) {
-			console.log("ERROR - final:", err.message);
-		} else {
-			console.log("ERROR - final:", err);
-		}
-		return {
-			statusCode: 500,
-			body: JSON.stringify({ error: "Unexpected server error", detail: err }),
-		};
+		return errorResponse(err);
 	}
 };

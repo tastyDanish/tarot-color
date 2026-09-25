@@ -6,15 +6,19 @@ import FlipCard from "./flip-card";
 import StreakCounter from "./streak-counter";
 import ShareButton from "@/share";
 import { cn } from "@/lib/utils";
+import { useReadingStore } from "@/stores/use-reading-store";
 import DailyWords from "./daily-words";
 import GoToCollection from "@/collection/go-to-collection";
 import { useUserStore } from "@/stores/user-user-store";
+import TripleReminder from "@/triple/triple-reminder";
 
 type DailyCardProps = {
   reading: Reading;
 };
 const DailyCard = ({ reading }: DailyCardProps) => {
+  const { setIsFlipped } = useReadingStore();
   const { loading, id } = useUserStore();
+
   return (
     <div
       className="relative flex flex-col items-center opacity-100 w-full justify-between"
@@ -45,13 +49,15 @@ const DailyCard = ({ reading }: DailyCardProps) => {
           reading.flipped === undefined ? "invisible" : ""
         )}>
         <FlipCard
-          readingId={reading.id}
           isReversed={reading.reversed ?? true}
           isFlipped={reading.flipped ?? false}
           card={reading.card}
           isFoil={reading.foil ?? false}
           isDeprived={reading.deprived ?? false}
           alternateArt={reading.alternateArt ?? null}
+          setIsFlipped={() =>
+            setIsFlipped({ flipped: true, userId: id, readingId: reading.id })
+          }
         />
         <ColorSwatch
           isFlipped={reading.flipped ?? false}
@@ -91,6 +97,9 @@ const DailyCard = ({ reading }: DailyCardProps) => {
           <ShareButton />
         </div>
         {!loading && id !== null && <GoToCollection />}
+        <div className="flex justify-center pt-1">
+          <TripleReminder />
+        </div>
       </motion.div>
     </div>
   );

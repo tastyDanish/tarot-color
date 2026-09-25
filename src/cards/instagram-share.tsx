@@ -94,7 +94,7 @@ const InstagramShare = ({ reading }: InstagramShareProps) => {
                 opacity={60}
                 zLevel="z-10"
               />
-              {reading.foil && <FoilAnimation />}
+              {reading.foil && <FoilAnimation staticGradient />}
             </div>
           </div>
 

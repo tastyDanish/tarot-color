@@ -1,10 +1,11 @@
-// import { CollectionStatus } from "@/collection/collection-status";
 import { CollectionStatus } from "@/collection/collection-status";
 import StarSpinner from "@/collection/constellation-stars/star-spinner";
 import GetReadings from "@/collection/get-readings";
 import { useCollectionStore } from "@/stores/use-collection-store";
 import { useUserStore } from "@/stores/user-user-store";
 import { useNavigate } from "react-router-dom";
+import { motion } from "motion/react";
+import CrystalBall from "@/components/crystal-ball";
 
 const Collection = () => {
   const { signOut, email } = useUserStore();
@@ -12,14 +13,24 @@ const Collection = () => {
   const { allCards } = useCollectionStore();
   const navigate = useNavigate();
 
-  GetReadings();
-
   const handleSignOut = async () => {
     await signOut();
     navigate("/");
   };
 
-  if (!id || !allCards) return null;
+  if (!id || !allCards) {
+    return (
+      <motion.div
+        key="fog"
+        className="w-full flex relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}>
+        <CrystalBall />
+      </motion.div>
+    );
+  }
 
   return (
     <div className="flex flex-col px-4 pt-2 pb-12 w-80 md:w-120 items-center text-slate-300">

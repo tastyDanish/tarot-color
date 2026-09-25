@@ -4,6 +4,7 @@ import type { Reading } from "./use-reading-store";
 import { mapDbReadingToReading } from "@/db/mappers";
 import { generateSuitCollection } from "./generate-suit-collection";
 import { groupColors } from "@/lib/color-utils";
+import { mapDbTripleToReadings } from "@/db/triple-mappers";
 
 export type TarotCardStats = {
 	name: string;
@@ -145,18 +146,25 @@ export const useCollectionStore = create<CollectionState>((set) => ({
 	loadReadings: async (userId) => {
 		set({ loading: true, error: null });
 
-		const { data, error } = await supabase
-			.from("readings")
-			.select("*")
-			.eq("user_id", userId)
-			.order("created_at", { ascending: false });
+		const [dailyRes, tripleRes] = await Promise.all([
+			supabase
+				.from("readings")
+				.select("*")
+				.eq("user_id", userId)
+				.order("created_at", { ascending: false }),
+			supabase.from("triple_readings").select("*").eq("user_id", userId),
+		]);
 
-		if (error) {
-			set({ error: error.message, loading: false });
+		const failure = dailyRes.error ?? tripleRes.error;
+		if (failure) {
+			set({ error: failure.message, loading: false });
 			return;
 		}
 
-		const readings = data.map(mapDbReadingToReading);
+		const readings = [
+			...(dailyRes.data ?? []).map(mapDbReadingToReading),
+			...(tripleRes.data ?? []).flatMap(mapDbTripleToReadings),
+		];
 
 		const cards = new Map<string, TarotSuit>();
 

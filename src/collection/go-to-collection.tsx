@@ -7,7 +7,7 @@ const GoToCollection = () => {
   return (
     <button
       onClick={() => navigate("/collection")}
-      className="relative inline-flex items-center my-4 gap-2 p-2 bg-orange-100 text-slate-900 rounded-md shadow-md transition hover:scale-105 text-md w-75 md:w-100 overflow-hidden">
+      className="relative inline-flex items-center mt-4 mb-2 gap-2 p-2 bg-orange-100 text-slate-900 rounded-md shadow-md transition hover:scale-105 text-md w-75 md:w-100 overflow-hidden">
       <div className="relative w-full h-full overflow-hidden">
         {[
           "-top-4 -left-4",

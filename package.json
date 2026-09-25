@@ -23,6 +23,7 @@
     "@tsparticles/plugin-emitters": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
+    "astronomy-engine": "^2.1.19",
     "chroma-js": "^3.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

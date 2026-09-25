@@ -3,6 +3,23 @@ export function getRandomItem<T>(items: T[]): T {
   return items[index];
 }
 
+export function getRandomItemArray<T>(items: T[], count: number): T[] {
+  if (count > items.length) {
+    throw new Error(
+      `Cannot draw ${count} items from an array of length ${items.length}`,
+    );
+  }
+
+  const deck = [...items];
+
+  for (let i = 0; i < count; i++) {
+    const j = i + Math.floor(Math.random() * (deck.length - i));
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+
+  return deck.slice(0, count);
+}
+
 export function shuffleArray<T>(array: T[]): T[] {
   const result = [...array];
   for (let i = result.length - 1; i > 0; i--) {

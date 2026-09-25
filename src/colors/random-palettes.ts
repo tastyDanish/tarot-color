@@ -46,17 +46,28 @@ function jitterSaturation(base: number, range = 0.1): number {
   return Math.min(1, Math.max(0, base + (Math.random() * 2 - 1) * range));
 }
 
-export const generatePalette = (): string[] => {
+/**
+ * Generates a color palette.
+ * @param count number of colors to generate (default 5). Must be >= 2.
+ */
+export const generatePalette = (count: number = 5): string[] => {
+  if (count < 2) {
+    throw new Error("generatePalette: count must be at least 2");
+  }
+
   const paletteType = getRandomItem(["mono", "duo", "tri", "quad", "five"]);
   const anchor = getRandomItem(getRandomItem([LIGHT_ANCHORS, DARK_ANCHORS]));
   const baseColor = getRandomItem(getRandomItem(PALETTES));
   const baseHue = getHue(baseColor);
 
+  const lastIndex = count - 1;
+
   if (paletteType === "mono") {
-    return Array.from({ length: 5 }).map((_, i) => {
-      const t = i / 4;
+    const maxLight = 0.7 + Math.random() * 0.25; // varies 0.7–0.95
+    return Array.from({ length: count }).map((_, i) => {
+      const t = i / lastIndex;
       const sat = randomSaturation() * (1 - t) + t * 0.3;
-      const light = 0.4 + 0.6 * t;
+      const light = 0.4 + (maxLight - 0.4) * t;
       return chroma.hsl(baseHue, sat, light).hex();
     });
   }
@@ -65,8 +76,8 @@ export const generatePalette = (): string[] => {
     const hueShift = Math.random() * 60 + 150;
     const secondHue = (baseHue + hueShift) % 360;
 
-    const colors = Array.from({ length: 5 }).map((_, i) => {
-      const t = i / 4;
+    const colors = Array.from({ length: count }).map((_, i) => {
+      const t = i / lastIndex;
       let hue, sat, light;
       if (t < 0.5) {
         hue = jitterHue(baseHue);
@@ -98,7 +109,7 @@ export const generatePalette = (): string[] => {
     const colors = chroma
       .scale([...triColors, anchor])
       .mode("lab")
-      .colors(5);
+      .colors(count);
 
     return shuffleArray(colors);
   }
@@ -126,16 +137,16 @@ export const generatePalette = (): string[] => {
     const colors = chroma
       .scale([...quadColors.map((c) => c.hex()), anchor])
       .mode("lab")
-      .colors(5);
+      .colors(count);
 
     return shuffleArray(colors);
   }
 
   if (paletteType === "five") {
     const startHue = Math.random() * 360;
-    const hueStep = 360 / 5;
+    const hueStep = 360 / count;
 
-    return Array.from({ length: 5 }).map((_, i) => {
+    return Array.from({ length: count }).map((_, i) => {
       const hue = (startHue + i * hueStep) % 360;
       const sat = 0.5 + 0.3 * Math.sin(i);
       const light = 0.4 + 0.2 * Math.cos(i);
@@ -144,19 +155,30 @@ export const generatePalette = (): string[] => {
   }
 
   // fallback
-  return chroma.scale([baseColor, anchor]).mode("lab").colors(5);
+  return chroma.scale([baseColor, anchor]).mode("lab").colors(count);
 };
 
 export const deprivePalette = (palette: string[]) =>
-  palette.map((color) => {
-    const [l] = chroma(color).lab();
-    return chroma.lab(l, 0, 0).hex();
-  });
+  palette.map((color) => depriveColor(color));
 
-export const goblinPalette = (): string[] => {
+export const depriveColor = (color: string) => {
+  const [l] = chroma(color).lab();
+  return chroma.lab(l, 0, 0).hex();
+};
+
+/**
+ * Generates a goblin-green palette.
+ * @param count number of colors to generate (default 5). Must be >= 2.
+ */
+export const goblinPalette = (count: number = 5): string[] => {
+  if (count < 2) {
+    throw new Error("goblinPalette: count must be at least 2");
+  }
+
   const baseHue = jitterHue(120, 15); // green hue with some variance
-  return Array.from({ length: 5 }).map((_, i) => {
-    const t = i / 4;
+  const lastIndex = count - 1;
+  return Array.from({ length: count }).map((_, i) => {
+    const t = i / lastIndex;
     const hue = jitterHue(baseHue, 12);
     const sat = jitterSaturation(0.5 + 0.3 * (1 - t), 0.1);
     const light = jitterLightness(0.25 + 0.4 * t, 0.08);

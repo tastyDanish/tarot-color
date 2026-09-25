@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { computeStreak, getOrder, getSuit } from "./utils";
-import { generateReading } from "../src/cards/readings";
+import { generateDailySingle } from "../src/cards/readings";
 import { mapDbReadingToReading } from "../src/db/mappers";
 import { Reading } from "../src/stores/use-reading-store";
 
@@ -60,7 +60,7 @@ export const createReading = async (
 	user_id: string,
 	expiration: string,
 ) => {
-	const newReading = generateReading(new Date(expiration));
+	const newReading = generateDailySingle(new Date(expiration));
 	const variations: string[] = [];
 	if (newReading.reversed) variations.push("reversed");
 	if (newReading.foil) variations.push("foil");
