@@ -12,10 +12,10 @@ export const SpreadPicker = ({ onPick }: SpreadPickerProps) => {
     <div className="w-full pt-8 flex flex-col items-center gap-6">
       <span className="text-2xl font-bold">CHOOSE YOUR SPREAD</span>
       <div className="bg-amber-100/50 w-45 h-0.5 rounded-md" />
-      <div className="text-center px-4 flex flex-col gap-2 w-60 md:w-100">
-        <p className="text-lg">
-          This is your spread for the week. Choose carefully, because it will
-          take a week to gather the energy for another one.
+      <div className="text-center px-4 flex flex-col gap-2 w-60 md:w-100 pb-2">
+        <p className="text-lg text-slate-300">
+          Pick carefully, because it will take a week to gather the energy for
+          another one.
         </p>
       </div>
       <div className="flex flex-col gap-3 w-full max-w-xs px-4">

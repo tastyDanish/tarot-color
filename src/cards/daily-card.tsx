@@ -10,6 +10,7 @@ import { useReadingStore } from "@/stores/use-reading-store";
 import DailyWords from "./daily-words";
 import GoToCollection from "@/collection/go-to-collection";
 import { useUserStore } from "@/stores/user-user-store";
+import TripleReminder from "@/triple/triple-reminder";
 
 type DailyCardProps = {
   reading: Reading;
@@ -96,6 +97,9 @@ const DailyCard = ({ reading }: DailyCardProps) => {
           <ShareButton />
         </div>
         {!loading && id !== null && <GoToCollection />}
+        <div className="flex justify-center pt-1">
+          <TripleReminder />
+        </div>
       </motion.div>
     </div>
   );
