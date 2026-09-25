@@ -3,6 +3,7 @@ import type { TarotCard } from "@/cards/tarot-cards";
 import { generateDailySingle } from "@/cards/readings";
 import { mapDbReadingToReading } from "@/db/mappers";
 import { getNextMidnight } from "@/lib/time-utils";
+import { getArt } from "@/lib/string-utils";
 
 export type WordColor = {
 	word: string;
@@ -44,6 +45,16 @@ const saveToStorage = (reading: Reading) => {
 	localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(reading));
 };
 
+const preloadArt = (reading: Reading) => {
+	const art = getArt({
+		card: reading.card.image,
+		art: reading.alternateArt ?? null,
+	});
+	if (!art) return;
+	const img = new Image();
+	img.src = art;
+};
+
 type ReadingState = {
 	reading: Reading | null;
 	isLoading: boolean;
@@ -80,10 +91,8 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 		set({ isLoading: true });
 
 		const localReading = loadFromStorage();
-
 		const expiration = getNextMidnight();
 		const currentTime = new Date();
-
 		const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
 		const isConsecutiveDay = !!localReading &&
@@ -95,20 +104,19 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 			if (localReading && localReading.expiration > currentTime) {
 				const reading = localReading;
 				saveToStorage({ ...reading });
+				preloadArt(reading);
 				set({ reading, isLoading: false });
 				return;
 			} else {
 				const reading = generateDailySingle(expiration);
-				saveToStorage({ ...reading, streak: newStreak });
-				set({
-					reading: { ...reading, streak: newStreak },
-					isLoading: false,
-				});
+				const fullReading = { ...reading, streak: newStreak };
+				saveToStorage(fullReading);
+				preloadArt(fullReading);
+				set({ reading: fullReading, isLoading: false });
 				return;
 			}
 		}
 
-		// Call Netlify function with userId and optional fallback
 		const res = await fetch("/.netlify/functions/get-reading", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
@@ -129,10 +137,8 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 		const { reading, streak } = await res.json();
 		const loadedReading: Reading = mapDbReadingToReading(reading, streak);
 		saveToStorage({ ...loadedReading });
+		preloadArt(loadedReading);
 
-		set({
-			reading: { ...loadedReading },
-			isLoading: false,
-		});
+		set({ reading: { ...loadedReading }, isLoading: false });
 	},
 }));
