@@ -2,15 +2,22 @@ import FlipCard from "@/cards/flip-card";
 import type { ReadingPhase } from "@/cards/readings";
 import { capitalize } from "@/lib/string-utils";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animate, motion } from "motion/react";
 
 type TripleReadingProps = {
   phase: ReadingPhase;
+  initialFlipped?: boolean;
+  onFlip: () => void;
 };
 
-export const TripleReading = ({ phase }: TripleReadingProps) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+export const TripleReading = ({
+  phase,
+  initialFlipped = false,
+  onFlip,
+}: TripleReadingProps) => {
+  const [isFlipped, setIsFlipped] = useState(initialFlipped);
+  const restoredRef = useRef(initialFlipped);
 
   const TASSEL_COUNT = 8;
 
@@ -18,7 +25,7 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
     phase.drawn.foil || phase.drawn.reversed || phase.drawn.deprived;
 
   useEffect(() => {
-    if (isFlipped) {
+    if (isFlipped && !restoredRef.current) {
       const container = document.getElementById("scroll-container");
       const target = document.getElementById("triple-reading");
       const prefersReducedMotion = window.matchMedia(
@@ -29,10 +36,10 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
         const containerRect = container.getBoundingClientRect();
         const targetRect = target.getBoundingClientRect();
 
-        const targetBottom = targetRect.bottom - containerRect.top;
+        // distance from the container's visible top edge to the target's top edge
+        const targetTop = targetRect.top - containerRect.top;
 
-        const scrollTo =
-          container.scrollTop + targetBottom - container.clientHeight;
+        const scrollTo = container.scrollTop + targetTop;
 
         animate(container.scrollTop, scrollTo, {
           duration: 0.7,
@@ -55,7 +62,7 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
       <div className="h-fit flex justify-center z-10 items-center mt-6 mb-10">
         <div className="absolute flex flex-col items-center translate-y-2 z-0">
           <motion.div
-            initial={{ y: 100, opacity: 0 }}
+            initial={initialFlipped ? false : { y: 100, opacity: 0 }}
             animate={{ y: isFlipped ? 0 : 100, opacity: isFlipped ? 1 : 0 }}
             transition={{
               type: "spring",
@@ -68,7 +75,7 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
           />
           <motion.div
             className="relative"
-            initial={{ y: -100, opacity: 0 }}
+            initial={initialFlipped ? false : { y: -100, opacity: 0 }}
             animate={{ y: isFlipped ? 0 : -100, opacity: isFlipped ? 1 : 0 }}
             transition={{
               type: "spring",
@@ -106,7 +113,10 @@ export const TripleReading = ({ phase }: TripleReadingProps) => {
           isFoil={phase.drawn.foil}
           isDeprived={phase.drawn.deprived}
           alternateArt={"goblin"}
-          setIsFlipped={() => setIsFlipped(true)}
+          setIsFlipped={() => {
+            setIsFlipped(true);
+            onFlip();
+          }}
         />
       </div>
 

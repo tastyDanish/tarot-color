@@ -94,7 +94,7 @@ const TripleShare = ({ phases }: TripleShareProps) => {
                   <div className="bg-amber-950/50 w-45 h-0.5 my-1 rounded-md self-center" />
                 </div>
 
-                <div className="flex flex-1 justify-center items-center flex-row flex-wrap gap-y-0 gap-x-3 w-full px-2 text-md leading-tight text-center">
+                <div className="flex flex-1 justify-center items-center flex-col flex-wrap gap-y-0 gap-x-3 w-full px-2 text-md leading-tight text-center">
                   {phase.words.map((word, wi) => (
                     <span
                       key={wi}
