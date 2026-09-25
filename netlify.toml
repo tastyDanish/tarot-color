@@ -3,3 +3,8 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+[[headers]]
+  for = "/.netlify/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
