@@ -20,7 +20,7 @@ const CardBack = ({ size = "large" }: CardBackProps) => {
       <div className="bg bg-[#211829] p-3 overflow-hidden w-full h-full rounded-xl flex justify-center items-center">
         <div
           className={cn(
-            "relative overflow-hidden flex justify-center items-center rounded-xl bg-amber-950 bg-cover bg-center",
+            "relative overflow-hidden flex justify-center items-center rounded-xl bg-[#211829] bg-cover bg-center",
             SIZE_CLASSES[size]
           )}
           style={{
