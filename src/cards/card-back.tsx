@@ -23,8 +23,10 @@ const CardBack = ({ size = "large" }: CardBackProps) => {
             "relative overflow-hidden flex justify-center items-center rounded-xl bg-amber-950 bg-cover bg-center",
             SIZE_CLASSES[size]
           )}
-          style={{ backgroundImage: "url(/goblin-card-back.png)" }}></div>
-
+          style={{
+            backgroundImage: `url(/.netlify/images?url=${encodeURIComponent("/goblin-card-back.png")}&fm=webp&q=80)`,
+          }}
+        />
         <PaperTexture
           opacity={40}
           zLevel="z-10"
