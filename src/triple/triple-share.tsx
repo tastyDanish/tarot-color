@@ -26,9 +26,11 @@ const TripleShare = ({ phases }: TripleShareProps) => {
       }}>
       <div className="w-full flex flex-col gap-4 flex-1 justify-around">
         <div className="w-full flex justify-around items-center">
-          <div className="h-1 w-12 bg-amber-100/80" />
-          <span className="text-lg font-medium">A GLIMPSE OF YOUR FATE</span>
-          <div className="h-1 w-12 bg-amber-100/80" />
+          <div className="h-1 w-10 bg-amber-100/80" />
+          <span className="text-lg font-medium whitespace-nowrap">
+            A GLIMPSE OF YOUR FATE
+          </span>
+          <div className="h-1 w-10 bg-amber-100/80" />
         </div>
         {phases.map((phase, i) => {
           const art = getArt({ card: phase.drawn.card.image, art: "goblin" });
