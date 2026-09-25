@@ -7,9 +7,13 @@ export const getArt = (
   { card, art }: { card: string | null; art: string | null },
 ) => {
   if (!card) return undefined;
-  if (art) {
-    const path = card.replace("cards", art).replace("jpg", "png");
-    return path.startsWith("/") ? path : `/${path}`;
-  }
-  return card.startsWith("/") ? card : `/${card}`;
+
+  const filename = card
+    .replace(/^\/?cards\//, "")
+    .replace(/\.jpg$/, ".png");
+
+  const deck = art || "classic";
+  const sourcePath = `/${deck}/${filename}`;
+
+  return `/.netlify/images?url=${encodeURIComponent(sourcePath)}&fm=webp&q=80`;
 };
