@@ -36,10 +36,10 @@ export const TripleReading = ({
         const containerRect = container.getBoundingClientRect();
         const targetRect = target.getBoundingClientRect();
 
-        // distance from the container's visible top edge to the target's top edge
-        const targetTop = targetRect.top - containerRect.top;
+        const targetBottom = targetRect.bottom - containerRect.top;
 
-        const scrollTo = container.scrollTop + targetTop;
+        const scrollTo =
+          container.scrollTop + targetBottom - container.clientHeight;
 
         animate(container.scrollTop, scrollTo, {
           duration: 0.7,
