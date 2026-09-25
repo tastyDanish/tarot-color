@@ -27,7 +27,7 @@ export const SpreadPicker = ({ onPick }: SpreadPickerProps) => {
               setPicking(true);
               onPick(spread);
             }}
-            className="border flex justify-center border-amber-200/40 rounded-md px-4 py-3 text-lg active:scale-95 transition-transform disabled:opacity-50">
+            className="border flex justify-center border-amber-200/40 rounded-md px-4 py-3 text-lg active:scale-95 transition-transform disabled:opacity-50 cursor-pointer">
             <span className="pb-1">{spread.name}</span>
           </button>
         ))}
