@@ -34,13 +34,18 @@ const FlipCard = ({
   size = "large",
   borderOverride,
 }: FlipCardProps) => {
+  const art = getArt({ card: card.image, art: alternateArt });
+
   // Tracks whether the front art is ready to show. Only gates the front
   // <img>'s own opacity now — never the button/card-back visibility.
-  const [frontLoaded, setFrontLoaded] = useState(false);
+  const [frontLoaded, setFrontLoaded] = useState(() => {
+    if (!art) return false;
+    const img = new Image();
+    img.src = art;
+    return img.complete;
+  });
   const [frontErrored, setFrontErrored] = useState(false);
   const { id } = useUserStore();
-
-  const art = getArt({ card: card.image, art: alternateArt });
 
   useEffect(() => {
     if (!isFlipped) return;
