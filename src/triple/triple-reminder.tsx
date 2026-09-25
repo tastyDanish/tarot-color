@@ -22,8 +22,8 @@ const TripleReminder = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
-      className="group bg-orange-100 rounded-sm pl-4 pr-3 py-2 text-amber-900 flex items-center gap-2 shadow-xl hover:shadow-lg transition cursor-pointer relative overflow-hidden hover:scale-105 active:scale-95 my-2">
-      <span className="font-bold text-sm">Try the NEW Triple Card Spread</span>
+      className="group bg-orange-100 rounded-sm pl-4 pr-3 py-2 text-amber-900 flex items-center gap-2 shadow-xl hover:shadow-lg transition cursor-pointer relative overflow-hidden hover:scale-105 active:scale-95 mb-6 mt-2">
+      <span className="font-bold text-sm">Try the NEW Triple Card Spread!</span>
       <PaperTexture opacity={80} />
     </motion.button>
   );
