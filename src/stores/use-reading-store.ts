@@ -84,7 +84,13 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 		const expiration = getNextMidnight();
 		const currentTime = new Date();
 
-		// If no user, just use the local reading or generate one
+		const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+
+		const isConsecutiveDay = !!localReading &&
+			expiration.getTime() - localReading.expiration.getTime() === ONE_DAY_MS;
+
+		const newStreak = isConsecutiveDay ? (localReading!.streak ?? 0) + 1 : 1;
+
 		if (!userId) {
 			if (localReading && localReading.expiration > currentTime) {
 				const reading = localReading;
@@ -93,12 +99,9 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
 				return;
 			} else {
 				const reading = generateDailySingle(expiration);
-				saveToStorage({
-					...reading,
-					streak: (localReading?.streak ?? 0) + 1,
-				});
+				saveToStorage({ ...reading, streak: newStreak });
 				set({
-					reading: { ...reading, streak: (localReading?.streak ?? 0) + 1 },
+					reading: { ...reading, streak: newStreak },
 					isLoading: false,
 				});
 				return;
