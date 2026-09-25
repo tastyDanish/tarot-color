@@ -24,7 +24,7 @@ const TripleDraw = ({ reading }: { reading: TripleSaved }) => {
       transition={{ duration: 0.8, ease: "easeOut" }}>
       <div className="flex flex-col items-center pb-6 px-8 text-lg text-center text-slate-300">
         <span>
-          Your spread for the week · next draw at{" "}
+          Your spread for the week · next draw available at{" "}
           {formatExpiryDate(reading.expiration)}
         </span>
       </div>
