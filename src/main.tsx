@@ -6,8 +6,10 @@ import { BrowserRouter } from "react-router-dom";
 import { PostHogProvider } from "@posthog/react";
 
 const options = {
-  api_host: import.meta.env.VITE_POSTHOG_HOST,
+  api_host: "/ingest",
+  ui_host: "https://us.posthog.com",
   defaults: "2026-05-30",
+  opt_out_capturing_by_default: !import.meta.env.PROD,
 } as const;
 
 createRoot(document.getElementById("root")!).render(
